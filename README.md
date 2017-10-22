@@ -42,3 +42,4 @@ Crear un videojuego “indie” rejugable,con variedad de niveles y a la vez su 
 Ideas de interfaz
 <<Tower Defense>> Un login desde el cual escoger el modo de juego.
 En cuanto a la pantalla del juego, mostraría el mapa de juego no interactivo durante las oleadas y el mapa de construcción con sus diferentes opciones entre oleadas.
+ 
