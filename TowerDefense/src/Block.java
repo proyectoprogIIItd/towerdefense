@@ -14,5 +14,8 @@ public class Block extends Rectangle{
 	public void draw (Graphics g){
 		g.drawRect(x, y, width, height);
 		
+		if(airID != Value.airAir){
+			
+		}
 	}
 }
