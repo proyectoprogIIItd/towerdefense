@@ -1,9 +1,15 @@
 
 public class Value {
 	
-	public static int groundGrass = 0;
+	public static final int GROUND_GRASS = 0;
 	
-	public static int airAir = -1;
+	public static final int AIR_AIR = -1;
 	
-	public static int groundRoad =1;
+	public static final int GROUND_ROAD =1;
+	
+	public static final int GROUND_DIRT = 2;
+	
+	public static final int GROUND_START = 3;
+	
+	public static final int GROUND_END = 4;
 }

@@ -28,7 +28,7 @@ public class Screen extends JPanel implements Runnable{
 		save = new Save();
 		
 		for (int i =0; i<ground.length; i++){
-			ground[i] = new ImageIcon("resources"+File.separator+"grass.png").getImage();
+			ground[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
 			ground[i] = createImage(new FilteredImageSource(ground[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
 		}
 		for (int i =0; i<air.length; i++){

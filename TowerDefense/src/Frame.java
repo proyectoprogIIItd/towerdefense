@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Frame extends JFrame{
 	public static String title = "Tower Defense";
-	public static Dimension size = new Dimension (770, 470);
+	public static Dimension size = new Dimension (960, 662);
 	
 	public Frame(){
 		setTitle(title);
