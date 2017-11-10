@@ -7,9 +7,7 @@ public class Creador {
 	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
 	    private JButton[][] chessBoardSquares = new JButton[8][8];
 	    private JPanel chessBoard;
-	    private final JLabel message = new JLabel(
-	            "Chess Champ is ready to play!");
-	    private static final String COLS = "ABCDEFGH";
+
 
 	    Creador() {
 	        initializeGui();
@@ -17,10 +15,9 @@ public class Creador {
 
 	    public final void initializeGui() {
 	        // set up the main GUI
-			JButton ColocarT = new JButton( "ColocarT" );
-			JButton MoverT = new JButton( "MoverT" );
-			JButton ColocarS = new JButton( "ColocarS" );
-			JButton MovS = new JButton( "Mover Spawn" );
+			JButton ColocarT = new JButton( "Colocar Base" );
+			JButton Eliminar = new JButton( "Eliminar " );
+			JButton ColocarS = new JButton( "Colocar Spawn" );
 			JButton Camino = new JButton( "Camino" );
 			JLabel textoLvl = new JLabel ("Nivel Dificultad:");
 			JComboBox Lvl = new JComboBox();
@@ -36,11 +33,9 @@ public class Creador {
 			tools.addSeparator();
 			tools.add( ColocarT );
 			tools.addSeparator();
-			tools.add( MoverT );
-			tools.addSeparator();
 			tools.add( ColocarS );
 			tools.addSeparator();
-			tools.add( MovS );
+			tools.add( Eliminar );
 			tools.addSeparator();
 			tools.add( Camino );
 			tools.addSeparator();
@@ -80,9 +75,15 @@ public class Creador {
 	        chessBoard.add(new JLabel(""));
 	        // fill the top row
 	        for (int ii = 0; ii < 8; ii++) {
-	            chessBoard.add(
-	                    new JLabel(COLS.substring(ii, ii + 1),
-	                    SwingConstants.CENTER));
+	        	 for (int jj = 0; jj < 8; jj++) {
+		                switch (jj) {
+		                    case 0:
+		                        chessBoard.add(new JLabel("" + (ii + 1),
+		                                SwingConstants.CENTER));
+		                    default:
+		                        chessBoard.add(chessBoardSquares[jj][ii]);
+		                }
+		            }
 	        }
 	        // fill the black non-pawn piece row
 	        for (int ii = 0; ii < 8; ii++) {
