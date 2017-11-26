@@ -1,13 +1,22 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.CropImageFilter;
+import java.awt.image.FilteredImageSource;
+import java.io.File;
+
 import javax.swing.*;
 import javax.swing.border.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 
 public class Creador {
 	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
 	    private JButton[][] chessBoardSquares = new JButton[8][8];
 	    private JPanel chessBoard;
-
+		public static Image[] air = new Image[100];
+		public static Image[] ground = new Image[100];
+		private int[][] arrayMapa;
 
 	    Creador() {
 	        initializeGui();
@@ -21,9 +30,9 @@ public class Creador {
 			JButton Camino = new JButton( "Camino" );
 			JLabel textoLvl = new JLabel ("Nivel Dificultad:");
 			JComboBox Lvl = new JComboBox();
-			Lvl.addItem(1);
-			Lvl.addItem(2);
-			Lvl.addItem(3);
+			Lvl.addItem("Facil");
+			Lvl.addItem("Medio");
+			Lvl.addItem("Dificil");
 			JButton Guardar = new JButton( "Guardar" );
 			
 	        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,28 +58,46 @@ public class Creador {
 	        chessBoard.setBorder(new LineBorder(Color.BLACK));
 	        gui.add(chessBoard);
 
-	        // create the chess board squares
+	        // esto deberia ser un hilo aparte y simplemente hacer una llamada (dibujar el mapa)
 	        Insets buttonMargin = new Insets(0,0,0,0);
 	        for (int ii = 0; ii < chessBoardSquares.length; ii++) {
 	            for (int jj = 0; jj < chessBoardSquares[ii].length; jj++) {
 	                JButton b = new JButton();
 	                b.setMargin(buttonMargin);
-	                // our chess pieces are 64x64 px in size, so we'll
-	                // 'fill this in' using a transparent icon..
+	                // hay que cambiar el icono transparente para que redibuje por la casilla 
 	                ImageIcon icon = new ImageIcon(
-	                        new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB));
+	                        new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
+	                
 	                b.setIcon(icon);
-	                if ((jj % 2 == 1 && ii % 2 == 1)
-	                        //) {
-	                        || (jj % 2 == 0 && ii % 2 == 0)) {
-	                    b.setBackground(Color.WHITE);
-	                } else {
-	                    b.setBackground(Color.BLACK);
-	                }
+	                b.setBackground(Color.white);
+	                
 	                chessBoardSquares[jj][ii] = b;
 	            }
 	        }
-
+	        //falta por inicializar el array de integer con los for{} y corregir el createImage
+	        
+//			for (int i =0; i<ground.length; i++){
+//				ground[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
+//				ground[i] = createImage(new FilteredImageSource(ground[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
+//			}
+//			for (int i =0; i<air.length; i++){
+//				air[i] = new ImageIcon("resources"+File.separator+"air.png").getImage();
+//				air[i] = createImage(new FilteredImageSource(air[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
+//			}
+//	       
+//	        for (int x = 0; x < 8; x++) {
+//	            for (int y = 0; y < 8; y++) {
+//	            	JButton b = new JButton();
+//	            	ImageIcon icon = new ImageIcon(
+//		            new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
+//	            	int i = arrayMapa[x][y];
+//            if(i != -1) {            	
+//            	b.setIcon((Icon) ground[i]);
+//            }else {
+//            	b.setIcon(icon);
+//            }
+//	            }
+//	        }
 	        //fill the chess board
 	        chessBoard.add(new JLabel(""));
 	        // fill the top row
