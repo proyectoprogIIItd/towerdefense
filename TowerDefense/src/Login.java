@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,10 +22,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
+	
 	private JPanel contentPane;
 	protected static JTextField textField;
 	protected static JPasswordField passwordField;
@@ -33,6 +39,7 @@ public class Login extends JFrame {
 	public static Connection con;
 	public static Statement s;
 	
+	Properties properties = new Properties();
 
 
 	/**
@@ -49,6 +56,8 @@ public class Login extends JFrame {
 					BD.usarCrearTablasBD(con);
 					
 					
+					
+	
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,6 +77,17 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
+		
+		try {
+			properties.load(new FileInputStream("Propiedades"));
+		} catch (FileNotFoundException e3) {
+
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
@@ -103,6 +123,9 @@ public class Login extends JFrame {
 		passwordField.setBounds(256, 118, 130, 26);
 		panel_2.add(passwordField);
 		
+		textField.setText(properties.getProperty("Nombre de usuario"));
+		passwordField.setText(properties.getProperty("Password"));
+		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,6 +135,17 @@ public class Login extends JFrame {
 					
 					VentanaVisualizacion.main(null);
 					Login.this.setVisible(false);
+					
+					properties.put("Nombre de usuario", textField.getText());
+					properties.put("Password", passwordField.getText());
+					try {
+						FileOutputStream out = new FileOutputStream("Propiedades");
+						properties.save(out, null);
+					} catch (Exception e2) {
+					}
+					
+					
+					
 					
 				} else if (usuarios.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nombre y/o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
