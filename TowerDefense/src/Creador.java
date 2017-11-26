@@ -18,7 +18,7 @@ public class Creador {
 	    private JPanel chessBoard;
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
-		private int[][] arrayMapa;
+		private int[][] arrayMapa = new int[8][8];
 		private int x = -1;
 		private int y = -1;
 		
@@ -27,6 +27,11 @@ public class Creador {
 	    }
 
 	    public final void initializeGui() {
+	    	for (int i = 0; i < 8; i++) {
+				for (int j = 0; j<8; j++) {
+					arrayMapa[j][i] = -1;
+				}				
+	    	}
 	        // set up the main GUI
 			JButton ColocarT = new JButton( "Colocar Base" );
 			JButton Eliminar = new JButton( "Eliminar " );
