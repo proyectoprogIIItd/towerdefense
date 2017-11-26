@@ -9,6 +9,8 @@ import javax.swing.border.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Creador {
 	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
@@ -17,7 +19,9 @@ public class Creador {
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
 		private int[][] arrayMapa;
-
+		private int x = -1;
+		private int y = -1;
+		
 	    Creador() {
 	        initializeGui();
 	    }
@@ -67,13 +71,111 @@ public class Creador {
 	                // hay que cambiar el icono transparente para que redibuje por la casilla 
 	                ImageIcon icon = new ImageIcon(
 	                        new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
-	                
-	                b.setIcon(icon);
+	                b.setIcon(icon);            
 	                b.setBackground(Color.white);
 	                
+	                int bx = jj;
+	                int by = ii;
+	    			b.addActionListener(new ActionListener() {
+	    				public void actionPerformed(ActionEvent arg0) {
+	    					boolean isSelected = b.isSelected();
+	    					if(isSelected = true) {
+	    					x = bx;
+	    					y = by;
+	    					}
+	    				}
+	    			});
+	    			
 	                chessBoardSquares[jj][ii] = b;
-	            }
+	            
 	        }
+	        }
+	        
+			ColocarT.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					boolean torreUp = false;
+					for (int i = 0; i < arrayMapa.length; i++) {
+						for (int j = 0; j<arrayMapa[y].length; j++) {
+							if (arrayMapa[j][i] == 4) {
+								torreUp = true;
+							}
+						}
+					}
+					if(torreUp = false) {
+							if (x == -1 || y == -1) {
+						
+							}else {
+								arrayMapa[x][y] = 4;
+							}
+					}else {
+						
+					}
+				}
+			});
+			ColocarS.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					boolean torreUp = false;
+					for (int i = 0; i < arrayMapa.length; i++) {
+						for (int j = 0; j<arrayMapa[y].length; j++) {
+							if (arrayMapa[j][i] == 3) {
+								torreUp = true;
+							}
+						}
+					}
+					if(torreUp = false) {
+							if (x == -1 || y == -1) {
+						
+							}else {
+								arrayMapa[x][y] = 3;
+							}
+					}else {
+						
+					}
+				}
+			});
+			Eliminar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (x == -1 || y == -1) {
+						
+					}else {
+					arrayMapa[x][y] = -1;
+					}
+				}
+			});
+			Camino.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (x == -1 || y == -1) {
+						
+					}else {
+						arrayMapa[x][y] = 1;
+						if ((x+1) <= arrayMapa.length && (y+1) <= arrayMapa[y].length && arrayMapa[x+1][y+1] == -1) {
+							arrayMapa[x+1][y+1]= 2;
+						}
+						if ((x+1) <= arrayMapa.length && arrayMapa[x+1][y] == -1) {
+							arrayMapa[x+1][y] = 2;
+						}
+						if ((x+1) <= arrayMapa.length && (y-1) > 0 && arrayMapa[x+1][y-1] == -1) {
+							arrayMapa[x+1][y-1] = 2;
+						}
+						if ((y-1) > 0 && arrayMapa[x][y-1] == -1) {
+							arrayMapa[x][y-1] = 2;
+						}
+						if ((y-1) > 0 && (x-1) > 0 && arrayMapa[x-1][y-1] == -1) {
+							arrayMapa[x-1][y-1] = 2;
+						}
+						if((x-1) > 0 && arrayMapa[x-1][y] == -1) {
+							arrayMapa[x-1][y] = 2;
+						}
+						if((x-1) > 0 && (y+1) <= arrayMapa[y].length && arrayMapa[x-1][y+1] == -1) {
+							arrayMapa[x-1][y+1] = 2;
+						}
+						if ((y+1) <= arrayMapa[y].length && arrayMapa[x][y+1] == -1) {
+							arrayMapa[x][y+1] = 2;
+						}
+					}
+				}
+			});
+	        
 	        //falta por inicializar el array de integer con los for{} y corregir el createImage
 	        
 //			for (int i =0; i<ground.length; i++){
@@ -142,7 +244,7 @@ public class Creador {
 	            	Creador cb =
 	                        new Creador();
 
-	                JFrame f = new JFrame("ChessChamp");
+	                JFrame f = new JFrame("Creador de mapas");
 	                f.add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	                f.setLocationByPlatform(true);
