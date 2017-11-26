@@ -176,6 +176,16 @@ public class Creador {
 				}
 			});
 	        
+			Guardar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					for (int i = 0; i < arrayMapa.length; i++) {
+						for (int j = 0; j<arrayMapa[y].length; j++) {
+							System.out.print(arrayMapa[x][y]);
+						}
+						System.out.println("");
+					}
+				}
+			});
 	        //falta por inicializar el array de integer con los for{} y corregir el createImage
 	        
 //			for (int i =0; i<ground.length; i++){
