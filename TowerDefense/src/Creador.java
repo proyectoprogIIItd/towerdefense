@@ -19,8 +19,8 @@ public class Creador {
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
 		private int[][] arrayMapa = new int[8][8];
-		private int x = -1;
-		private int y = -1;
+		private static int x = -1;
+		private static int y = -1;
 		
 	    Creador() {
 	        initializeGui();
@@ -79,16 +79,15 @@ public class Creador {
 	                b.setIcon(icon);            
 	                b.setBackground(Color.white);
 	                
-	                int bx = jj;
-	                int by = ii;
+	                int bx = ii;
+	                int by = jj;
 	    			b.addActionListener(new ActionListener() {
 	    				public void actionPerformed(ActionEvent arg0) {
-	    					boolean isSelected = b.isSelected();
-	    					if(isSelected = true) {
 	    					x = bx;
 	    					y = by;
-	    					}
-	    				}
+	    					System.out.println(x +" "+y);
+	    					
+	    				}	    			
 	    			});
 	    			
 	                chessBoardSquares[jj][ii] = b;
@@ -100,7 +99,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					boolean torreUp = false;
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[y].length; j++) {
+						for (int j = 0; j<arrayMapa[7].length; j++) {
 							if (arrayMapa[j][i] == 4) {
 								torreUp = true;
 							}
@@ -121,7 +120,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					boolean torreUp = false;
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[y].length; j++) {
+						for (int j = 0; j<arrayMapa[7].length; j++) {
 							if (arrayMapa[j][i] == 3) {
 								torreUp = true;
 							}
@@ -153,7 +152,7 @@ public class Creador {
 						
 					}else {
 						arrayMapa[x][y] = 1;
-						if ((x+1) <= arrayMapa.length && (y+1) <= arrayMapa[y].length && arrayMapa[x+1][y+1] == -1) {
+						if ((x+1) <= arrayMapa.length && (y+1) <= arrayMapa[0].length && arrayMapa[x+1][y+1] == -1) {
 							arrayMapa[x+1][y+1]= 2;
 						}
 						if ((x+1) <= arrayMapa.length && arrayMapa[x+1][y] == -1) {
@@ -184,10 +183,10 @@ public class Creador {
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[y].length; j++) {
-							System.out.print(arrayMapa[x][y]);
+						for (int j = 0; j<arrayMapa[7].length; j++) {
+							System.out.print(arrayMapa[i][j]);
 						}
-						System.out.println("");
+						System.out.println(" ");
 					}
 				}
 			});
