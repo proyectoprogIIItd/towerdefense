@@ -10,8 +10,8 @@ import javax.swing.border.EmptyBorder;
 public class nombreGuardado extends JFrame {
 
 	private JPanel contentPane;
-	private int[][] arrayMapa;
-	private String Lvl;
+	private static int[][] arrayMapa ;
+	private static String Lvl ;
 	public void setArray (int[][] arrayMapa) {
 		this.arrayMapa = arrayMapa;
 	}
