@@ -12,4 +12,8 @@ public class Value {
 	public static final int GROUND_START = 3;
 	
 	public static final int GROUND_END = 4;
+	
+	public static final int ENEMY_AIR = -1;
+	
+	public static final int ENEMY_PINK_GHOST = 0;
 }

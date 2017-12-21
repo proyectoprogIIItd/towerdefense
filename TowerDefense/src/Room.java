@@ -3,7 +3,7 @@ import java.awt.Graphics;
 public class Room {
 	
 	public int worldWidth = 15;
-	public int worldHeight =10;
+	public int worldHeight =8;
 	public int blockSize = 64;
 	
 	public Block[] [] block;

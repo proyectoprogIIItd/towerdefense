@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Frame extends JFrame{
 	public static String title = "Tower Defense";
-	public static Dimension size = new Dimension (960, 662);
+	public static Dimension size = new Dimension (960, 640);
 	
 	public Frame(){
 		setTitle(title);
@@ -25,13 +25,13 @@ public class Frame extends JFrame{
 	public void init(){
 		
 		setLayout(new GridLayout(1, 1, 0, 0));
-		Screen screen = new Screen();
+		Screen screen = new Screen(this);
 		add(screen);
-		screen.setMinimumSize(new Dimension(300 , 200));
-		screen.setMaximumSize(new Dimension(300,200));
-		screen.setPreferredSize(new Dimension(300 , 200));
+//		screen.setMinimumSize(new Dimension(300 , 200));
+//		screen.setMaximumSize(new Dimension(300,200));
+//		screen.setPreferredSize(new Dimension(300 , 200));
 		setVisible(true);
-		pack();
+//		pack();
 		
 	}
 	

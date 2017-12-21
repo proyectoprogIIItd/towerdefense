@@ -121,7 +121,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					boolean torreUp = false;
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[y].length; j++) {
+						for (int j = 0; j<arrayMapa.length; j++) {
 							if (arrayMapa[j][i] == 3) {
 								torreUp = true;
 							}
@@ -185,7 +185,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < arrayMapa.length; i++) {
 						for (int j = 0; j<arrayMapa[y].length; j++) {
-							System.out.print(arrayMapa[x][y]);
+							System.out.print(arrayMapa[x][y]+" ");
 						}
 						System.out.println("");
 					}
