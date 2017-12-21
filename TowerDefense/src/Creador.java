@@ -18,9 +18,12 @@ public class Creador {
 	    private JPanel chessBoard;
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
-		private int[][] arrayMapa = new int[8][8];
+		private static int[][] arrayMapa = new int[8][8];
 		private static int x = -1;
 		private static int y = -1;
+		private static int tipoC = -1;
+		private static boolean torreUp = false;
+		private static boolean spawnUp = false;
 		
 	    Creador() {
 	        initializeGui();
@@ -33,9 +36,9 @@ public class Creador {
 				}				
 	    	}
 	        // set up the main GUI
-			JButton ColocarT = new JButton( "Colocar Base" );
-			JButton Eliminar = new JButton( "Eliminar " );
-			JButton ColocarS = new JButton( "Colocar Spawn" );
+	    	JButton ColocarT = new JButton( "Colocar Base" );
+	    	JButton Eliminar = new JButton( "Eliminar " );
+	    	JButton ColocarS = new JButton( "Colocar Spawn" );
 			JButton Camino = new JButton( "Camino" );
 			JLabel textoLvl = new JLabel ("Nivel Dificultad:");
 			JComboBox Lvl = new JComboBox();
@@ -86,7 +89,30 @@ public class Creador {
 	    					x = bx;
 	    					y = by;
 	    					System.out.println(x +" "+y);
-	    					
+	    					boolean encontradoT= false;
+	    					boolean encontradoS = false;
+	    	    	    	for (int i = 0; i < 8; i++) {
+	    	    				for (int j = 0; j<8; j++) {
+	    	                if(arrayMapa[j][i] == 4) {
+	    						torreUp = true;
+	    						encontradoT = true;
+	    					}
+	    					if(arrayMapa[j][i] == 3) {
+	    						spawnUp = true;
+	    						encontradoS = true;	
+	    					}
+	    	    				}
+	    	    				}
+	    	    	    	if (encontradoT == false) {
+	    	    	    		torreUp = false;
+	    	    	    	}
+	    	    	    	if (encontradoS == false) {
+	    	    	    		spawnUp = false;
+	    	    	    	}
+	    					if((torreUp == true && tipoC == 4) || (spawnUp == true && tipoC == 3)) {
+	    					}else {
+	    					arrayMapa[bx][by] = tipoC;
+	    					}
 	    				}	    			
 	    			});
 	    			
@@ -97,86 +123,27 @@ public class Creador {
 	        
 			ColocarT.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					boolean torreUp = false;
-					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[7].length; j++) {
-							if (arrayMapa[j][i] == 4) {
-								torreUp = true;
-							}
-						}
-					}
-					if(torreUp = false) {
-							if (x == -1 || y == -1) {
-						
-							}else {
-								arrayMapa[x][y] = 4;
-							}
-					}else {
-						
-					}
+					tipoC = 4;
+
 				}
 			});
 			ColocarS.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					boolean torreUp = false;
-					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[7].length; j++) {
-							if (arrayMapa[j][i] == 3) {
-								torreUp = true;
-							}
-						}
-					}
-					if(torreUp = false) {
-							if (x == -1 || y == -1) {
-						
-							}else {
-								arrayMapa[x][y] = 3;
-							}
-					}else {
-						
-					}
+					tipoC = 3;
+
 				}
 			});
 			Eliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (x == -1 || y == -1) {
-						
-					}else {
-					arrayMapa[x][y] = -1;
-					}
+					tipoC = -1;
+
 				}
 			});
 			Camino.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					if (x == -1 || y == -1) {
-						
-					}else {
-						arrayMapa[x][y] = 1;
-						if ((x+1) <= arrayMapa.length && (y+1) <= arrayMapa[0].length && arrayMapa[x+1][y+1] == -1) {
-							arrayMapa[x+1][y+1]= 2;
-						}
-						if ((x+1) <= arrayMapa.length && arrayMapa[x+1][y] == -1) {
-							arrayMapa[x+1][y] = 2;
-						}
-						if ((x+1) <= arrayMapa.length && (y-1) > 0 && arrayMapa[x+1][y-1] == -1) {
-							arrayMapa[x+1][y-1] = 2;
-						}
-						if ((y-1) > 0 && arrayMapa[x][y-1] == -1) {
-							arrayMapa[x][y-1] = 2;
-						}
-						if ((y-1) > 0 && (x-1) > 0 && arrayMapa[x-1][y-1] == -1) {
-							arrayMapa[x-1][y-1] = 2;
-						}
-						if((x-1) > 0 && arrayMapa[x-1][y] == -1) {
-							arrayMapa[x-1][y] = 2;
-						}
-						if((x-1) > 0 && (y+1) <= arrayMapa[y].length && arrayMapa[x-1][y+1] == -1) {
-							arrayMapa[x-1][y+1] = 2;
-						}
-						if ((y+1) <= arrayMapa[y].length && arrayMapa[x][y+1] == -1) {
-							arrayMapa[x][y+1] = 2;
-						}
-					}
+					
+					tipoC = 2;
+
 				}
 			});
 	        
@@ -184,36 +151,14 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < arrayMapa.length; i++) {
 						for (int j = 0; j<arrayMapa[7].length; j++) {
-							System.out.print(arrayMapa[i][j]);
+							System.out.print(arrayMapa[i][j] + ";");
 						}
 						System.out.println(" ");
 					}
+					System.out.println(Lvl.getSelectedItem());
 				}
 			});
-	        //falta por inicializar el array de integer con los for{} y corregir el createImage
-	        
-//			for (int i =0; i<ground.length; i++){
-//				ground[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
-//				ground[i] = createImage(new FilteredImageSource(ground[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
-//			}
-//			for (int i =0; i<air.length; i++){
-//				air[i] = new ImageIcon("resources"+File.separator+"air.png").getImage();
-//				air[i] = createImage(new FilteredImageSource(air[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
-//			}
-//	       
-//	        for (int x = 0; x < 8; x++) {
-//	            for (int y = 0; y < 8; y++) {
-//	            	JButton b = new JButton();
-//	            	ImageIcon icon = new ImageIcon(
-//		            new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
-//	            	int i = arrayMapa[x][y];
-//            if(i != -1) {            	
-//            	b.setIcon((Icon) ground[i]);
-//            }else {
-//            	b.setIcon(icon);
-//            }
-//	            }
-//	        }
+
 	        //fill the chess board
 	        chessBoard.add(new JLabel(""));
 	        // fill the top row
@@ -250,19 +195,18 @@ public class Creador {
 	        return gui;
 	    }
 
+
 	    public static void main(String[] args) {
 	        Runnable r = new Runnable() {
-
+	        	
 	            @Override
 	            public void run() {
 	            	Creador cb =
 	                        new Creador();
-
 	                JFrame f = new JFrame("Creador de mapas");
 	                f.add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	                f.setLocationByPlatform(true);
-
 	                // ensures the frame is the minimum size it needs to be
 	                // in order display the components within it
 	                f.pack();
