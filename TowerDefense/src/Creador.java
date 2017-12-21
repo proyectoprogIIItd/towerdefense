@@ -29,6 +29,7 @@ public class Creador {
 	        initializeGui();
 	    }
 
+	    
 	    public final void initializeGui() {
 	    	for (int i = 0; i < 8; i++) {
 				for (int j = 0; j<8; j++) {
@@ -149,13 +150,27 @@ public class Creador {
 	        
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[7].length; j++) {
-							System.out.print(arrayMapa[i][j] + ";");
-						}
-						System.out.println(" ");
-					}
-					System.out.println(Lvl.getSelectedItem());
+				      Runnable r2 = new Runnable() {
+				        	
+				            @Override
+				            public void run() {
+				            	nombreGuardado cb2 =
+				                        new nombreGuardado();
+				                JFrame f2 = new JFrame("Guardado");
+				                cb2.setLvl(Lvl.getToolTipText());
+				                cb2.setArray(arrayMapa);
+				                f2.add(cb2);
+				                f2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				                f2.setLocationByPlatform(true);
+				                // ensures the frame is the minimum size it needs to be
+				                // in order display the components within it
+				                f2.pack();
+				                // ensures the minimum size is enforced.
+				                f2.setMinimumSize(f2.getSize());
+				                f2.setVisible(true);
+				            }
+				        };
+				        SwingUtilities.invokeLater(r2);
 				}
 			});
 
@@ -201,7 +216,7 @@ public class Creador {
 	        	
 	            @Override
 	            public void run() {
-	            	Creador cb =
+	              	Creador cb =
 	                        new Creador();
 	                JFrame f = new JFrame("Creador de mapas");
 	                f.add(cb.getGui());
