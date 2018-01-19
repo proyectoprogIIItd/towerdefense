@@ -30,7 +30,7 @@ public class Enemy extends Rectangle{
 		this.enemyID = enemyID;
 		inGame = true;
 	}
-	public int walkFrame = 0, walkSpeed = 10;
+	public int walkFrame = 0, walkSpeed = 5;
 	
 	public void physic(){
 		if(walkFrame >= walkSpeed){
