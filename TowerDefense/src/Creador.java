@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
 
 public class Creador {
 	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-	    private JButton[][] chessBoardSquares = new JButton[8][8];
+	    private JButton[][] chessBoardSquares = new JButton[15][15];
 	    private JPanel chessBoard;
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
-		private static int[][] arrayMapa = new int[8][8];
+		private static int[][] arrayMapa = new int[15][15];
 		private static int x = -1;
 		private static int y = -1;
 		private static int tipoC = -1;
@@ -30,9 +30,12 @@ public class Creador {
 	    }
 
 	    
+	    /**
+	     * @wbp.parser.entryPoint
+	     */
 	    public final void initializeGui() {
-	    	for (int i = 0; i < 8; i++) {
-				for (int j = 0; j<8; j++) {
+	    	for (int i = 0; i < 15; i++) {
+				for (int j = 0; j<15; j++) {
 					arrayMapa[j][i] = -1;
 				}				
 	    	}
@@ -67,7 +70,7 @@ public class Creador {
 			tools.add( Guardar );
 
 
-	        chessBoard = new JPanel(new GridLayout(0, 9));
+	        chessBoard = new JPanel(new GridLayout(0, 16));
 	        chessBoard.setBorder(new LineBorder(Color.BLACK));
 	        gui.add(chessBoard);
 
@@ -92,8 +95,8 @@ public class Creador {
 	    					System.out.println(x +" "+y);
 	    					boolean encontradoT= false;
 	    					boolean encontradoS = false;
-	    	    	    	for (int i = 0; i < 8; i++) {
-	    	    				for (int j = 0; j<8; j++) {
+	    	    	    	for (int i = 0; i < 15; i++) {
+	    	    				for (int j = 0; j<15; j++) {
 	    	                if(arrayMapa[j][i] == 4) {
 	    						torreUp = true;
 	    						encontradoT = true;
@@ -168,7 +171,7 @@ public class Creador {
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[7].length; j++) {
+						for (int j = 0; j<15; j++) {
 							System.out.print(arrayMapa[i][j]+";");
 						}
 						System.out.println(" ");
@@ -182,8 +185,8 @@ public class Creador {
 	        //fill the chess board
 	        chessBoard.add(new JLabel(""));
 	        // fill the top row
-	        for (int ii = 0; ii < 8; ii++) {
-	        	 for (int jj = 0; jj < 8; jj++) {
+	        for (int ii = 0; ii < 15; ii++) {
+	        	 for (int jj = 0; jj < 15; jj++) {
 		                switch (jj) {
 		                    case 0:
 		                        chessBoard.add(new JLabel("" + (ii + 1),
@@ -194,8 +197,8 @@ public class Creador {
 		            }
 	        }
 	        // fill the black non-pawn piece row
-	        for (int ii = 0; ii < 8; ii++) {
-	            for (int jj = 0; jj < 8; jj++) {
+	        for (int ii = 0; ii < 15; ii++) {
+	            for (int jj = 0; jj < 15; jj++) {
 	                switch (jj) {
 	                    case 0:
 	                        chessBoard.add(new JLabel("" + (ii + 1),
@@ -224,7 +227,7 @@ public class Creador {
 	              	Creador cb =
 	                        new Creador();
 	                JFrame f = new JFrame("Creador de mapas");
-	                f.add(cb.getGui());
+	                f.getContentPane().add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	                f.setLocationByPlatform(true);
 	                // ensures the frame is the minimum size it needs to be
