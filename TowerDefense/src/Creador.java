@@ -173,28 +173,8 @@ public class Creador {
 						}
 						System.out.println("");
 					}
-				      Runnable r2 = new Runnable() {
-				        	
-				            @Override
-				            public void run() {
-				            	nombreGuardado cb2 =
-				                        new nombreGuardado();
-				                JFrame f2 = new JFrame("Guardado");
-				                cb2.setLvl(Lvl.getToolTipText());
-				                cb2.setArray(arrayMapa);
-				                f2.add(cb2);
-				                f2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				                f2.setLocationByPlatform(true);
-				                // ensures the frame is the minimum size it needs to be
-				                // in order display the components within it
-				                f2.pack();
-				                // ensures the minimum size is enforced.
-				                f2.setMinimumSize(f2.getSize());
-				                f2.setVisible(true);
-				            }
-				        };
-				        SwingUtilities.invokeLater(r2);
-
+					String nombreMapa;
+					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
 				}
 			});
 
