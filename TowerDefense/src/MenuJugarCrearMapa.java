@@ -88,15 +88,18 @@ public class MenuJugarCrearMapa extends JFrame {
 	}
 	
 	public static void actualizarBotones() {
-		ImageIcon icon = new ImageIcon("resources"+File.separator+"fondoMenuInicio.jpg");
+		ImageIcon icon = new ImageIcon("resources"+File.separator+"fondoMenuJugar.png");
+		ImageIcon icon2 = new ImageIcon("resources"+File.separator+"fondoMenuCrearMapa.png");
 		Thread hilo = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while(true) { 
 					
 					Icon icono = new ImageIcon(icon.getImage().getScaledInstance(botonJugar.getWidth(),botonJugar.getHeight(), Image.SCALE_DEFAULT));
+					Icon icono2 = new ImageIcon(icon2.getImage().getScaledInstance(botonJugar.getWidth(),botonJugar.getHeight(), Image.SCALE_DEFAULT));
+
 					botonJugar.setIcon(icono);
-					botonMapa.setIcon(icono);
+					botonMapa.setIcon(icono2);
 					try {
 						Thread.sleep(25);
 					} catch (InterruptedException e) {

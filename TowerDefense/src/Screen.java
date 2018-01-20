@@ -59,7 +59,7 @@ public class Screen extends JPanel implements Runnable{
 		res[1] = new ImageIcon("resources"+File.separator+"heart.png").getImage();
 		res[2] = new ImageIcon("resources"+File.separator+"coin.png").getImage();
 		
-		enemy[0] = new ImageIcon("resources"+File.separator+"pink_ghost.png").getImage();
+		enemy[0] = new ImageIcon("resources"+File.separator+"pink_ghost.gif").getImage();
 		
 		save.loadSave(new File("save"+File.separator+"mission1.file"));
 		
