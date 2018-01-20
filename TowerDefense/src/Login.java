@@ -133,7 +133,9 @@ public class Login extends JFrame {
 				if (!usuarios.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente");
 					
-					VentanaVisualizacion.main(null);
+					//VentanaVisualizacion.main(null);
+					//Login.this.setVisible(false);
+					MenuInicio.main(null);
 					Login.this.setVisible(false);
 					
 					properties.put("Nombre de usuario", textField.getText());

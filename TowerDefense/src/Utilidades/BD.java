@@ -23,9 +23,6 @@ public class BD {
 		try {
 		    Class.forName("org.sqlite.JDBC");
 		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
-		    Statement st = con.createStatement();      // (1) Solo para foreign keys
-		    st.execute( "PRAGMA foreign_keys = ON" );  // (1)
-		    st.close();                                // (1)
 			log( Level.INFO, "Conectada base de datos " + nombreBD, null );
 		    return con;
 		} catch (ClassNotFoundException | SQLException e) {
