@@ -118,7 +118,9 @@ public class Creador {
 	    					if((torreUp == true && tipoC == 4) || (spawnUp == true && tipoC == 3)) {
 	    					}else {
 	    					arrayMapa[by][bx] = tipoC;
-	    					b.setIcon((Icon) Screen.ground[tipoC]);
+	    					System.out.println(tipoC);
+	    					ImageIcon icono = new ImageIcon(Screen.ground[tipoC]);
+	    					b.setIcon((Icon) icono);
 	    					}
 	    				}	    			
 	    			});
