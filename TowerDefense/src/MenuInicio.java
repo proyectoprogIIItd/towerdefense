@@ -24,11 +24,12 @@ public class MenuInicio extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	static MenuInicio frame;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuInicio frame = new MenuInicio();
+					 frame = new MenuInicio();
 					frame.setTitle("TOWER DEFENSE GAME");
 					
 					
