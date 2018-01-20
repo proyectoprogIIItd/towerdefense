@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.image.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
@@ -39,6 +40,7 @@ public class Creador {
 					arrayMapa[j][i] = -1;
 				}				
 	    	}
+
 	        // set up the main GUI
 	    	JButton ColocarT = new JButton( "Colocar Base" );
 	    	JButton Eliminar = new JButton( "Eliminar " );
@@ -116,6 +118,12 @@ public class Creador {
 	    					if((torreUp == true && tipoC == 4) || (spawnUp == true && tipoC == 3)) {
 	    					}else {
 	    					arrayMapa[bx][by] = tipoC;
+	    					if(tipoC == -1) {
+	    					b.setIcon(icon);
+	    					b.setBackground(Color.white);
+	    					}else {
+	    					b.setIcon((Icon) Screen.ground[tipoC]);
+	    					}
 	    					}
 	    				}	    			
 	    			});

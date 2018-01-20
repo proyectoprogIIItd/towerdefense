@@ -236,3 +236,65 @@
   <message>Cierre de base de datos</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-20T22:43:52</date>
+  <millis>1516484632870</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-20T22:44:07</date>
+  <millis>1516484647794</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = 'l'</message>
+</record>
+<record>
+  <date>2018-01-20T22:44:12</date>
+  <millis>1516484652270</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = 'l' AND Password = 'l'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-20T22:47:30</date>
+  <millis>1516484850400</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-20T22:47:32</date>
+  <millis>1516484852976</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = 'l' AND Password = 'l'</message>
+</record>
