@@ -15,14 +15,14 @@ import java.awt.event.ActionListener;
 
 public class Creador {
 	 private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-	    private JButton[][] chessBoardSquares = new JButton[15][15];
+	    private JButton[][] chessBoardSquares = new JButton[15][8];
 	    private JPanel chessBoard;
 		public static Image[] air = new Image[100];
 		public static Image[] ground = new Image[100];
 		private static int[][] arrayMapa = new int[15][15];
 		private static int x = -1;
 		private static int y = -1;
-		private static int tipoC = -1;
+		private static int tipoC = 0;
 		private static boolean torreUp = false;
 		private static boolean spawnUp = false;
 		
@@ -35,9 +35,9 @@ public class Creador {
 	     * @wbp.parser.entryPoint
 	     */
 	    public final void initializeGui() {
-	    	for (int i = 0; i < 15; i++) {
+	    	for (int i = 0; i < 8; i++) {
 				for (int j = 0; j<15; j++) {
-					arrayMapa[j][i] = -1;
+					arrayMapa[i][j] = 0;
 				}				
 	    	}
 
@@ -72,7 +72,7 @@ public class Creador {
 			tools.add( Guardar );
 
 
-	        chessBoard = new JPanel(new GridLayout(0, 16));
+	        chessBoard = new JPanel(new GridLayout(0, 15));
 	        chessBoard.setBorder(new LineBorder(Color.BLACK));
 	        gui.add(chessBoard);
 
@@ -99,11 +99,11 @@ public class Creador {
 	    					boolean encontradoS = false;
 	    	    	    	for (int i = 0; i < 15; i++) {
 	    	    				for (int j = 0; j<15; j++) {
-	    	                if(arrayMapa[j][i] == 4) {
+	    	                if(arrayMapa[i][j] == 4) {
 	    						torreUp = true;
 	    						encontradoT = true;
 	    					}
-	    					if(arrayMapa[j][i] == 3) {
+	    					if(arrayMapa[i][j] == 3) {
 	    						spawnUp = true;
 	    						encontradoS = true;	
 	    					}
@@ -117,18 +117,13 @@ public class Creador {
 	    	    	    	}
 	    					if((torreUp == true && tipoC == 4) || (spawnUp == true && tipoC == 3)) {
 	    					}else {
-	    					arrayMapa[bx][by] = tipoC;
-	    					if(tipoC == -1) {
-	    					b.setIcon(icon);
-	    					b.setBackground(Color.white);
-	    					}else {
+	    					arrayMapa[by][bx] = tipoC;
 	    					b.setIcon((Icon) Screen.ground[tipoC]);
-	    					}
 	    					}
 	    				}	    			
 	    			});
 	    			
-	                chessBoardSquares[jj][ii] = b;
+	                chessBoardSquares[ii][jj] = b;
 	            
 	        }
 	        }
@@ -144,7 +139,7 @@ public class Creador {
 					boolean torreUp = false;
 					for (int i = 0; i < arrayMapa.length; i++) {
 						for (int j = 0; j<arrayMapa.length; j++) {
-							if (arrayMapa[j][i] == 3) {
+							if (arrayMapa[i][j] == 3) {
 								torreUp = true;
 							}
 						}
@@ -153,7 +148,7 @@ public class Creador {
 							if (x == -1 || y == -1) {
 						
 							}else {
-								arrayMapa[x][y] = 3;
+								arrayMapa[y][x] = 3;
 							}
 					}else {
 						
@@ -164,7 +159,7 @@ public class Creador {
 			});
 			Eliminar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					tipoC = -1;
+					tipoC = 0;
 
 				}
 			});
@@ -178,7 +173,7 @@ public class Creador {
 	        
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					for (int i = 0; i < arrayMapa.length; i++) {
+					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j<15; j++) {
 							System.out.print(arrayMapa[i][j]+";");
 						}
@@ -187,35 +182,21 @@ public class Creador {
 					System.out.println(Lvl.getSelectedItem());
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
+					System.out.println(nombreMapa);
 				}
 			});
 
-	        //fill the chess board
-	        chessBoard.add(new JLabel(""));
 	        // fill the top row
-	        for (int ii = 0; ii < 15; ii++) {
+	        for (int ii = 0; ii < 8; ii++) {
 	        	 for (int jj = 0; jj < 15; jj++) {
 		                switch (jj) {
 		                    case 0:
-		                        chessBoard.add(new JLabel("" + (ii + 1),
-		                                SwingConstants.CENTER));
 		                    default:
 		                        chessBoard.add(chessBoardSquares[jj][ii]);
 		                }
 		            }
 	        }
-	        // fill the black non-pawn piece row
-	        for (int ii = 0; ii < 15; ii++) {
-	            for (int jj = 0; jj < 15; jj++) {
-	                switch (jj) {
-	                    case 0:
-	                        chessBoard.add(new JLabel("" + (ii + 1),
-	                                SwingConstants.CENTER));
-	                    default:
-	                        chessBoard.add(chessBoardSquares[jj][ii]);
-	                }
-	            }
-	        }
+
 	    }
 
 	    public final JComponent getChessBoard() {
