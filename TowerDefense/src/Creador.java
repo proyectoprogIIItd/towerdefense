@@ -168,11 +168,12 @@ public class Creador {
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < arrayMapa.length; i++) {
-						for (int j = 0; j<arrayMapa[y].length; j++) {
-							System.out.print(arrayMapa[x][y]+" ");
+						for (int j = 0; j<arrayMapa[7].length; j++) {
+							System.out.print(arrayMapa[i][j]+";");
 						}
-						System.out.println("");
+						System.out.println(" ");
 					}
+					System.out.println(Lvl.getSelectedItem());
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
 				}
