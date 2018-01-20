@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -31,6 +32,8 @@ public class Screen extends JPanel implements Runnable{
 	public static Room room;
 	public static Save save;
 	public static Store store;
+	
+	
 	
 	public static Enemy[] enemies = new Enemy[100];
 	
@@ -60,6 +63,9 @@ public class Screen extends JPanel implements Runnable{
 		res[2] = new ImageIcon("resources"+File.separator+"coin.png").getImage();
 		
 		enemy[0] = new ImageIcon("resources"+File.separator+"pink_ghost.gif").getImage();
+		enemy[1] = new ImageIcon("resources"+File.separator+"blue_ghost.gif").getImage();
+		enemy[2] = new ImageIcon("resources"+File.separator+"red_ghost.gif").getImage();
+		enemy[3] = new ImageIcon("resources"+File.separator+"green_ghost.gif").getImage();
 		
 		save.loadSave(new File("save"+File.separator+"mission1.file"));
 		
@@ -95,6 +101,12 @@ public class Screen extends JPanel implements Runnable{
 		
 	}
 	
+	public int aleatorio() {
+		Random random = new Random(System.currentTimeMillis());
+		int aleatorio = random.nextInt(4);
+		return aleatorio;
+	}
+	
 	public int spawnTime = 1500;
 	public int spawnFrame = 0;
 	
@@ -103,7 +115,7 @@ public class Screen extends JPanel implements Runnable{
 		if(spawnFrame >= spawnTime){
 			for(int i = 0; i <enemies.length;i++){
 				if(!enemies[i].inGame){
-					enemies[i].SpawnEnemy(0);
+					enemies[i].SpawnEnemy(aleatorio());
 					break;
 				}
 			}
