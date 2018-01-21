@@ -7,6 +7,9 @@ import java.io.File;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import Utilidades.BD;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -182,16 +185,17 @@ public class Creador {
 			});
 	        //Los Syso meterlos como Insert con la clase BD
 			Guardar.addActionListener(new ActionListener() {
+				String mapaEntero = "";
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j<15; j++) {
-							System.out.print(arrayMapa[i][j]+";");
+							mapaEntero = mapaEntero + (arrayMapa[i][j]+";");
 						}
 					}
-					System.out.println(Lvl.getSelectedItem());
+					String nivel = (String) (Lvl.getSelectedItem());
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
-					System.out.println(nombreMapa);
+					BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
 				}
 			});
 

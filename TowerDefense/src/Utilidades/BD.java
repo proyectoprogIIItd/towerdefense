@@ -69,6 +69,12 @@ public class BD {
 					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, puntuacion integer)"); // (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
+			try {
+				statement.executeUpdate("create table mapas " +
+					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, lvl string, nombreMapa string)"); 
+					// (1) Solo para foreign keys
+					
+			} catch (SQLException e) {} //
 			return statement;
 		} catch (SQLException e) {
 			lastError = e;
@@ -122,7 +128,7 @@ public class BD {
 	}
 	
 	/////////////////////////////////////////////////////////////////////
-	//                      Operaciones de usuario                     //
+	//                      Operaciones de usuario y mapa                    //
 	/////////////////////////////////////////////////////////////////////
 	
 	/** A�ade un usuario a la tabla abierta de BD, usando la sentencia INSERT de SQL
@@ -138,6 +144,28 @@ public class BD {
 					"'" + u.getNick() + "', " +
 					"'" + u.getPassword() + "', " +
 					"'" + u.getNombre() + "')";
+			// System.out.println( sentSQL );  // para ver lo que se hace en consola
+			int val = st.executeUpdate( sentSQL );
+			if (val!=1) {  // Se tiene que a�adir 1 - error si no
+				return false;  
+			}
+			return true;
+		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean mapasInsert( Statement st,String u, String mapa, String lvl, String nombre ) {
+		String sentSQL = "";
+		try {
+			
+			sentSQL = "insert into mapas values(" +
+					"'" + u + "', " +
+					"'" + mapa + "', " +
+					"'" + lvl + "', " +
+					"'" + nombre + "')";
 			// System.out.println( sentSQL );  // para ver lo que se hace en consola
 			int val = st.executeUpdate( sentSQL );
 			if (val!=1) {  // Se tiene que a�adir 1 - error si no
