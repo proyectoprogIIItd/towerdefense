@@ -25,7 +25,10 @@ public class Creador {
 		private static int tipoC = 0;
 		private static boolean torreUp = false;
 		private static boolean spawnUp = false;
-		
+		public static ImageIcon carretera = new ImageIcon("resources"+File.separator+"carretera.png");
+		public static ImageIcon verde = new ImageIcon("resources"+File.separator+"verde.png");
+		public static ImageIcon base = new ImageIcon("resources"+File.separator+"base.png");
+		public static ImageIcon finalb = new ImageIcon("resources"+File.separator+"final.png");
 	    Creador() {
 	        initializeGui();
 	    }
@@ -87,14 +90,13 @@ public class Creador {
 	                        new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
 	                b.setIcon(icon);            
 	                b.setBackground(Color.white);
-	                
+	                b.setIcon(verde);
 	                int bx = ii;
 	                int by = jj;
 	    			b.addActionListener(new ActionListener() {
 	    				public void actionPerformed(ActionEvent arg0) {
 	    					x = bx;
 	    					y = by;
-	    					System.out.println(x +" "+y);
 	    					boolean encontradoT= false;
 	    					boolean encontradoS = false;
 	    	    	    	for (int i = 0; i < 15; i++) {
@@ -118,9 +120,15 @@ public class Creador {
 	    					if((torreUp == true && tipoC == 4) || (spawnUp == true && tipoC == 3)) {
 	    					}else {
 	    					arrayMapa[by][bx] = tipoC;
-	    					System.out.println(tipoC);
-	    					ImageIcon icono = new ImageIcon(Screen.ground[tipoC]);
-	    					b.setIcon((Icon) icono);
+	    					if(tipoC == 1) {
+	    						b.setIcon(carretera);
+	    					}else if(tipoC == 4) {
+	    						b.setIcon(finalb);
+	    					}else if(tipoC == 0) {
+	    						b.setIcon(verde);
+	    					}else if(tipoC == 3) {
+	    						b.setIcon(base);
+	    					}
 	    					}
 	    				}	    			
 	    			});
@@ -168,18 +176,17 @@ public class Creador {
 			Camino.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					tipoC = 2;
+					tipoC = 1;
 
 				}
 			});
-	        
+	        //Los Syso meterlos como Insert con la clase BD
 			Guardar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j<15; j++) {
 							System.out.print(arrayMapa[i][j]+";");
 						}
-						System.out.println(" ");
 					}
 					System.out.println(Lvl.getSelectedItem());
 					String nombreMapa;
