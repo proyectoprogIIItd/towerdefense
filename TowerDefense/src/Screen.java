@@ -39,12 +39,20 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static Enemy[] enemies = new Enemy[100];
 	
+	//set de money
+
+	public static void setMoney(int moneyCoche) {
+		Screen.money = 100 + moneyCoche;
+	}
+	//fin de set de money
+	
 	public Screen(Frame frame){
 		frame.addMouseListener(new KeyHandle());
 		frame.addMouseMotionListener(new KeyHandle());
 		thread.start();
 	}
 	
+
 	public void define(){
 		room = new Room();
 		save = new Save();

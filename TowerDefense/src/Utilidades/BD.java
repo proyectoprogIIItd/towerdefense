@@ -75,6 +75,12 @@ public class BD {
 					// (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} //
+			try {
+				statement.executeUpdate("create table monedasExtras " +
+					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, extras int)"); 
+					// (1) Solo para foreign keys
+					
+			} catch (SQLException e) {} //
 			return statement;
 		} catch (SQLException e) {
 			lastError = e;
