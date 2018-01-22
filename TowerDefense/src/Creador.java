@@ -55,6 +55,7 @@ public class Creador {
 	    	JButton Eliminar = new JButton( "Eliminar " );
 	    	JButton ColocarS = new JButton( "Colocar Spawn" );
 			JButton Camino = new JButton( "Camino" );
+			JButton Atras = new JButton("Atras");
 			JLabel textoLvl = new JLabel ("Nivel Dificultad:");
 			JComboBox Lvl = new JComboBox();
 			Lvl.addItem("Facil");
@@ -79,6 +80,8 @@ public class Creador {
 			tools.add( Lvl );
 			tools.addSeparator();
 			tools.add( Guardar );
+			tools.addSeparator();
+			tools.add(Atras);
 
 
 	        chessBoard = new JPanel(new GridLayout(0, 15));
@@ -143,6 +146,12 @@ public class Creador {
 	            
 	        }
 	        }
+	        Atras.addActionListener(new ActionListener(){
+	        	public void actionPerformed(ActionEvent arg0) {
+	        		f.dispose();
+	        		MenuJugarCrearMapa.main(null);
+	        	}
+	        });
 	        
 			ColocarT.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
