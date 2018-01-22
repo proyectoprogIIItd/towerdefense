@@ -29,7 +29,7 @@ public class Store {
 	}
 	
 	public void click(int mouseButton) {
-		if(mouseButton == 1) {
+		if(mouseButton == 1) { // 1 para botón izquierdo del ratón
 			for(int i = 0; i<button.length;i++) {
 				if(button[i].contains(Screen.mse)) {
 					if(buttonID[i] != Value.AIR_AIR) {
@@ -40,6 +40,21 @@ public class Store {
 					heldID = buttonID[i];
 					tieneObjeto = true;
 					}
+					}
+				}
+			}
+			// permite poner las torres (no se puede en camino, inicio y final)
+			if(tieneObjeto) {
+				if(Screen.money >= buttonPrice[heldID]) {
+					for(int y=0; y < Screen.room.block.length; y ++) {
+						for(int x = 0; x < Screen.room.block[0].length; x++) {
+							if(Screen.room.block[y][x].contains(Screen.mse)) {
+								if(Screen.room.block[y][x].groundID != Value.GROUND_ROAD && Screen.room.block[y][x].airID == Value.AIR_AIR && Screen.room.block[y][x].groundID != Value.GROUND_END && Screen.room.block[y][x].groundID != Value.GROUND_START) {
+									Screen.room.block[y][x].airID = heldID;
+									Screen.money -= buttonPrice[heldID];
+								}
+							}
+						}
 					}
 				}
 			}

@@ -142,6 +142,8 @@ public class Screen extends JPanel implements Runnable{
 		}
 		
 	}
+	
+	
 	public void run(){
 		while(true){
 			if(!isFirst && health >0){
@@ -149,7 +151,9 @@ public class Screen extends JPanel implements Runnable{
 				enemySpawner();
 				for(int i = 0; i<enemies.length; i++){
 					if(enemies[i].inGame){
+						
 						enemies[i].physic();
+						
 					}
 				}
 			}

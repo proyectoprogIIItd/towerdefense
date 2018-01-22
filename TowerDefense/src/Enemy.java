@@ -38,7 +38,7 @@ public class Enemy extends Rectangle{
 	public void looseHealth() {
 		Screen.health-=1;
 	}
-	public int walkFrame = 0, walkSpeed = 5;
+	public int walkFrame = 0, walkSpeed = 10;
 	
 	public void physic(){
 		if(walkFrame >= walkSpeed){
