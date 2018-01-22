@@ -41,8 +41,8 @@ public class Screen extends JPanel implements Runnable{
 	
 	//set de money
 
-	public static void setMoney(int moneyCoche) {
-		Screen.money = 100 + moneyCoche;
+	public static void setMoney() {
+		Screen.money += VentanaJuego.monedas;		
 	}
 	//fin de set de money
 	

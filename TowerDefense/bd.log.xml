@@ -1,33 +1,37 @@
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-01-20T19:24:12</date>
-  <millis>1516472652920</millis>
+  <date>2018-01-21T13:21:26</date>
+  <millis>1516537286121</millis>
   <sequence>0</sequence>
   <logger>Utilidades.BD</logger>
   <level>SEVERE</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
+  <thread>11</thread>
   <message>Error en conexi�n de base de datos Login</message>
   <exception>
     <message>java.lang.ClassNotFoundException: org.sqlite.JDBC</message>
     <frame>
       <class>java.net.URLClassLoader</class>
       <method>findClass</method>
+      <line>381</line>
     </frame>
     <frame>
       <class>java.lang.ClassLoader</class>
       <method>loadClass</method>
+      <line>424</line>
     </frame>
     <frame>
       <class>sun.misc.Launcher$AppClassLoader</class>
       <method>loadClass</method>
+      <line>331</line>
     </frame>
     <frame>
       <class>java.lang.ClassLoader</class>
       <method>loadClass</method>
+      <line>357</line>
     </frame>
     <frame>
       <class>java.lang.Class</class>
@@ -36,6 +40,7 @@
     <frame>
       <class>java.lang.Class</class>
       <method>forName</method>
+      <line>264</line>
     </frame>
     <frame>
       <class>Utilidades.BD</class>
@@ -50,22 +55,27 @@
     <frame>
       <class>java.awt.event.InvocationEvent</class>
       <method>dispatch</method>
+      <line>311</line>
     </frame>
     <frame>
       <class>java.awt.EventQueue</class>
       <method>dispatchEventImpl</method>
+      <line>756</line>
     </frame>
     <frame>
       <class>java.awt.EventQueue</class>
       <method>access$500</method>
+      <line>97</line>
     </frame>
     <frame>
       <class>java.awt.EventQueue$3</class>
       <method>run</method>
+      <line>709</line>
     </frame>
     <frame>
       <class>java.awt.EventQueue$3</class>
       <method>run</method>
+      <line>703</line>
     </frame>
     <frame>
       <class>java.security.AccessController</class>
@@ -74,227 +84,269 @@
     <frame>
       <class>java.security.ProtectionDomain$JavaSecurityAccessImpl</class>
       <method>doIntersectionPrivilege</method>
+      <line>80</line>
     </frame>
     <frame>
       <class>java.awt.EventQueue</class>
       <method>dispatchEvent</method>
+      <line>726</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>pumpOneEventForFilters</method>
+      <line>201</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>pumpEventsForFilter</method>
+      <line>116</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>pumpEventsForHierarchy</method>
+      <line>105</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>pumpEvents</method>
+      <line>101</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>pumpEvents</method>
+      <line>93</line>
     </frame>
     <frame>
       <class>java.awt.EventDispatchThread</class>
       <method>run</method>
+      <line>82</line>
     </frame>
   </exception>
 </record>
-<record>
-  <date>2018-01-20T19:24:34</date>
-  <millis>1516472674162</millis>
-  <sequence>1</sequence>
-  <logger>Utilidades.BD</logger>
-  <level>INFO</level>
-  <class>Utilidades.BD</class>
-  <method>log</method>
-  <thread>14</thread>
-  <message>Cierre de base de datos</message>
-</record>
 </log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-01-20T19:33:53</date>
-  <millis>1516473233859</millis>
-  <sequence>0</sequence>
-  <logger>Utilidades.BD</logger>
-  <level>SEVERE</level>
-  <class>Utilidades.BD</class>
-  <method>log</method>
-  <thread>14</thread>
-  <message>Error en conexi�n de base de datos Login</message>
-  <exception>
-    <message>java.lang.ClassNotFoundException: org.sqlite.JDBC</message>
-    <frame>
-      <class>java.net.URLClassLoader</class>
-      <method>findClass</method>
-    </frame>
-    <frame>
-      <class>java.lang.ClassLoader</class>
-      <method>loadClass</method>
-    </frame>
-    <frame>
-      <class>sun.misc.Launcher$AppClassLoader</class>
-      <method>loadClass</method>
-    </frame>
-    <frame>
-      <class>java.lang.ClassLoader</class>
-      <method>loadClass</method>
-    </frame>
-    <frame>
-      <class>java.lang.Class</class>
-      <method>forName0</method>
-    </frame>
-    <frame>
-      <class>java.lang.Class</class>
-      <method>forName</method>
-    </frame>
-    <frame>
-      <class>Utilidades.BD</class>
-      <method>initBD</method>
-      <line>24</line>
-    </frame>
-    <frame>
-      <class>Login$1</class>
-      <method>run</method>
-      <line>54</line>
-    </frame>
-    <frame>
-      <class>java.awt.event.InvocationEvent</class>
-      <method>dispatch</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventQueue</class>
-      <method>dispatchEventImpl</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventQueue</class>
-      <method>access$500</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventQueue$3</class>
-      <method>run</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventQueue$3</class>
-      <method>run</method>
-    </frame>
-    <frame>
-      <class>java.security.AccessController</class>
-      <method>doPrivileged</method>
-    </frame>
-    <frame>
-      <class>java.security.ProtectionDomain$JavaSecurityAccessImpl</class>
-      <method>doIntersectionPrivilege</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventQueue</class>
-      <method>dispatchEvent</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>pumpOneEventForFilters</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>pumpEventsForFilter</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>pumpEventsForHierarchy</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>pumpEvents</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>pumpEvents</method>
-    </frame>
-    <frame>
-      <class>java.awt.EventDispatchThread</class>
-      <method>run</method>
-    </frame>
-  </exception>
-</record>
-<record>
-  <date>2018-01-20T19:34:16</date>
-  <millis>1516473256390</millis>
-  <sequence>1</sequence>
-  <logger>Utilidades.BD</logger>
-  <level>INFO</level>
-  <class>Utilidades.BD</class>
-  <method>log</method>
-  <thread>14</thread>
-  <message>Cierre de base de datos</message>
-</record>
-</log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2018-01-20T22:43:52</date>
-  <millis>1516484632870</millis>
+  <date>2018-01-21T13:42:28</date>
+  <millis>1516538548358</millis>
   <sequence>0</sequence>
   <logger>Utilidades.BD</logger>
   <level>INFO</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
+  <thread>11</thread>
   <message>Conectada base de datos Login</message>
 </record>
 <record>
-  <date>2018-01-20T22:44:07</date>
-  <millis>1516484647794</millis>
+  <date>2018-01-21T13:42:36</date>
+  <millis>1516538556674</millis>
   <sequence>1</sequence>
   <logger>Utilidades.BD</logger>
   <level>INFO</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
-  <message>BD	select * from usuario where Nick = 'l'</message>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iosune' AND Password = '1234'</message>
 </record>
 <record>
-  <date>2018-01-20T22:44:12</date>
-  <millis>1516484652270</millis>
+  <date>2018-01-21T13:42:41</date>
+  <millis>1516538561135</millis>
   <sequence>2</sequence>
   <logger>Utilidades.BD</logger>
   <level>INFO</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
-  <message>BD	select * from usuario where Nick = 'l' AND Password = 'l'</message>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iosune'</message>
+</record>
+<record>
+  <date>2018-01-21T13:42:43</date>
+  <millis>1516538563226</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iosune' AND Password = '1234'</message>
 </record>
 </log>
-<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2018-01-20T22:47:30</date>
-  <millis>1516484850400</millis>
+  <date>2018-01-21T13:46:20</date>
+  <millis>1516538780801</millis>
   <sequence>0</sequence>
   <logger>Utilidades.BD</logger>
   <level>INFO</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
+  <thread>11</thread>
   <message>Conectada base de datos Login</message>
 </record>
 <record>
-  <date>2018-01-20T22:47:32</date>
-  <millis>1516484852976</millis>
+  <date>2018-01-21T13:46:24</date>
+  <millis>1516538784566</millis>
   <sequence>1</sequence>
   <logger>Utilidades.BD</logger>
   <level>INFO</level>
   <class>Utilidades.BD</class>
   <method>log</method>
-  <thread>14</thread>
-  <message>BD	select * from usuario where Nick = 'l' AND Password = 'l'</message>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iosune' AND Password = '1234'</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-21T13:53:52</date>
+  <millis>1516539232127</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-21T13:53:54</date>
+  <millis>1516539234128</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Cierre de base de datos</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-22T21:49:47</date>
+  <millis>1516654187081</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-22T21:49:56</date>
+  <millis>1516654196927</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iker'</message>
+</record>
+<record>
+  <date>2018-01-22T21:50:01</date>
+  <millis>1516654201472</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iker' AND Password = 'iker'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-22T21:50:14</date>
+  <millis>1516654214623</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-22T21:50:18</date>
+  <millis>1516654218646</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iker' AND Password = '1234'</message>
+</record>
+<record>
+  <date>2018-01-22T21:50:24</date>
+  <millis>1516654224190</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iker' AND Password = 'iker'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-22T21:58:09</date>
+  <millis>1516654689893</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-22T21:58:11</date>
+  <millis>1516654691290</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = 'iker' AND Password = 'iker'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-22T22:09:18</date>
+  <millis>1516655358446</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-22T22:09:47</date>
+  <millis>1516655387990</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Cierre de base de datos</message>
+</record>
+</log>

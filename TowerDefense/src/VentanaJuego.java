@@ -12,6 +12,7 @@ import Utilidades.Usuario;
 
 
 public class VentanaJuego extends JFrame {
+	public static int monedas = 0;
 	private static final long serialVersionUID = 1L;  // Para serialización
 	JPanel pPrincipal;         // Panel del juego (layout nulo)
 	MundoJuego miMundo;        // Mundo del juego
@@ -114,16 +115,12 @@ public class VentanaJuego extends JFrame {
 	/** Programa principal de la ventana de juego
 	 * @param args
 	 */
+	final static VentanaJuego miVentana = new VentanaJuego();
 	public static void main(String[] args) {
 		// Crea y visibiliza la ventana con el coche
 		try {
-			final VentanaJuego miVentana = new VentanaJuego();
-			SwingUtilities.invokeAndWait( new Runnable() {
-				@Override
-				public void run() {
-					miVentana.setVisible( true );
-				}
-			});
+			
+			miVentana.setVisible( true );				
 			miVentana.miMundo = new MundoJuego( miVentana.pPrincipal );
 			miVentana.miMundo.creaCoche( 150, 100 );
 			miVentana.miCoche = miVentana.miMundo.getCoche();
@@ -178,12 +175,12 @@ public class VentanaJuego extends JFrame {
 		        if (VentanaJuego.this.miMundo.GAMEOVER()){
 		          this.sigo = false;
 		          VentanaJuego.this.lMensaje.setText("GAME OVER: Has sacado " +  VentanaJuego.this.miMundo.getPuntos() + " puntos.");
-					try {
-						Login.s.execute("insert into monedasExtras values('"+Login.textField.getText()+"', "+ VentanaJuego.this.miMundo.getPuntos() +")");
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+		          monedas = VentanaJuego.this.miMundo.getPuntos();
+		          Screen.money = monedas;
+		          monedas = 0;
+		          miVentana.dispose();
+		          Frame.main(null);
+		          
 					try {
 						Thread.sleep( 4000 );
 					} catch (Exception e) {	

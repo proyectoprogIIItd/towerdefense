@@ -71,13 +71,7 @@ public class BD {
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			try {
 				statement.executeUpdate("create table mapas " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, lvl string, nombreMapa string)"); 
-					// (1) Solo para foreign keys
-					
-			} catch (SQLException e) {} //
-			try {
-				statement.executeUpdate("create table monedasExtras " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, extras int)"); 
+					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, lvl string, nombreMapa string PRIMARY KEY)"); 
 					// (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} //
@@ -206,6 +200,34 @@ public class BD {
 				u.setPassword( rs.getString( "password" ) );
 				u.setNombre( rs.getString( "nombre" ) );
 				ret.add( u );
+			}
+			rs.close();
+			log( Level.INFO, "BD\t" + sentSQL, null );
+			return ret;
+		} catch (IllegalArgumentException e) {  // Error en tipo usuario (enumerado)
+			log( Level.SEVERE, "Error en BD en tipo de usuario\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static ArrayList<String> mapaNombreSelect( Statement st, String codigoSelect ) {
+		String sentSQL = "";
+		ArrayList<String> ret = new ArrayList<>();
+		try {
+			sentSQL = "select * from mapas";
+			if (codigoSelect!=null && !codigoSelect.equals(""))
+				sentSQL = sentSQL + " where nombreMapa = '" + codigoSelect +"'";
+			// System.out.println( sentSQL );  // Para ver lo que se hace en consola
+			ResultSet rs = st.executeQuery( sentSQL );
+			while (rs.next()) {
+				ret.add( rs.getString("nombreMapa") );
 			}
 			rs.close();
 			log( Level.INFO, "BD\t" + sentSQL, null );
