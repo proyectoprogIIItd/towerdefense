@@ -22,11 +22,12 @@ public class MenuJugarCrearMapa extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	public static MenuJugarCrearMapa frame;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuJugarCrearMapa frame = new MenuJugarCrearMapa();
+					frame = new MenuJugarCrearMapa();
 					
 					frame.setVisible(true);
 					actualizarBotones();

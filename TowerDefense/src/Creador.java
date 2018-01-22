@@ -196,6 +196,8 @@ public class Creador {
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
 					BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
+					f.dispose();
+					MenuJugarCrearMapa.frame.setVisible(true);
 				}
 			});
 
@@ -220,7 +222,7 @@ public class Creador {
 	        return gui;
 	    }
 
-
+	    public static JFrame f;
 	    public static void main(String[] args) {
 	        Runnable r = new Runnable() {
 	        	
@@ -228,7 +230,7 @@ public class Creador {
 	            public void run() {
 	              	Creador cb =
 	                        new Creador();
-	                JFrame f = new JFrame("Creador de mapas");
+	                f = new JFrame("Creador de mapas");
 	                f.getContentPane().add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	                f.setLocationByPlatform(true);
