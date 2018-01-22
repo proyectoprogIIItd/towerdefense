@@ -5,6 +5,10 @@ public class Value {
 	
 	public static final int AIR_AIR = -1;
 	
+	public static final int AIR_TRASHCAN = 1;
+	
+	public static final int AIR_TOWER_1 = 2;
+	
 	public static final int GROUND_ROAD =1;
 	
 	public static final int GROUND_DIRT = 2;

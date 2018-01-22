@@ -230,7 +230,7 @@ public class Creador {
 	                        new Creador();
 	                JFrame f = new JFrame("Creador de mapas");
 	                f.getContentPane().add(cb.getGui());
-	                f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	                f.setLocationByPlatform(true);
 	                // ensures the frame is the minimum size it needs to be
 	                // in order display the components within it

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -26,6 +27,7 @@ public class Screen extends JPanel implements Runnable{
 	public static int health = 10;
 	
 	public static boolean isFirst = true;
+	public static boolean isDead = false;
 	
 	public static Point mse = new Point(0,0);
 	
@@ -99,6 +101,13 @@ public class Screen extends JPanel implements Runnable{
 		}
 		store.draw(g); // dibujando la tienda
 		
+		if(health < 1) {
+			g.setColor(new Color(240, 20, 20));
+			g.fillRect(0, 0, myWidth, myHeight);
+			g.setColor(new Color(255, 255, 255));
+			g.setFont(new Font("Courier New",Font.BOLD, 80));
+			g.drawString("GAME OVER", 270, 200);
+		}
 	}
 	
 	public int aleatorio() {
@@ -127,7 +136,7 @@ public class Screen extends JPanel implements Runnable{
 	}
 	public void run(){
 		while(true){
-			if(!isFirst){
+			if(!isFirst && health >0){
 				room.physic();
 				enemySpawner();
 				for(int i = 0; i<enemies.length; i++){

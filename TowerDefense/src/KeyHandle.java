@@ -15,6 +15,8 @@ public class KeyHandle implements MouseMotionListener, MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+		Screen.store.click(e.getButton());
+		
 	}
 
 	@Override
@@ -37,14 +39,14 @@ public class KeyHandle implements MouseMotionListener, MouseListener{
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		Screen.mse=new Point((e.getX())+ ((Frame.size.width-Screen.myHeight)/2), (e.getY())+((Frame.size.height -(Screen.myHeight))-(Frame.size.width-Screen.myWidth)/2));
+		Screen.mse=new Point((e.getX())- ((Frame.size.width-Screen.myWidth)/2), (e.getY())-((Frame.size.height -(Screen.myHeight))-(Frame.size.width-Screen.myWidth)/2));
 		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		//Corregimos las coordenadas del ratón (borde superior...)
-		Screen.mse=new Point((e.getX())- ((Frame.size.width-Screen.myHeight)/2), (e.getY())-((Frame.size.height -(Screen.myHeight))-(Frame.size.width-Screen.myWidth)/2));
+		Screen.mse=new Point((e.getX())- ((Frame.size.width-Screen.myWidth)/2), (e.getY())-((Frame.size.height -(Screen.myHeight))-(Frame.size.width-Screen.myWidth)/2));
 		
 	}
 

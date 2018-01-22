@@ -30,6 +30,14 @@ public class Enemy extends Rectangle{
 		this.enemyID = enemyID;
 		inGame = true;
 	}
+	
+	public void deleteEnemy() {
+		inGame = false;
+	}
+	
+	public void looseHealth() {
+		Screen.health-=1;
+	}
 	public int walkFrame = 0, walkSpeed = 5;
 	
 	public void physic(){
@@ -86,6 +94,10 @@ public class Enemy extends Rectangle{
 							direction = left;
 						}
 						}catch(Exception e){}
+				}
+				if(Screen.room.block[yC][xC].groundID == Value.GROUND_END) {
+					deleteEnemy();
+					looseHealth();
 				}
 				
 				hasUpward= false;
