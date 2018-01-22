@@ -6,6 +6,7 @@ import javax.swing.*;
 public class Frame extends JFrame{
 	public static String title = "Tower Defense";
 	public static Dimension size = new Dimension (960, 640);
+	public static Frame frame;
 	
 	public Frame(){
 		setTitle(title);
@@ -17,8 +18,10 @@ public class Frame extends JFrame{
 		init();
 		
 	}
+	
+	
 	public static void main (String[] args){
-		Frame frame = new Frame();
+		frame = new Frame();
 		
 	}
 	

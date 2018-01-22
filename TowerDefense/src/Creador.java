@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -32,6 +34,7 @@ public class Creador {
 		public static ImageIcon verde = new ImageIcon("resources"+File.separator+"verde.png");
 		public static ImageIcon base = new ImageIcon("resources"+File.separator+"base.png");
 		public static ImageIcon finalb = new ImageIcon("resources"+File.separator+"final.png");
+		public static JFrame f ;
 	    Creador() {
 	        initializeGui();
 	    }
@@ -195,7 +198,19 @@ public class Creador {
 					String nivel = (String) (Lvl.getSelectedItem());
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
-					BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
+					ArrayList<String> cogido = new ArrayList<String>();
+					if (nombreMapa == null) {
+						
+					}else {
+						cogido = BD.mapaNombreSelect(Login.s, nombreMapa);
+						if(cogido.isEmpty()) {
+							BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
+							f.dispose();
+						MenuJugarCrearMapa.main(null);
+						}else {
+						JOptionPane.showMessageDialog(null, "Nombre de mapa ya existente");	
+						}
+					}
 				}
 			});
 
@@ -228,7 +243,7 @@ public class Creador {
 	            public void run() {
 	              	Creador cb =
 	                        new Creador();
-	                JFrame f = new JFrame("Creador de mapas");
+	                f = new JFrame("Creador de mapas");
 	                f.getContentPane().add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	                f.setLocationByPlatform(true);

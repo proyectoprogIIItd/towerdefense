@@ -180,12 +180,6 @@ public class Login extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					try {
-						s.execute("insert into monedasExtras values('"+u.getNick()+"', "+ 0 +")");
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 					JOptionPane.showMessageDialog(null, "Te has registrado correctamente");
 				}
 				
