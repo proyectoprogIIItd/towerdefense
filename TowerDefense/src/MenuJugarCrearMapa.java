@@ -64,7 +64,7 @@ public class MenuJugarCrearMapa extends JFrame {
 		botonJugar = new JButton();
 		botonJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaJuego.main(null);
+				MenuSeleccionMapa.main(null);
 				MenuJugarCrearMapa.this.setVisible(false);
 			}
 		});

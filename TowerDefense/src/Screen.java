@@ -41,13 +41,6 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static Enemy[] enemies = new Enemy[100];
 	
-	//set de money
-
-	public static void setMoney() {
-		Screen.money += VentanaJuego.monedas;		
-	}
-	//fin de set de money
-	
 	public Screen(Frame frame){
 		frame.addMouseListener(new KeyHandle());
 		frame.addMouseMotionListener(new KeyHandle());
@@ -117,6 +110,8 @@ public class Screen extends JPanel implements Runnable{
 			g.setColor(new Color(255, 255, 255));
 			g.setFont(new Font("Courier New",Font.BOLD, 80));
 			g.drawString("GAME OVER", 270, 200);
+			Frame.frame.dispose();
+			VentanaRanking.main(null);
 		}
 	}
 	
