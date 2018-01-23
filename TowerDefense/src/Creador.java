@@ -208,19 +208,15 @@ public class Creador {
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
 
-					BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
-					f.dispose();
-					MenuJugarCrearMapa.frame.setVisible(true);
-
 					ArrayList<String> cogido = new ArrayList<String>();
-					if (nombreMapa == null) {
-						
+					if (nombreMapa.equals("")) {
+						JOptionPane.showMessageDialog(null, "Escoge un nombre.");
 					}else {
 						cogido = BD.mapaNombreSelect(Login.s, nombreMapa);
 						if(cogido.isEmpty()) {
 							BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
 							f.dispose();
-						MenuJugarCrearMapa.main(null);
+							MenuJugarCrearMapa.main(null);
 						}else {
 						JOptionPane.showMessageDialog(null, "Nombre de mapa ya existente");	
 						}

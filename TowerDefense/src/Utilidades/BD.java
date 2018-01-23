@@ -93,7 +93,8 @@ public class BD {
 			Statement statement = con.createStatement();
 			statement.setQueryTimeout(30);  // poner timeout 30 msg
 			statement.executeUpdate("drop table if exists usuario");
-			statement.executeUpdate("drop table if exists partida");
+			statement.executeUpdate("drop table if exists mapas");
+			statement.executeUpdate("drop table if exists puntuaciones");
 			log( Level.INFO, "Reiniciada base de datos", null );
 			return usarCrearTablasBD( con );
 		} catch (SQLException e) {
