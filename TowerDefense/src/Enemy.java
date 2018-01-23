@@ -1,4 +1,7 @@
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Enemy extends Rectangle{
@@ -6,6 +9,9 @@ public class Enemy extends Rectangle{
 	
 	public int enemySize = 64;
 	public int enemyWalk = 0;
+	public int health;
+	public int healthSpace = 3;
+	public int healthHeight = 6;
 	public int upward = 0, downward = 1, right = 2, left = 3;
 	public int direction = right;
 	public int enemyID = Value.ENEMY_AIR;
@@ -28,11 +34,15 @@ public class Enemy extends Rectangle{
 			}
 		}
 		this.enemyID = enemyID;
+		this.health = enemySize;
 		inGame = true;
 	}
 	
 	public void deleteEnemy() {
 		inGame = false;
+		direction = right;
+		enemyWalk = 0;
+		
 	}
 	
 	public void looseHealth() {
@@ -112,8 +122,37 @@ public class Enemy extends Rectangle{
 		}
 		
 	}
+	
+	public void enemyLooseHealth(int amo) {
+		health -= amo;
+		checkDeath();
+	}
+	
+	public void checkDeath() {
+		if(health <=0 ) {
+			deleteEnemy();
+		}
+	}
+	
+	public boolean isDead() {
+		if(inGame) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 	public void draw (Graphics g){
 
 			g.drawImage(Screen.enemy[enemyID], x, y, width, height, null);
+			// HEALTH BAR
+			g.setColor(new Color(180, 50, 50));
+			g.fillRect(x,  y- (healthSpace + healthHeight ), width, healthHeight);
+			
+			g.setColor(new Color(50, 180, 50));
+			g.fillRect(x,  y- (healthSpace + healthHeight ), health, healthHeight);
+			g.setColor(new Color(0,0,0));
+			Graphics2D g2 = (Graphics2D) g;
+            g2.setStroke(new BasicStroke(1));
+			g.drawRect(x,  y- (healthSpace + healthHeight ), health-1, healthHeight-1 );
 	}
 }

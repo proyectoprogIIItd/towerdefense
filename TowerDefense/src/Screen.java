@@ -40,6 +40,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	
 	public static Enemy[] enemies = new Enemy[100];
+	public static double fps = 60.0;
 	
 	public Screen(Frame frame){
 		frame.addMouseListener(new KeyHandle());
@@ -110,6 +111,7 @@ public class Screen extends JPanel implements Runnable{
 			g.setColor(new Color(255, 255, 255));
 			g.setFont(new Font("Courier New",Font.BOLD, 80));
 			g.drawString("GAME OVER", 270, 200);
+			
 			Frame.frame.dispose();
 			VentanaRanking.main(null);
 		}

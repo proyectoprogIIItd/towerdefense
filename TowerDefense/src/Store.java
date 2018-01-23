@@ -15,7 +15,7 @@ public class Store {
 	public static int heldID = -1;
 	public static int realID =-1;
 	
-	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_TRASHCAN};
+	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_TOWER_2,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_TRASHCAN};
 	public static int[] buttonPrice = {10,0,0,0,0,0,0,0};
 	
 	
