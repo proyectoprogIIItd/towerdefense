@@ -40,7 +40,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	
 	public static Enemy[] enemies = new Enemy[100];
-	public static double fps = 60.0;
+	
 	
 	public Screen(Frame frame){
 		frame.addMouseListener(new KeyHandle());

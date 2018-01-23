@@ -7,20 +7,25 @@ import java.awt.Rectangle;
 public class Block extends Rectangle{
 	public Rectangle towerSquare;
 	public Rectangle towerSquare2;
+	public Rectangle towerSquare3;
 	public int towerSquareSize = 100;
 	public int towerSquareSize2 = 75;
+	public int towerSquareSize3 = 300;
 	public int groundID;
 	public int airID;
 	public int loseTime = 100, loseFrame = 0;
 	public int shotEnemy = -1;
 	public boolean shotingTower1 = false;
 	public boolean shotingTower2 = false;
+	public boolean shotingTower3 = false;
 	public boolean shoting = false;
 	
 	public Block(int x, int y, int width, int height, int groundID, int airID){
 		setBounds(x, y, width, height);
 		towerSquare = new Rectangle(x - (towerSquareSize/2), y-(towerSquareSize/2), width+(towerSquareSize), height+(towerSquareSize));
 		towerSquare2 = new Rectangle(x - (towerSquareSize2/2), y-(towerSquareSize2/2), width+(towerSquareSize2), height+(towerSquareSize2));
+		towerSquare3 = new Rectangle(x - (towerSquareSize3/2), y-(towerSquareSize3/2), width+(towerSquareSize3), height+(towerSquareSize3));
+
 		this.groundID = groundID;
 		this.airID= airID;
 	}
@@ -69,6 +74,18 @@ public class Block extends Rectangle{
 						}
 					}
 				}
+			}else if(airID == Value.AIR_TOWER_3) {
+				for (int i = 0; i < Screen.enemies.length; i++) {
+					if (Screen.enemies[i].inGame) {
+						if (towerSquare3.intersects(Screen.enemies[i])) {
+							shoting = true;
+							shotingTower3 = true;
+							
+							shotEnemy = i;
+							
+						}
+					}
+				}
 			}
 		}
 		
@@ -85,6 +102,8 @@ public class Block extends Rectangle{
 					Screen.enemies[shotEnemy].enemyLooseHealth(2);
 					}else if(shotingTower2){
 						Screen.enemies[shotEnemy].enemyLooseHealth(6);
+					}else if(shotingTower3) {
+						Screen.enemies[shotEnemy].enemyLooseHealth(1);
 					}
 					loseFrame = 0;
 					loseTime +=2;

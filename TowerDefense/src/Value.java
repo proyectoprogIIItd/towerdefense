@@ -9,6 +9,8 @@ public class Value {
 	
 	public static final int AIR_TOWER_1 = 2;
 	public static final int AIR_TOWER_2 = 3;
+	public static final int AIR_TOWER_3 = 4;
+	
 	public static final int GROUND_ROAD =1;
 	
 	public static final int GROUND_DIRT = 2;
