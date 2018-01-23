@@ -37,7 +37,11 @@ public class Enemy extends Rectangle{
 		this.health = enemySize;
 		inGame = true;
 	}
-	
+	public void deleteEnemyFueraMapa() {
+		inGame = false;
+		direction = right;
+		enemyWalk = 0;
+	}
 	public void deleteEnemy() {
 		inGame = false;
 		direction = right;
@@ -108,7 +112,7 @@ public class Enemy extends Rectangle{
 						}catch(Exception e){}
 				}
 				if(Screen.room.block[yC][xC].groundID == Value.GROUND_END) {
-					deleteEnemy();
+					deleteEnemyFueraMapa();
 					looseHealth();
 				}
 				
