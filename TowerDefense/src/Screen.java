@@ -113,7 +113,7 @@ public class Screen extends JPanel implements Runnable{
 			g.setColor(new Color(255, 255, 255));
 			g.setFont(new Font("Courier New",Font.BOLD, 80));
 			g.drawString("GAME OVER", 270, 200);
-			
+			thread.interrupt();
 			Frame.frame.dispose();
 			VentanaRanking.main(null);
 		}
