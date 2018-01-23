@@ -10,6 +10,7 @@ public class Store {
 	public static int cellSpace = 8; // espacio entre boton
 	public static int awayFromGame = 10; // espacio fuera de la pantalla de juego
 	public static int iconSize = 30; //tamaño corazon y moneda
+	public static int iconSize2 = 45;
 	public static int iconSpace = 3;
 	public static int itemIn = 6; //tamaño del borde
 	public static int heldID = -1;
@@ -70,7 +71,7 @@ public class Store {
 		
 		buttonHealth = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize, iconSize );
 		buttonCoins = new Rectangle(Screen.room.block[0][0].x-1, button[0].y + button[0].height-iconSize,iconSize, iconSize );
-		buttonKills = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize, iconSize );
+		buttonKills = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize2, iconSize2 );
 		//dibujado teniendo como referencia el buttonHealth
 	}
 	
@@ -97,7 +98,7 @@ public class Store {
 		g.setColor(new Color(255, 255, 255));
 		g.drawString("" +Screen.health, buttonHealth.x + 50+ buttonHealth.width + iconSpace,buttonHealth.y+20);
 		g.drawString("" +Screen.money, buttonCoins.x + 50+ buttonCoins.width + iconSpace,buttonCoins.y+20);
-		g.drawString("" +Screen.enemyKilled, buttonKills.x + 765+ buttonKills.width + iconSpace,buttonKills.y+20);
+		g.drawString("" +Screen.enemyKilled, buttonKills.x + 765+ buttonKills.width + iconSpace,buttonKills.y+30);
 		
 		if(tieneObjeto) {
 			g.drawImage(Screen.air[heldID], Screen.mse.x - ((button[0].width-(itemIn*2))/2)+ itemIn, Screen.mse.y  - ((button[0].width-(itemIn*2))/2)+itemIn, button[0].width -(itemIn*2), button[0].height - (itemIn*2), null);
