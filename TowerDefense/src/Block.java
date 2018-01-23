@@ -15,6 +15,7 @@ public class Block extends Rectangle{
 	public int airID;
 	public int loseTime = 100, loseFrame = 0;
 	public int shotEnemy = -1;
+	public static int shotEnemyDinero = -1;
 	public boolean shotingTower1 = false;
 	public boolean shotingTower2 = false;
 	public boolean shotingTower3 = false;
@@ -58,6 +59,7 @@ public class Block extends Rectangle{
 							shotingTower1 = true;
 							
 							shotEnemy = i;
+							shotEnemyDinero = i;
 							
 						}
 					}
@@ -70,6 +72,7 @@ public class Block extends Rectangle{
 							shotingTower2 = true;
 							
 							shotEnemy = i;
+							shotEnemyDinero = i;
 							
 						}
 					}
@@ -82,6 +85,7 @@ public class Block extends Rectangle{
 							shotingTower3 = true;
 							
 							shotEnemy = i;
+							shotEnemyDinero = i;
 							
 						}
 					}
@@ -118,12 +122,16 @@ public class Block extends Rectangle{
 				if(Screen.enemies[shotEnemy].isDead()) {
 					shoting = false;
 					shotEnemy = -1;
+					shotEnemyDinero = -1;
 				}
 				
 				
 			}
 		}
 	
+	public static void getMoney(int enemyID) {
+		Screen.money += Value.dineroEnemigo[enemyID];
+	}
 	
 	public void fight(Graphics g) {
 		if (Screen.isDebug) {

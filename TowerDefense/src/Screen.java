@@ -25,6 +25,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static int money = 100;
 	public static int health = 10;
+	public static int enemyKilled =0;
 	
 	public static boolean isFirst = true;
 	public static boolean isDead = false;
@@ -67,6 +68,7 @@ public class Screen extends JPanel implements Runnable{
 		res[0] = new ImageIcon("resources"+File.separator+"cell.png").getImage();
 		res[1] = new ImageIcon("resources"+File.separator+"heart.png").getImage();
 		res[2] = new ImageIcon("resources"+File.separator+"coin.png").getImage();
+		res[3] = new ImageIcon("resources"+File.separator+"killedEnemy.png").getImage();
 		
 		enemy[0] = new ImageIcon("resources"+File.separator+"pink_ghost.gif").getImage();
 		enemy[1] = new ImageIcon("resources"+File.separator+"blue_ghost.gif").getImage();
@@ -119,7 +121,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	public int aleatorio() {
 		Random random = new Random(System.currentTimeMillis());
-		int aleatorio = random.nextInt(4);
+		int aleatorio = random.nextInt(100);
 		return aleatorio;
 	}
 	
@@ -131,7 +133,16 @@ public class Screen extends JPanel implements Runnable{
 		if(spawnFrame >= spawnTime){
 			for(int i = 0; i <enemies.length;i++){
 				if(!enemies[i].inGame){
-					enemies[i].SpawnEnemy(aleatorio());
+					if(aleatorio() <= 50) {
+						enemies[i].SpawnEnemy(3);
+					}else if(aleatorio() <= 80) {
+						enemies[i].SpawnEnemy(1);
+					}else if(aleatorio() <= 95) {
+						enemies[i].SpawnEnemy(2);
+					}else if(aleatorio() <=100) {
+						enemies[i].SpawnEnemy(0);
+					}
+				
 					break;
 				}
 			}

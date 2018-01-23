@@ -25,4 +25,6 @@ public class Value {
 	public static final int ENEMY_BLUE_GHOST = 1;
 	public static final int ENEMY_RED_GHOST = 2;
 	public static final int ENEMY_GREEN_GHOST = 3;
+	
+	public static int[] dineroEnemigo = {25,3,5,1};
 }

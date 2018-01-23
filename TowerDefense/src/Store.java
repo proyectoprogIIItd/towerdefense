@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 public class Store {
 	
-	public static int shopWidth = 8; //tienda con los botones
+	public static int shopWidth = 4; //tienda con los botones
 	public static int buttonSize = 64; //objetos a comprar en la tienda
 	public static int cellSpace = 8; // espacio entre boton
 	public static int awayFromGame = 10; // espacio fuera de la pantalla de juego
@@ -15,13 +15,14 @@ public class Store {
 	public static int heldID = -1;
 	public static int realID =-1;
 	
-	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_TOWER_2,Value.AIR_TOWER_3,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_TRASHCAN};
-	public static int[] buttonPrice = {10,0,0,0,0,0,0,0};
+	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_TOWER_2,Value.AIR_TOWER_3,Value.AIR_TRASHCAN};
+	public static int[] buttonPrice = {20,40,30,0,0,0,0,0};
 	
 	
 	public Rectangle[] button = new Rectangle[shopWidth];
 	public Rectangle buttonHealth;
 	public Rectangle buttonCoins;
+	public Rectangle buttonKills;
 	
 	public boolean tieneObjeto = false;
 	
@@ -68,7 +69,9 @@ public class Store {
 		}
 		
 		buttonHealth = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize, iconSize );
-		buttonCoins = new Rectangle(Screen.room.block[0][0].x-1, button[0].y + button[0].height-iconSize,iconSize, iconSize ); //dibujado teniendo como referencia el buttonHealth
+		buttonCoins = new Rectangle(Screen.room.block[0][0].x-1, button[0].y + button[0].height-iconSize,iconSize, iconSize );
+		buttonKills = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize, iconSize );
+		//dibujado teniendo como referencia el buttonHealth
 	}
 	
 	public void draw (Graphics g){
@@ -88,10 +91,13 @@ public class Store {
 		}
 		g.drawImage(Screen.res[1],buttonHealth.x + 40, buttonHealth.y, buttonHealth.width, buttonHealth.height, null);//+40 para centrarlo
 		g.drawImage(Screen.res[2], buttonCoins.x + 40, buttonCoins.y, buttonCoins.width, buttonCoins.height, null); //+40 para centrarlo
+		g.drawImage(Screen.res[3], buttonKills.x + 750, buttonKills.y, buttonKills.width, buttonKills.height, null); //+40 para centrarlo
+
 		g.setFont(new Font("Courier New", Font.BOLD, 20));
 		g.setColor(new Color(255, 255, 255));
 		g.drawString("" +Screen.health, buttonHealth.x + 50+ buttonHealth.width + iconSpace,buttonHealth.y+20);
 		g.drawString("" +Screen.money, buttonCoins.x + 50+ buttonCoins.width + iconSpace,buttonCoins.y+20);
+		g.drawString("" +Screen.enemyKilled, buttonKills.x + 765+ buttonKills.width + iconSpace,buttonKills.y+20);
 		
 		if(tieneObjeto) {
 			g.drawImage(Screen.air[heldID], Screen.mse.x - ((button[0].width-(itemIn*2))/2)+ itemIn, Screen.mse.y  - ((button[0].width-(itemIn*2))/2)+itemIn, button[0].width -(itemIn*2), button[0].height - (itemIn*2), null);

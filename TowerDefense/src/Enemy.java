@@ -42,6 +42,8 @@ public class Enemy extends Rectangle{
 		inGame = false;
 		direction = right;
 		enemyWalk = 0;
+		Block.getMoney(Screen.enemies[Block.shotEnemyDinero].enemyID);
+		Screen.enemyKilled += 1;
 		
 	}
 	
