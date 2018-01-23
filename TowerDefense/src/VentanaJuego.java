@@ -178,11 +178,11 @@ public class VentanaJuego extends JFrame {
 		          monedas = VentanaJuego.this.miMundo.getPuntos();
 		          Screen.money = monedas;
 		          monedas = 0;
-		          miVentana.dispose();
-		          Frame.main(null);
 		          
 					try {
-						Thread.sleep( 4000 );
+						Thread.sleep( 2000 );
+				          miVentana.dispose();
+				          Frame.main(null);
 					} catch (Exception e) {	
 					}
 					VentanaJuego.this.dispose();	

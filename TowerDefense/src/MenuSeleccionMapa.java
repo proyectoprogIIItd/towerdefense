@@ -80,7 +80,7 @@ public class MenuSeleccionMapa extends JFrame {
 				if(listaMapas.getSelectedValuesList().size() == 1) {
 				String mapa = (String) listaMapas.getSelectedValue();
 				frame.dispose();
-				Frame.frame.main(null);
+				VentanaJuego.main(null);
 				}else if(listaMapas.getSelectedValuesList().size() == 0) {
 				JOptionPane.showMessageDialog(null, "Escoge un mapa.");
 				}else if(listaMapas.getSelectedValuesList().size() >= 2) {

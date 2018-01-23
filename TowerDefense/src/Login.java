@@ -38,7 +38,7 @@ public class Login extends JFrame {
 	
 	public static Connection con;
 	public static Statement s;
-	
+	public static Login frame;
 	Properties properties = new Properties();
 
 
@@ -49,7 +49,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					frame = new Login();
 					frame.setVisible(true);
 					con = BD.initBD("Login");
 					s = BD.usarBD(con);
@@ -136,7 +136,7 @@ public class Login extends JFrame {
 					//VentanaVisualizacion.main(null);
 					//Login.this.setVisible(false);
 					MenuInicio.main(null);
-					Login.this.setVisible(false);
+					frame.dispose();
 					
 					properties.put("Nombre de usuario", textField.getText());
 					properties.put("Password", passwordField.getText());

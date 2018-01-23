@@ -13,6 +13,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeSet;
 
 import javax.swing.JButton;
@@ -21,8 +22,7 @@ import javax.swing.JList;
 public class VentanaRanking extends JFrame {
 
 	private JPanel contentPane;
-	private JList<Puntuacion> ranking;
-	private TreeSet<Puntuacion> rankingOrdenado;
+	private JList<String> ranking;
 	public static VentanaRanking frame;
 	/**
 	 * Launch the application.
@@ -43,8 +43,39 @@ public class VentanaRanking extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	public ArrayList<Puntuacion> reordenar(ArrayList<Puntuacion> p) {
+		
+		ArrayList<Puntuacion> ret = new ArrayList<Puntuacion>();
+		int tamanyo = p.size();
+		for (int i = 0; i < tamanyo; i++) {
+			Puntuacion menor = new Puntuacion();
+		    menor =	p.get(0);
+		    for(int j = 0; j < p.size(); j++) {
+		    	if(menor.getPuntuacion() > p.get(j).getPuntuacion()) {
+		    		menor = p.get(j);
+		    	}else if(menor.getPuntuacion() == p.get(j).getPuntuacion()) {
+		    		char a = menor.getUsuario_nick().charAt(0);
+		    		char b = p.get(j).getUsuario_nick().charAt(0);		    		
+		    		if(b < a) {
+		    			menor = p.get(j);
+		    		}
+		    	}
+		    }
+		    ret.add(menor);
+		    p.remove(menor);
+		}
+		
+		
+		
+		return ret;
+	}
+	
+	
+	
+	
 	public VentanaRanking() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,22 +90,18 @@ public class VentanaRanking extends JFrame {
 		botonera.add(btnMenu);
 		
 		ArrayList<Puntuacion> puntuaciones = new ArrayList<Puntuacion>();
-		puntuaciones = BD.puntuacionSelect(Login.s, null);
-		Puntuacion[] listaM = new Puntuacion[puntuaciones.size()];
-		if(!puntuaciones.isEmpty()) {
-		for(int i = 0; i < puntuaciones.size();i++) {
-			if(puntuaciones.get(i) == null) {
-				
-			}else {
-			rankingOrdenado.add(puntuaciones.get(i));
-			}
+		ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
+		puntuaciones2 = BD.puntuacionSelect(Login.s, null);
+		puntuaciones = reordenar(puntuaciones2);
+		String[] listaM = new String[puntuaciones.size()];
+		for (int i = 0;i<puntuaciones.size();i++) {
+			Puntuacion p = new Puntuacion();
+			p.setPuntuacion(puntuaciones.get(i).getPuntuacion());
+			p.setUsuario_nick(puntuaciones.get(i).getUsuario_nick());
+			listaM[i] = "Usuario: "+p.getUsuario_nick()+" Puntos: "+p.getPuntuacion();
 		}
-		}else {
-			rankingOrdenado.add(new Puntuacion("",0));
-		}
-		listaM = (Puntuacion[]) rankingOrdenado.toArray();
-		ranking = new JList<Puntuacion>(listaM);
-		ranking.setVisibleRowCount(4);  // defines cuántos nombre quieres que aparezcan a la vez
+		ranking = new JList<String>(listaM);
+		ranking.setVisibleRowCount(5);  // defines cuántos nombre quieres que aparezcan a la vez
 		JScrollPane scroll = new JScrollPane(ranking);  //creamos el scroll, pasamos el componente que queremos que tenga scroll
 		JPanel panelRanking = new JPanel();
 		panelRanking.add(scroll);
