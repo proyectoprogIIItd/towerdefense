@@ -13,6 +13,7 @@ public class Store {
 	public static int iconSpace = 3;
 	public static int itemIn = 6; //tamaño del borde
 	public static int heldID = -1;
+	public static int realID =-1;
 	
 	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_AIR,Value.AIR_TRASHCAN};
 	public static int[] buttonPrice = {10,0,0,0,0,0,0,0};
@@ -38,6 +39,7 @@ public class Store {
 					}else {
 						
 					heldID = buttonID[i];
+					realID = i;
 					tieneObjeto = true;
 					}
 					}
@@ -45,13 +47,13 @@ public class Store {
 			}
 			// permite poner las torres (no se puede en camino, inicio y final)
 			if(tieneObjeto) {
-				if(Screen.money >= buttonPrice[heldID]) {
+				if(Screen.money >= buttonPrice[realID]) {
 					for(int y=0; y < Screen.room.block.length; y ++) {
 						for(int x = 0; x < Screen.room.block[0].length; x++) {
 							if(Screen.room.block[y][x].contains(Screen.mse)) {
 								if(Screen.room.block[y][x].groundID != Value.GROUND_ROAD && Screen.room.block[y][x].airID == Value.AIR_AIR && Screen.room.block[y][x].groundID != Value.GROUND_END && Screen.room.block[y][x].groundID != Value.GROUND_START) {
 									Screen.room.block[y][x].airID = heldID;
-									Screen.money -= buttonPrice[heldID];
+									Screen.money -= buttonPrice[realID];
 								}
 							}
 						}

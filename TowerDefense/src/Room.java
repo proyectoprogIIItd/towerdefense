@@ -22,12 +22,22 @@ public class Room {
 	}
 	
 	public void physic(){
-		
+		for (int y = 0; y < block.length; y++) {
+			for(int x = 0; x<block[0].length; x++) {
+				block[y][x].physic();
+			}
+		}
 	}
 	public void draw (Graphics g){
 		for(int y = 0; y<block.length; y++){
 			for(int x = 0; x<block[0].length;x++){
 				block[y][x].draw(g);
+			}
+		}	//se usan dos for para que se renderice por separado el rectangulo si no se veria solo parte del rectangulo
+		
+		for(int y = 0 ; y<block.length; y++) {
+			for(int x = 0; x<block[0].length; x++) {
+				block[y][x].fight(g);
 			}
 		}
 	}
