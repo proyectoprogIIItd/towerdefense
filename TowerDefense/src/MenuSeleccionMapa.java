@@ -86,7 +86,6 @@ public class MenuSeleccionMapa extends JFrame {
 				ArrayList<String> mapaArray = new ArrayList<String>();
 				mapaArray = BD.mapaSelect(Login.s, mapaSelec);
 				estructuraMapa = mapaArray.get(0);
-				System.out.println(estructuraMapa);
 				
 				File archivo = new File("save"+File.separator+"mission1.file");
 		        FileWriter fw;

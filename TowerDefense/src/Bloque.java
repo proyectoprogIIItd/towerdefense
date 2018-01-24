@@ -110,7 +110,7 @@ public class Bloque extends Rectangle{
 						Screen.enemies[enemigoDisparado].enemyLooseHealth(1);
 					}
 					loseFrame = 0;
-					loseTime +=2;
+					loseTime +=4;
 				}else {
 					loseFrame += 1;
 					

@@ -612,3 +612,72 @@
   <message>BD	select * from mapas</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T17:22:46</date>
+  <millis>1516810966356</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T17:22:48</date>
+  <millis>1516810968279</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T17:22:54</date>
+  <millis>1516810974691</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:22:58</date>
+  <millis>1516810978965</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
+<record>
+  <date>2018-01-24T17:24:01</date>
+  <millis>1516811041744</millis>
+  <sequence>4</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from puntuaciones where usuario_nick='1' and nombreMapa='Ghost'</message>
+</record>
+<record>
+  <date>2018-01-24T17:24:01</date>
+  <millis>1516811041761</millis>
+  <sequence>5</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from puntuaciones where nombreMapa='Ghost'</message>
+</record>
