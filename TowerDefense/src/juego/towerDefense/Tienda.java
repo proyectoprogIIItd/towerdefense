@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Store {
+public class Tienda {
 	
 	public static int tiendaWidth = 4; //tienda con los botones
 	public static int tamanyoBoton = 64; //objetos a comprar en la tienda
@@ -28,7 +28,7 @@ public class Store {
 	
 	public boolean tieneObjeto = false;
 	
-	public Store(){
+	public Tienda(){
 		define();
 	}
 	

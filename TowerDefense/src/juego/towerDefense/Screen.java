@@ -42,7 +42,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	public static Room room;
 	public static Save save;
-	public static Store store;
+	public static Tienda store;
 	
 	
 	
@@ -50,8 +50,8 @@ public class Screen extends JPanel implements Runnable{
 	
 	
 	public Screen(Frame frame){
-		frame.addMouseListener(new KeyHandle());
-		frame.addMouseMotionListener(new KeyHandle());
+		frame.addMouseListener(new MenejoRaton());
+		frame.addMouseMotionListener(new MenejoRaton());
 		thread.start();
 	}
 	
@@ -64,7 +64,7 @@ public class Screen extends JPanel implements Runnable{
 	public void define(){
 		room = new Room();
 		save = new Save();
-		store = new Store();
+		store = new Tienda();
 		
 		
 		

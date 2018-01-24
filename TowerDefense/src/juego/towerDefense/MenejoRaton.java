@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-public class KeyHandle implements MouseMotionListener, MouseListener{
+public class MenejoRaton implements MouseMotionListener, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
