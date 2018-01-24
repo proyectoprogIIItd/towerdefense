@@ -173,13 +173,7 @@ public class Login extends JFrame {
 				}else if(usuarios.isEmpty()){
 					Usuario u = new Usuario(textField.getText(), passwordField.getText(), textField.getText());
 					BD.usuarioInsert(s, u);
-					
-					try {
-						s.execute("insert into puntuaciones values('"+u.getNick()+"', "+ 0 +")");
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+
 					JOptionPane.showMessageDialog(null, "Te has registrado correctamente");
 				}
 				

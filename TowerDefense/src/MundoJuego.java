@@ -181,7 +181,7 @@ public class MundoJuego {
 	        this.panel.remove(estrellaLabel);
 	        this.panel.repaint();
 	        this.arrayEstrellas.remove(estrellaLabel);
-	        this.puntos = puntos + 5;
+	        this.puntos = puntos + 3;
 	      }
 	    }
 	    return choques;

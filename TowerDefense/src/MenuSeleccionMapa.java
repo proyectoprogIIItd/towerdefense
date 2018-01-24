@@ -28,6 +28,7 @@ public class MenuSeleccionMapa extends JFrame {
 	private JButton Jugar = new JButton("Jugar");
 	ArrayList<String> mapas;
 	public static MenuSeleccionMapa frame;
+	public static String mapaSelec;
 	
 	/**
 	 * Launch the application.
@@ -76,7 +77,7 @@ public class MenuSeleccionMapa extends JFrame {
 		Jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//aqui va el codigo de crear mapa
-				
+				mapaSelec = listaMapas.getSelectedValue();
 				if(listaMapas.getSelectedValuesList().size() == 1) {
 				String mapa = (String) listaMapas.getSelectedValue();
 				frame.dispose();

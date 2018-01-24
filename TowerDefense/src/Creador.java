@@ -56,11 +56,6 @@ public class Creador {
 	    	JButton ColocarS = new JButton( "Colocar Spawn" );
 			JButton Camino = new JButton( "Camino" );
 			JButton Atras = new JButton("Atras");
-			JLabel textoLvl = new JLabel ("Nivel Dificultad:");
-			JComboBox Lvl = new JComboBox();
-			Lvl.addItem("Facil");
-			Lvl.addItem("Medio");
-			Lvl.addItem("Dificil");
 			JButton Guardar = new JButton( "Guardar" );
 			
 	        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,9 +70,6 @@ public class Creador {
 			tools.add( Eliminar );
 			tools.addSeparator();
 			tools.add( Camino );
-			tools.addSeparator();
-			tools.add(textoLvl);
-			tools.add( Lvl );
 			tools.addSeparator();
 			tools.add( Guardar );
 			tools.addSeparator();
@@ -204,7 +196,6 @@ public class Creador {
 							mapaEntero = mapaEntero + (arrayMapa[i][j]+";");
 						}
 					}
-					String nivel = (String) (Lvl.getSelectedItem());
 					String nombreMapa;
 					nombreMapa = JOptionPane.showInputDialog("Inserte el nombre del mapa:");
 
@@ -214,7 +205,8 @@ public class Creador {
 					}else {
 						cogido = BD.mapaNombreSelect(Login.s, nombreMapa);
 						if(cogido.isEmpty()) {
-							BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nivel , nombreMapa);
+							BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nombreMapa);
+							BD.puntuacionInsert(Login.s, nombreMapa, "", 0);
 							f.dispose();
 							MenuJugarCrearMapa.main(null);
 						}else {
