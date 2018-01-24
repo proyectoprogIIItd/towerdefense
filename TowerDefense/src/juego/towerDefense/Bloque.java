@@ -1,3 +1,4 @@
+package juego.towerDefense;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -110,7 +111,7 @@ public class Bloque extends Rectangle{
 						Screen.enemies[enemigoDisparado].enemyLooseHealth(1);
 					}
 					loseFrame = 0;
-					loseTime +=4;
+					loseTime +=3;
 				}else {
 					loseFrame += 1;
 					

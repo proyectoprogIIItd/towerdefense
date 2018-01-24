@@ -1,3 +1,5 @@
+package juego.coche;
+
 public class Coche {
 	public static double masa = 1.0;
 	public static double fuerzaBaseAd = 2000.0;
@@ -5,9 +7,9 @@ public class Coche {
 	public static double rozamSuelo = 15.5;
 	public static double rozamAire = 0.35;
 	protected double miVelocidad;  // Velocidad en pixels/segundo
-	protected double miDireccionActual;  // Dirección en la que estoy mirando en grados (de 0 a 360)
-	protected double posX;  // Posición en X (horizontal)
-	protected double posY;  // Posición en Y (vertical)
+	protected double miDireccionActual;  // Direcciï¿½n en la que estoy mirando en grados (de 0 a 360)
+	protected double posX;  // Posiciï¿½n en X (horizontal)
+	protected double posY;  // Posiciï¿½n en Y (vertical)
 	protected String piloto;  // Nombre de piloto
 	
 	// Constructores
@@ -19,7 +21,7 @@ public class Coche {
 		posY = 300;
 	}
 	
-	/** Devuelve la velocidad actual del coche en píxeles por segundo
+	/** Devuelve la velocidad actual del coche en pï¿½xeles por segundo
 	 * @return	velocidad
 	 */
 	public double getVelocidad() {
@@ -81,15 +83,15 @@ public class Coche {
 		miVelocidad = MundoJuego.calcVelocidadConAceleracion( miVelocidad, aceleracion, tiempo );
 	}
 	
-	/** Cambia la dirección actual del coche
-	 * @param giro	Angulo de giro a sumar o restar de la dirección actual, en grados (-180 a +180)
+	/** Cambia la direcciï¿½n actual del coche
+	 * @param giro	Angulo de giro a sumar o restar de la direcciï¿½n actual, en grados (-180 a +180)
 	 * 				Considerando positivo giro antihorario, negativo giro horario
 	 */
 	public void gira( double giro ) {
 		setDireccionActual( miDireccionActual + giro );
 	}
 	
-	/** Cambia la posición del coche dependiendo de su velocidad y dirección
+	/** Cambia la posiciï¿½n del coche dependiendo de su velocidad y direcciï¿½n
 	 * @param tiempoDeMovimiento	Tiempo transcurrido, en segundos
 	 */
 	public void mueve( double tiempoDeMovimiento ) {
@@ -100,10 +102,10 @@ public class Coche {
 	@Override
 	public String toString() {
 		return piloto + " (" + posX + "," + posY + ") - " +
-			   "Velocidad: " + miVelocidad + " ## Dirección: " + miDireccionActual; 
+			   "Velocidad: " + miVelocidad + " ## Direcciï¿½n: " + miDireccionActual; 
 	}
-	 /** Devuelve la fuerza de aceleración del coche, de acuerdo al motor definido en la práctica 2
-	 * @return Fuerza de aceleración en Newtixels
+	 /** Devuelve la fuerza de aceleraciï¿½n del coche, de acuerdo al motor definido en la prï¿½ctica 2
+	 * @return Fuerza de aceleraciï¿½n en Newtixels
 	 */ 
 	  public double fuerzaAceleracionAdelante() {
 	  if (miVelocidad<=-150){

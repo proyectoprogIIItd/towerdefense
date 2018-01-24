@@ -1,3 +1,4 @@
+package juego.coche;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -41,16 +42,16 @@ public class JLabelEstrella extends JLabel {
 	  this.giro = giro + gradosGiro/180*Math.PI;
 	}
 	
-	//también copiado de JLabelCoche y exportado a estrella
+	//tambiï¿½n copiado de JLabelCoche y exportado a estrella
 	 protected void paintComponent(Graphics g) {
 //			super.paintComponent(g);   // En este caso no nos sirve el pintado normal de un JLabel
 	    Image img = ((ImageIcon)getIcon()).getImage();
 	    Graphics2D g2 = (Graphics2D)g; // El Graphics realmente es Graphics2D
-		// Escalado más fino con estos 3 parámetros:
+		// Escalado mï¿½s fino con estos 3 parï¿½metros:
 	    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 	    g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 	    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	 // Prepara rotación (siguientes operaciones se rotarán)
+	 // Prepara rotaciï¿½n (siguientes operaciones se rotarï¿½n)
 	    g2.rotate(giro, 20.0D, 20.0D);// getIcon().getIconWidth()/2, getIcon().getIconHeight()/2 );
         // Dibujado de la imagen
 	    g2.drawImage(img, 0, 0, estrellaXY, estrellaXY, null);

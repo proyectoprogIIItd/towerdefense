@@ -1,3 +1,4 @@
+package juego.coche;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,15 +11,15 @@ import javax.swing.JLabel;
 
 
 public class JLabelCoche extends JLabel {
-	private static final long serialVersionUID = 1L;  // Para serialización
-	public static final int TAMANYO_COCHE = 100;  // píxels (igual ancho que algo)
-	public static final int RADIO_ESFERA_COCHE = 35;  // Radio en píxels del bounding circle del coche (para choques)
-	private static final boolean DIBUJAR_ESFERA_COCHE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
+	private static final long serialVersionUID = 1L;  // Para serializaciï¿½n
+	public static final int TAMANYO_COCHE = 100;  // pï¿½xels (igual ancho que algo)
+	public static final int RADIO_ESFERA_COCHE = 35;  // Radio en pï¿½xels del bounding circle del coche (para choques)
+	private static final boolean DIBUJAR_ESFERA_COCHE = true;  // Dibujado (para depuraciï¿½n) del bounding circle de choque del coche
 	
-	/** Construye y devuelve el JLabel del coche con su gráfico y tamaño
+	/** Construye y devuelve el JLabel del coche con su grï¿½fico y tamaï¿½o
 	 */
 	public JLabelCoche() {
-		// Esto se haría para acceder por sistema de ficheros
+		// Esto se harï¿½a para acceder por sistema de ficheros
 		// 		super( new ImageIcon( "bin/ud/prog3/pr00/coche.png" ) );
 		// Esto se hace para acceder tanto por recurso (jar) como por fichero
 		try {
@@ -28,7 +29,7 @@ public class JLabelCoche extends JLabel {
 			e.printStackTrace();
 		}
 		setBounds( 0, 0, TAMANYO_COCHE, TAMANYO_COCHE );
-		// Esto sería útil cuando hay algún problema con el gráfico: borde de color del JLabel
+		// Esto serï¿½a ï¿½til cuando hay algï¿½n problema con el grï¿½fico: borde de color del JLabel
 		// setBorder( BorderFactory.createLineBorder( Color.yellow, 4 ));
 	}
 	
@@ -44,21 +45,21 @@ public class JLabelCoche extends JLabel {
 		miGiro = gradosGiro/180*Math.PI;
 		// El giro en la pantalla es en sentido horario (inverso):
 		miGiro = -miGiro;  // Cambio el sentido del giro
-		// Y el gráfico del coche apunta hacia arriba (en lugar de derecha OX)
-		miGiro = miGiro + Math.PI/2; // Sumo 90º para que corresponda al origen OX
+		// Y el grï¿½fico del coche apunta hacia arriba (en lugar de derecha OX)
+		miGiro = miGiro + Math.PI/2; // Sumo 90ï¿½ para que corresponda al origen OX
 	}
 
-	// Redefinición del paintComponent para que se escale y se rote el gráfico
+	// Redefiniciï¿½n del paintComponent para que se escale y se rote el grï¿½fico
 	@Override
 	protected void paintComponent(Graphics g) {
 //		super.paintComponent(g);   // En este caso no nos sirve el pintado normal de un JLabel
 		Image img = ((ImageIcon)getIcon()).getImage();
 		Graphics2D g2 = (Graphics2D) g;  // El Graphics realmente es Graphics2D
-		// Escalado más fino con estos 3 parámetros:
+		// Escalado mï¿½s fino con estos 3 parï¿½metros:
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	
-		// Prepara rotación (siguientes operaciones se rotarán)
+		// Prepara rotaciï¿½n (siguientes operaciones se rotarï¿½n)
         g2.rotate( miGiro, TAMANYO_COCHE/2, TAMANYO_COCHE/2 ); // getIcon().getIconWidth()/2, getIcon().getIconHeight()/2 );
         // Dibujado de la imagen
         g2.drawImage( img, 0, 0, TAMANYO_COCHE, TAMANYO_COCHE, null );

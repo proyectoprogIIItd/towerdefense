@@ -1,6 +1,7 @@
+package juego.coche;
 
 public class CocheJuego extends Coche {
-	private JLabelCoche miGrafico;  // Etiqueta gráfica del coche
+	private JLabelCoche miGrafico;  // Etiqueta grï¿½fica del coche
 	
 	/**  Crea un nuevo coche de juego
 	 */
@@ -8,8 +9,8 @@ public class CocheJuego extends Coche {
 		miGrafico = new JLabelCoche();
 	}
 	
-	/** Devuelve el JLabel gráfico asociado al coche de juego
-	 * @return	Etiqueta gráfica del coche
+	/** Devuelve el JLabel grï¿½fico asociado al coche de juego
+	 * @return	Etiqueta grï¿½fica del coche
 	 */
 	public JLabelCoche getGrafico() {
 		return miGrafico;
@@ -19,14 +20,14 @@ public class CocheJuego extends Coche {
 	public void setPosX(double posX) {
 		super.setPosX(posX);
 		miGrafico.setLocation( (int)posX, (int)posY );
-		// miGrafico.repaint();  // Al cambiar la location, Swing redibuja automáticamente
+		// miGrafico.repaint();  // Al cambiar la location, Swing redibuja automï¿½ticamente
 	}
 
 	@Override
 	public void setPosY(double posY) {
 		super.setPosY(posY);
 		miGrafico.setLocation( (int)posX, (int)posY );
-		// miGrafico.repaint();  // Al cambiar la location, Swing redibuja automáticamente
+		// miGrafico.repaint();  // Al cambiar la location, Swing redibuja automï¿½ticamente
 	}
 
 	@Override

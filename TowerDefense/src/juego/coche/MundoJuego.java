@@ -1,3 +1,4 @@
+package juego.coche;
 import java.util.ArrayList;
 import java.util.Random;
 

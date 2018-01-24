@@ -1,3 +1,4 @@
+package juego.coche;
 
 
 import java.awt.BorderLayout;
@@ -9,6 +10,8 @@ import javax.swing.*;
 
 import Utilidades.BD;
 import Utilidades.Usuario;
+import juego.towerDefense.Frame;
+import juego.towerDefense.Screen;
 
 
 
