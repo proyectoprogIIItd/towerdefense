@@ -58,6 +58,7 @@ public class Creador {
 			JButton Atras = new JButton("Atras");
 			JButton Guardar = new JButton( "Guardar" );
 			
+
 	        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        JToolBar tools = new JToolBar();
 	        tools.setFloatable(false);
@@ -249,6 +250,7 @@ public class Creador {
 	                f.getContentPane().add(cb.getGui());
 	                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	                f.setLocationByPlatform(true);
+	                f.setResizable(false);
 	                // ensures the frame is the minimum size it needs to be
 	                // in order display the components within it
 	                f.pack();

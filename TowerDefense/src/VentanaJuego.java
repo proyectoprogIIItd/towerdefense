@@ -170,11 +170,11 @@ public class VentanaJuego extends JFrame {
 		        VentanaJuego.this.miMundo.creaEstrella();
 		        VentanaJuego.this.miMundo.quitaYRotaEstrellas(6000);
 		        VentanaJuego.this.miMundo.choquesConEstrellas();	
-		        String mensaje = "Puntos: " + VentanaJuego.this.miMundo.getPuntos() + "  -  Fallos: " + VentanaJuego.this.miMundo.getPerdidas();
+		        String mensaje = "Monedas: " + VentanaJuego.this.miMundo.getPuntos() + "  -  Fallos: " + VentanaJuego.this.miMundo.getPerdidas();
 		        VentanaJuego.this.lMensaje.setText(mensaje);        
 		        if (VentanaJuego.this.miMundo.GAMEOVER()){
 		          this.sigo = false;
-		          VentanaJuego.this.lMensaje.setText("GAME OVER: Has sacado " +  VentanaJuego.this.miMundo.getPuntos() + " puntos.");
+		          VentanaJuego.this.lMensaje.setText("GAME OVER: Has sacado " +  VentanaJuego.this.miMundo.getPuntos() + " monedas.");
 		          monedas = VentanaJuego.this.miMundo.getPuntos();
 		          Screen.money = monedas;
 		          monedas = 0;
@@ -182,12 +182,10 @@ public class VentanaJuego extends JFrame {
 					try {
 						Thread.sleep( 2000 );
 						VentanaJuego.this.dispose();
-				          miVentana.dispose();
-				          Frame.main(null);
+				        Frame.main(null);
 					} catch (Exception e) {	
 					}
 					miVentana.dispose();
-					Thread.interrupted();
 		        }
 				// Dormir el hilo 40 milisegundos
 				try {

@@ -138,13 +138,13 @@ public class Bloque extends Rectangle{
 			if (aireID == Value.AIR_TOWER_1) {
 				g.drawRect(rangoTorre.x, rangoTorre.y, rangoTorre.width, rangoTorre.height);
 			}
+		}
 			if(disparando) {
 				g.setColor(new Color(255,255,0));
 				Graphics2D g2 = (Graphics2D) g;
                 g2.setStroke(new BasicStroke(5));
 				g.drawLine(x + (width/2), y + (height/2), Screen.enemies[enemigoDisparado].x + (Screen.enemies[enemigoDisparado].width/2),Screen.enemies[enemigoDisparado].y + (Screen.enemies[enemigoDisparado].height/2) );
 			}
-		}
 	}
 }
 

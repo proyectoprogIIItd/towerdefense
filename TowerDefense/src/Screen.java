@@ -34,7 +34,7 @@ public class Screen extends JPanel implements Runnable{
 	public static boolean isFirst = true;
 	public static boolean isDead = false;
 	
-	public static boolean isDebug = true;
+	public static boolean isDebug = false;
 	
 	public static Point mse = new Point(0,0);
 	

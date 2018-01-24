@@ -681,3 +681,237 @@
   <thread>14</thread>
   <message>BD	select * from puntuaciones where nombreMapa='Ghost'</message>
 </record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T17:27:00</date>
+  <millis>1516811220476</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T17:27:02</date>
+  <millis>1516811222256</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T17:27:24</date>
+  <millis>1516811244297</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:27:29</date>
+  <millis>1516811249553</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T17:30:10</date>
+  <millis>1516811410426</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T17:30:12</date>
+  <millis>1516811412141</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T17:30:17</date>
+  <millis>1516811417372</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:30:20</date>
+  <millis>1516811420670</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T17:31:23</date>
+  <millis>1516811483723</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T17:31:25</date>
+  <millis>1516811485797</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T17:31:32</date>
+  <millis>1516811492002</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:31:34</date>
+  <millis>1516811494811</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T17:39:57</date>
+  <millis>1516811997601</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T17:39:59</date>
+  <millis>1516811999075</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T17:40:05</date>
+  <millis>1516812005674</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:40:10</date>
+  <millis>1516812010136</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
+<record>
+  <date>2018-01-24T17:41:10</date>
+  <millis>1516812070458</millis>
+  <sequence>4</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from puntuaciones where usuario_nick='1' and nombreMapa='Ghost'</message>
+</record>
+<record>
+  <date>2018-01-24T17:41:10</date>
+  <millis>1516812070473</millis>
+  <sequence>5</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from puntuaciones where nombreMapa='Ghost'</message>
+</record>
+<record>
+  <date>2018-01-24T17:41:14</date>
+  <millis>1516812074604</millis>
+  <sequence>6</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T17:41:17</date>
+  <millis>1516812077192</millis>
+  <sequence>7</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>14</thread>
+  <message>BD	select * from mapas where nombreMapa = 'Ghost'</message>
+</record>
