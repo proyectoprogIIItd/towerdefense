@@ -92,13 +92,13 @@ public class Login extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblIntroduceTuNombre = new JLabel("Introduce tu nombre de usuario y contraseÃ±a");
+		JLabel lblIntroduceTuNombre = new JLabel("Introduce tu nombre de usuario y contrasenya");
 		panel.add(lblIntroduceTuNombre);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		
-		JLabel lblSiNoEsts = new JLabel("Si no estÃ¡s registrado tienes que registrarte primero");
+		JLabel lblSiNoEsts = new JLabel("Si no estas registrado tienes que registrarte primero");
 		panel_1.add(lblSiNoEsts);
 		
 		JPanel panel_2 = new JPanel();
@@ -109,7 +109,7 @@ public class Login extends JFrame {
 		lblNombreDeUsuario.setBounds(61, 49, 130, 16);
 		panel_2.add(lblNombreDeUsuario);
 		
-		JLabel lblContrasea = new JLabel("ContraseÃ±a:");
+		JLabel lblContrasea = new JLabel("Contrasenya:");
 		lblContrasea.setBounds(89, 123, 102, 16);
 		panel_2.add(lblContrasea);
 		
@@ -132,7 +132,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				usuarios = BD.usuarioSelect(s, "Nick = '" + textField.getText() + "' " + "AND " + "Password = '" + passwordField.getText() + "'");
 				if (!usuarios.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Has iniciado sesiÃ³n correctamente");
+					JOptionPane.showMessageDialog(null, "Has iniciado sesion correctamente");
 					
 					//VentanaVisualizacion.main(null);
 					//Login.this.setVisible(false);
@@ -151,7 +151,7 @@ public class Login extends JFrame {
 					
 					
 				} else if (usuarios.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nombre y/o contraseÃ±a incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Nombre y/o contrasenya incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 
 				
@@ -168,7 +168,7 @@ public class Login extends JFrame {
 				if(textField.getText().equals("")){
 					JOptionPane.showMessageDialog(null, "Introduce un usuario", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(passwordField.getText().equals("")){
-					JOptionPane.showMessageDialog(null, "Introduce una contraseÃ±a", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Introduce una contrasenya", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(!usuarios.isEmpty()){
 					JOptionPane.showMessageDialog(null, "Usuario en uso", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(usuarios.isEmpty()){
