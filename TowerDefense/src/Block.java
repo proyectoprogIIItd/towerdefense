@@ -15,7 +15,7 @@ public class Block extends Rectangle{
 	public int airID;
 	public int loseTime = 100, loseFrame = 0;
 	public int shotEnemy = -1;
-	public static int shotEnemyDinero = -1;
+	public static int shotEnemyDinero = 0;
 	public boolean shotingTower1 = false;
 	public boolean shotingTower2 = false;
 	public boolean shotingTower3 = false;

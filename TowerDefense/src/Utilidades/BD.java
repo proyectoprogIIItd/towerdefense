@@ -66,12 +66,12 @@ public class BD {
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			try {
 				statement.executeUpdate("create table puntuaciones " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, puntuacion integer)"); // (1) Solo para foreign keys
+					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, puntuacion integer, nombreMapa string REFERENCES mapas(nombreMapa) ON DELETE CASCADE)"); // (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			try {
 				statement.executeUpdate("create table mapas " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, lvl string, nombreMapa string PRIMARY KEY)"); 
+					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, nombreMapa string PRIMARY KEY)"); 
 					// (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} //
@@ -158,14 +158,34 @@ public class BD {
 			return false;
 		}
 	}
-	public static boolean mapasInsert( Statement st,String u, String mapa, String lvl, String nombre ) {
+	public static boolean puntuacionInsert( Statement st, String nombreMapa, String u_nick, int puntuacion ) {
+		String sentSQL = "";
+		try {
+			
+			sentSQL = "insert into usuario values(" +
+					"'" + u_nick + "', " +
+					"'" + puntuacion + "', " +
+					"'" + nombreMapa + "')";
+			// System.out.println( sentSQL );  // para ver lo que se hace en consola
+			int val = st.executeUpdate( sentSQL );
+			if (val!=1) {  // Se tiene que a�adir 1 - error si no
+				return false;  
+			}
+			return true;
+		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public static boolean mapasInsert( Statement st,String u, String mapa, String nombre ) {
 		String sentSQL = "";
 		try {
 			
 			sentSQL = "insert into mapas values(" +
 					"'" + u + "', " +
 					"'" + mapa + "', " +
-					"'" + lvl + "', " +
 					"'" + nombre + "')";
 			// System.out.println( sentSQL );  // para ver lo que se hace en consola
 			int val = st.executeUpdate( sentSQL );
@@ -217,7 +237,37 @@ public class BD {
 			return null;
 		}
 	}
-	
+	public static ArrayList<Puntuacion> puntuacionSelect( Statement st, String codigoSelect ) {
+		String sentSQL = "";
+		ArrayList<Puntuacion> ret = new ArrayList<>();
+		try {
+			sentSQL = "select * from puntuaciones";
+			if (codigoSelect!=null && !codigoSelect.equals(""))
+				sentSQL = sentSQL + " where ='" + codigoSelect+"'";
+			// System.out.println( sentSQL );  // Para ver lo que se hace en consola
+			ResultSet rs = st.executeQuery( sentSQL );
+			while (rs.next()) {
+				Puntuacion p = new Puntuacion();
+				p.setUsuario_nick(rs.getString("Usuario_nick"));
+				p.setPuntuacion(rs.getInt("Puntuacion"));
+				
+				ret.add( p );
+			}
+			rs.close();
+			log( Level.INFO, "BD\t" + sentSQL, null );
+			return ret;
+		} catch (IllegalArgumentException e) {  // Error en tipo usuario (enumerado)
+			log( Level.SEVERE, "Error en BD en tipo de puntuacion\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public static ArrayList<String> mapaNombreSelect( Statement st, String codigoSelect ) {
 		String sentSQL = "";
 		ArrayList<String> ret = new ArrayList<>();
@@ -344,37 +394,7 @@ public class BD {
 		else
 			logger.log( level, msg, excepcion );
 	}
-	public static ArrayList<Puntuacion> puntuacionSelect( Statement st, String codigoSelect ) {
-		String sentSQL = "";
-		ArrayList<Puntuacion> ret = new ArrayList<>();
-		try {
-			sentSQL = "select * from puntuaciones";
-			if (codigoSelect!=null && !codigoSelect.equals(""))
-				sentSQL = sentSQL + " where " + codigoSelect;
-			// System.out.println( sentSQL );  // Para ver lo que se hace en consola
-			ResultSet rs = st.executeQuery( sentSQL );
-			while (rs.next()) {
-				Puntuacion p = new Puntuacion();
-				p.setUsuario_nick(rs.getString("Usuario_nick"));
-				p.setPuntuacion(rs.getInt("Puntuacion"));
-				
-				ret.add( p );
-			}
-			rs.close();
-			log( Level.INFO, "BD\t" + sentSQL, null );
-			return ret;
-		} catch (IllegalArgumentException e) {  // Error en tipo usuario (enumerado)
-			log( Level.SEVERE, "Error en BD en tipo de puntuacion\t" + sentSQL, e );
-			lastError = e;
-			e.printStackTrace();
-			return null;
-		} catch (SQLException e) {
-			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
-			lastError = e;
-			e.printStackTrace();
-			return null;
-		}
-	}
+
 	
 	
 }

@@ -91,7 +91,10 @@ public class VentanaRanking extends JFrame {
 		
 		ArrayList<Puntuacion> puntuaciones = new ArrayList<Puntuacion>();
 		ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
-		puntuaciones2 = BD.puntuacionSelect(Login.s, null);
+		puntuaciones2 = BD.puntuacionSelect(Login.s, MenuSeleccionMapa.mapaSelec);
+		if (puntuaciones2.isEmpty()) {
+			puntuaciones2.add(new Puntuacion("",0));
+		}
 		puntuaciones = reordenar(puntuaciones2);
 		String[] listaM = new String[puntuaciones.size()];
 		for (int i = 0;i<puntuaciones.size();i++) {
