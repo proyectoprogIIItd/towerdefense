@@ -18,15 +18,15 @@ public class MundoJuego {
 		this.panel = panel;
 	}
 
-	/** Crea un coche nuevo y lo añade al mundo y al panel visual
-	 * @param posX	Posición X de pixel del nuevo coche
-	 * @param posY	Posición Y de píxel del nuevo coche
+	/** Crea un coche nuevo y lo aï¿½ade al mundo y al panel visual
+	 * @param posX	Posiciï¿½n X de pixel del nuevo coche
+	 * @param posY	Posiciï¿½n Y de pï¿½xel del nuevo coche
 	 */
 	public void creaCoche( int posX, int posY ) {
-		// Crear y añadir el coche a la ventana
+		// Crear y aï¿½adir el coche a la ventana
 		miCoche = new CocheJuego();
 		miCoche.setPosicion( posX, posY );
-		panel.add( miCoche.getGrafico() );  // Añade al panel visual
+		panel.add( miCoche.getGrafico() );  // Aï¿½ade al panel visual
 		miCoche.getGrafico().repaint();  // Refresca el dibujado del coche
 	}
 	
@@ -37,8 +37,8 @@ public class MundoJuego {
 		return miCoche;
 	}
 
-	/** Calcula si hay choque en horizontal con los límites del mundo
-	 * @param coche	Coche cuyo choque se comprueba con su posición actual
+	/** Calcula si hay choque en horizontal con los lï¿½mites del mundo
+	 * @param coche	Coche cuyo choque se comprueba con su posiciï¿½n actual
 	 * @return	true si hay choque horizontal, false si no lo hay
 	 */
 	public boolean hayChoqueHorizontal( CocheJuego coche ) {
@@ -46,8 +46,8 @@ public class MundoJuego {
 				|| coche.getPosX()>panel.getWidth()-JLabelCoche.TAMANYO_COCHE/2-JLabelCoche.RADIO_ESFERA_COCHE );
 	}
 	
-	/** Calcula si hay choque en vertical con los límites del mundo
-	 * @param coche	Coche cuyo choque se comprueba con su posición actual
+	/** Calcula si hay choque en vertical con los lï¿½mites del mundo
+	 * @param coche	Coche cuyo choque se comprueba con su posiciï¿½n actual
 	 * @return	true si hay choque vertical, false si no lo hay
 	 */
 	public boolean hayChoqueVertical( CocheJuego coche ) {
@@ -62,7 +62,7 @@ public class MundoJuego {
 		// System.out.println( "Choca X");
 		double dir = coche.getDireccionActual();
 		dir = 180-dir;   // Rebote espejo sobre OY (complementario de 180)
-		if (dir < 0) dir = 360+dir;  // Corrección para mantenerlo en [0,360)
+		if (dir < 0) dir = 360+dir;  // Correcciï¿½n para mantenerlo en [0,360)
 		coche.setDireccionActual( dir );
 	}
 	
@@ -76,9 +76,9 @@ public class MundoJuego {
 		miCoche.setDireccionActual( dir );
 	}
 	
-	/** Calcula y devuelve la posición X de un movimiento
-	 * @param vel    	Velocidad del movimiento (en píxels por segundo)
-	 * @param dir    	Dirección del movimiento en grados (0º = eje OX positivo. Sentido antihorario)
+	/** Calcula y devuelve la posiciï¿½n X de un movimiento
+	 * @param vel    	Velocidad del movimiento (en pï¿½xels por segundo)
+	 * @param dir    	Direcciï¿½n del movimiento en grados (0ï¿½ = eje OX positivo. Sentido antihorario)
 	 * @param tiempo	Tiempo del movimiento (en segundos)
 	 * @return
 	 */
@@ -86,9 +86,9 @@ public class MundoJuego {
 		return vel * Math.cos(dir/180.0*Math.PI) * tiempo;
 	}
 	
-	/** Calcula y devuelve la posición X de un movimiento
-	 * @param vel    	Velocidad del movimiento (en píxels por segundo)
-	 * @param dir    	Dirección del movimiento en grados (0º = eje OX positivo. Sentido antihorario)
+	/** Calcula y devuelve la posiciï¿½n X de un movimiento
+	 * @param vel    	Velocidad del movimiento (en pï¿½xels por segundo)
+	 * @param dir    	Direcciï¿½n del movimiento en grados (0ï¿½ = eje OX positivo. Sentido antihorario)
 	 * @param tiempo	Tiempo del movimiento (en segundos)
 	 * @return
 	 */
@@ -97,9 +97,9 @@ public class MundoJuego {
 		// el negativo es porque en pantalla la Y crece hacia abajo y no hacia arriba
 	}
 	
-	/** Calcula el cambio de velocidad en función de la aceleración
+	/** Calcula el cambio de velocidad en funciï¿½n de la aceleraciï¿½n
 	 * @param vel		Velocidad original
-	 * @param acel		Aceleración aplicada (puede ser negativa) en pixels/sg2
+	 * @param acel		Aceleraciï¿½n aplicada (puede ser negativa) en pixels/sg2
 	 * @param tiempo	Tiempo transcurrido en segundos
 	 * @return	Nueva velocidad
 	 */
@@ -115,7 +115,7 @@ public class MundoJuego {
 			 } 
 	 
 	 public static double calcAceleracionConFuerza( double fuerza, double masa ) {
-		 // 2ª ley de Newton: F = m*a ---> a = F/m
+		 // 2ï¿½ ley de Newton: F = m*a ---> a = F/m
 		 return fuerza/masa;
 		 } 
 
@@ -128,7 +128,7 @@ public class MundoJuego {
 		 coche.acelera( aceleracion, 0.04 );
 		 if (velAntigua>=0 && coche.getVelocidad()<0
 		 || velAntigua<=0 && coche.getVelocidad()>0) {
-		 coche.setVelocidad(0); // Si se está frenando, se para (no anda al revés)
+		 coche.setVelocidad(0); // Si se estï¿½ frenando, se para (no anda al revï¿½s)
 		 }
 		 } else {
 		 coche.acelera( aceleracion, 0.04 );
@@ -163,13 +163,17 @@ public class MundoJuego {
 	    }
 	    return estrellasQuitadas;
 	  }
-//pare detectar la colision (esta parte está copiada)
+//pare detectar la colision (esta parte estï¿½ copiada)
 	  private boolean colision(JLabelEstrella estrella)
 	  {
 	    double X = estrella.getX() + 20 - this.miCoche.getPosX() - 50.0;
 	    double Y = estrella.getY() + 20 - this.miCoche.getPosY() - 50.0;
 	    double dist = Math.sqrt(X * X + Y * Y);
 	    return dist <= 52.0;
+	  }
+	  
+	  public void quitaEstrellasYCoche() {
+		  this.panel.removeAll();
 	  }
 	  
 	  public int choquesConEstrellas() {

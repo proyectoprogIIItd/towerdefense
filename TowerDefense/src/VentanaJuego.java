@@ -11,7 +11,9 @@ import Utilidades.BD;
 import Utilidades.Usuario;
 
 
+
 public class VentanaJuego extends JFrame {
+
 	public static int monedas = 0;
 	private static final long serialVersionUID = 1L;  // Para serialización
 	JPanel pPrincipal;         // Panel del juego (layout nulo)
@@ -178,11 +180,20 @@ public class VentanaJuego extends JFrame {
 		          monedas = VentanaJuego.this.miMundo.getPuntos();
 		          Screen.money = monedas;
 		          monedas = 0;
+		          if (miHilo!=null) miHilo.acaba();
+		          VentanaJuego.this.miMundo.quitaEstrellasYCoche();
 		          
 					try {
+						
 						Thread.sleep( 2000 );
 						VentanaJuego.this.dispose();
+						
 				        Frame.main(null);
+						
+							
+						
+				        
+				        
 					} catch (Exception e) {	
 					}
 					miVentana.dispose();
@@ -198,6 +209,7 @@ public class VentanaJuego extends JFrame {
 		 */
 		public void acaba() {
 			sigo = false;
+			
 		}
 	};
 	

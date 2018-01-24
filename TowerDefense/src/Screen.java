@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.WindowEvent;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
@@ -51,6 +52,11 @@ public class Screen extends JPanel implements Runnable{
 		frame.addMouseListener(new KeyHandle());
 		frame.addMouseMotionListener(new KeyHandle());
 		thread.start();
+	}
+	
+	public static void cerrarFrame() {
+		Frame.frame.dispatchEvent(new WindowEvent(Frame.frame, WindowEvent.WINDOW_CLOSING));
+
 	}
 	
 
@@ -112,11 +118,6 @@ public class Screen extends JPanel implements Runnable{
 		store.draw(g); // dibujando la tienda
 		
 		if(health < 1) {
-			g.setColor(new Color(240, 20, 20));
-			g.fillRect(0, 0, myWidth, myHeight);
-			g.setColor(new Color(255, 255, 255));
-			g.setFont(new Font("Courier New",Font.BOLD, 80));
-			g.drawString("GAME OVER", 270, 200);
 			thread.interrupt();
 			ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
 			puntuaciones2 = BD.puntuacionUsuarioSelect(Login.s, Login.textField.getText(),MenuSeleccionMapa.mapaSelec);
@@ -129,6 +130,8 @@ public class Screen extends JPanel implements Runnable{
 				BD.puntuacionUpdate(Login.s, Login.textField.getText(), enemyKilled, MenuSeleccionMapa.mapaSelec);
 			}
 			}
+			health = 10;
+			Frame.frame.removeAll();
 			Frame.frame.dispose();
 			VentanaRanking.main(null);
 		}

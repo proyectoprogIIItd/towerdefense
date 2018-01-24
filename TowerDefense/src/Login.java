@@ -41,7 +41,7 @@ public class Login extends JFrame {
 	public static Login frame;
 	Properties properties = new Properties();
 
-
+	
 	/**
 	 * Launch the application.
 	 */

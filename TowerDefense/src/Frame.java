@@ -8,6 +8,8 @@ public class Frame extends JFrame{
 	public static Dimension size = new Dimension (960, 640);
 	public static Frame frame;
 	
+	
+	
 	public Frame(){
 		setTitle(title);
 		setSize(size);
