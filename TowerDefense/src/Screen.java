@@ -6,10 +6,14 @@ import java.awt.Point;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import Utilidades.BD;
+import Utilidades.Puntuacion;
 
 public class Screen extends JPanel implements Runnable{
 	
@@ -114,6 +118,17 @@ public class Screen extends JPanel implements Runnable{
 			g.setFont(new Font("Courier New",Font.BOLD, 80));
 			g.drawString("GAME OVER", 270, 200);
 			thread.interrupt();
+			ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
+			puntuaciones2 = BD.puntuacionUsuarioSelect(Login.s, Login.textField.getText(),MenuSeleccionMapa.mapaSelec);
+			
+			if (puntuaciones2.isEmpty()) {
+			BD.puntuacionInsert(Login.s, MenuSeleccionMapa.mapaSelec, Login.textField.getText(), enemyKilled);
+			}else {
+			Puntuacion p = puntuaciones2.get(0);
+			if (enemyKilled > p.getPuntuacion()) {
+				BD.puntuacionUpdate(Login.s, Login.textField.getText(), enemyKilled, MenuSeleccionMapa.mapaSelec);
+			}
+			}
 			Frame.frame.dispose();
 			VentanaRanking.main(null);
 		}

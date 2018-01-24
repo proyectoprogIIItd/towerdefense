@@ -13,7 +13,7 @@ import Utilidades.Usuario;
 
 public class VentanaJuego extends JFrame {
 	public static int monedas = 0;
-	private static final long serialVersionUID = 1L;  // Para serialización
+	private static final long serialVersionUID = 1L;  // Para serializaciÃ³n
 	JPanel pPrincipal;         // Panel del juego (layout nulo)
 	MundoJuego miMundo;        // Mundo del juego
 	CocheJuego miCoche;        // Coche del juego
@@ -25,16 +25,16 @@ public class VentanaJuego extends JFrame {
 	 * sin coches dentro
 	 */
 	public VentanaJuego() {
-		// Liberación de la ventana por defecto al cerrar
+		// LiberaciÃ³n de la ventana por defecto al cerrar
 		setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-		// Creación contenedores y componentes
+		// CreaciÃ³n contenedores y componentes
 		pPrincipal = new JPanel();
 		JPanel pBotonera = new JPanel();
 		this.lMensaje = new JLabel(" ");
 		// Formato y layouts
 		pPrincipal.setLayout( null );
 		pPrincipal.setBackground( Color.white );
-		// Añadido de componentes a contenedores
+		// AÃ±adido de componentes a contenedores
 		add( pPrincipal, BorderLayout.CENTER );
 	    pBotonera.add(lMensaje);
 	    add(pBotonera, "South");
@@ -44,7 +44,7 @@ public class VentanaJuego extends JFrame {
 		setResizable( false );
 
 		
-		// Añadido para que también se gestione por teclado con el KeyListener
+		// AÃ±adido para que tambiÃ©n se gestione por teclado con el KeyListener
 		pPrincipal.addKeyListener( new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -134,9 +134,9 @@ public class VentanaJuego extends JFrame {
 		}
 	}
 	
-	/** Clase interna para implementación de bucle principal del juego como un hilo
-	 * @author Andoni Eguíluz
-	 * Facultad de Ingeniería - Universidad de Deusto (2014)
+	/** Clase interna para implementaciÃ³n de bucle principal del juego como un hilo
+	 * @author Andoni EguÃ­luz
+	 * Facultad de IngenierÃ­a - Universidad de Deusto (2014)
 	 */
 	class MiRunnable implements Runnable {
 		boolean sigo = true;
@@ -147,7 +147,7 @@ public class VentanaJuego extends JFrame {
 				// Mover coche
 				miCoche.mueve( 0.040 );
 				// Chequear choques
-				// (se comprueba tanto X como Y porque podría a la vez chocar en las dos direcciones (esquinas)
+				// (se comprueba tanto X como Y porque podrÃ­a a la vez chocar en las dos direcciones (esquinas)
 				if (miMundo.hayChoqueHorizontal(miCoche)) // Espejo horizontal si choca en X
 					miMundo.rebotaHorizontal(miCoche);
 				if (miMundo.hayChoqueVertical(miCoche)) // Espejo vertical si choca en Y
@@ -181,11 +181,13 @@ public class VentanaJuego extends JFrame {
 		          
 					try {
 						Thread.sleep( 2000 );
+						VentanaJuego.this.dispose();
 				          miVentana.dispose();
 				          Frame.main(null);
 					} catch (Exception e) {	
 					}
-					VentanaJuego.this.dispose();	
+					miVentana.dispose();
+					Thread.interrupted();
 		        }
 				// Dormir el hilo 40 milisegundos
 				try {
