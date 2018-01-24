@@ -59,6 +59,7 @@ public class MenuSeleccionMapa extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		setTitle("MAPAS CREADOS");
 		setContentPane(contentPane);
 		mapas = BD.mapaNombreSelect(Login.s, null);
 		String[] listaM = new String[mapas.size()];

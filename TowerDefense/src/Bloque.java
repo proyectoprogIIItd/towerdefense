@@ -15,7 +15,7 @@ public class Bloque extends Rectangle{
 	public int aireID;
 	public int loseTime = 100, loseFrame = 0;
 	public int enemigoDisparado = -1;
-	public static int enemigoDisparadoDinero = 0;
+	public static int enemigoDisparadoDinero = -1;
 	public boolean torre1Disparando = false;
 	public boolean torre2Disparando = false;
 	public boolean torre3Disparando = false;

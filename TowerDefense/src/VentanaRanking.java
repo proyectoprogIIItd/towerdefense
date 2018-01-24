@@ -81,7 +81,7 @@ public class VentanaRanking extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+		setTitle("GAME OVER ---- RANKING");
 		JPanel botonera = new JPanel();
 		contentPane.add(botonera, BorderLayout.SOUTH);
 		botonera.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));

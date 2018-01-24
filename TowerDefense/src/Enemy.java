@@ -46,7 +46,11 @@ public class Enemy extends Rectangle{
 		inGame = false;
 		direction = right;
 		enemyWalk = 0;
+		if(Bloque.enemigoDisparadoDinero == -1) {
+			
+		}else {
 		Bloque.getMoney(Screen.enemies[Bloque.enemigoDisparadoDinero].enemyID);
+		}
 		Screen.enemyKilled += 1;
 		
 	}
