@@ -66,7 +66,7 @@ public class Screen extends JPanel implements Runnable{
 		save = new Save();
 		store = new Tienda();
 		
-		
+		//carga en los arrays de las imagenes
 		
 		for (int i =0; i<tierra.length; i++){
 			tierra[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
@@ -86,11 +86,12 @@ public class Screen extends JPanel implements Runnable{
 		enemigo[2] = new ImageIcon("resources"+File.separator+"red_ghost.gif").getImage();
 		enemigo[3] = new ImageIcon("resources"+File.separator+"green_ghost.gif").getImage();
 		
+		
+		//metodo que lee el fichero de texto
 		save.loadSave(new File("save"+File.separator+"mission1.file"));
 		
 		for(int i = 0; i< enemigos.length; i++){
 			enemigos[i] = new Enemigo();
-			//enemies[i].SpawnEnemy(0);
 		}
 	}
 	
@@ -118,6 +119,8 @@ public class Screen extends JPanel implements Runnable{
 		}
 		store.draw(g); // dibujando la tienda
 		
+		
+		//cuando nos quedamos sin vidas guardamos puntuacion en BDD, mapa y usuario
 		if(vida < 1) {
 			thread.interrupt();
 			ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
@@ -138,15 +141,22 @@ public class Screen extends JPanel implements Runnable{
 		}
 	}
 	
+	
+	/**genera numeros aleatorio entre 1-100 para la probabilidad de aparicion de los diferentes
+	 * tipos de enemigos
+	 * @return int
+	 */
 	public int aleatorio() {
 		Random random = new Random(System.currentTimeMillis());
 		int aleatorio = random.nextInt(100);
 		return aleatorio;
 	}
-	
 	public int tiempoSpawn = 1500;
 	public int contadorSpawn = 0;
 	
+	
+	
+	//metodo para la frecuencia de aparicion de enemigos y controlando probabildades
 	public void enemySpawner(){
 		
 		if(contadorSpawn >= tiempoSpawn){
@@ -172,7 +182,7 @@ public class Screen extends JPanel implements Runnable{
 		
 	}
 	
-	
+	//hilo para las fisicas de cada enemigo
 	public void run(){
 		while(true){
 			if(!isFirst && vida >0){

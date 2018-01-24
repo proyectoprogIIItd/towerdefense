@@ -32,6 +32,7 @@ public class Bloque extends Rectangle{
 		this.aireID= aireID;
 	}
 	
+	//metodo que dibuja cada bloque segun sus atributos
 	public void draw (Graphics g){
 		g.drawImage(Screen.tierra[tierraID],x, y, width, height, null);
 		
@@ -42,6 +43,8 @@ public class Bloque extends Rectangle{
 		}
 	}
 	
+	//metodo que hace funcionar el sistema de las torres 
+	//se basa en poner disparando true cuando sea preciso
 	public void physic() {
 		
 		if(enemigoDisparado != -1 && rangoTorre.intersects(Screen.enemigos[enemigoDisparado])) {
@@ -54,8 +57,8 @@ public class Bloque extends Rectangle{
 		if (!disparando) {
 			if (aireID == Value.AIRE_TORRE_1 ) {
 				for (int i = 0; i < Screen.enemigos.length; i++) {
-					if (Screen.enemigos[i].inGame) {
-						if (rangoTorre.intersects(Screen.enemigos[i])) {
+					if (Screen.enemigos[i].inGame) { //comprobamos que esta dentro del juego
+						if (rangoTorre.intersects(Screen.enemigos[i])) {  //codigo torre 1
 							disparando = true;
 							torre1Disparando = true;
 							
@@ -68,7 +71,7 @@ public class Bloque extends Rectangle{
 			}else if(aireID == Value.AIRE_TORRE_2) {
 				for (int i = 0; i < Screen.enemigos.length; i++) {
 					if (Screen.enemigos[i].inGame) {
-						if (rangoTorre2.intersects(Screen.enemigos[i])) {
+						if (rangoTorre2.intersects(Screen.enemigos[i])) { // codigo torre 2
 							disparando = true;
 							torre2Disparando = true;
 							
@@ -81,7 +84,7 @@ public class Bloque extends Rectangle{
 			}else if(aireID == Value.AIRE_TORRE_3) {
 				for (int i = 0; i < Screen.enemigos.length; i++) {
 					if (Screen.enemigos[i].inGame) {
-						if (rangoTorre3.intersects(Screen.enemigos[i])) {
+						if (rangoTorre3.intersects(Screen.enemigos[i])) { //codigo torre 3
 							disparando = true;
 							torre3Disparando = true;
 							
@@ -99,7 +102,8 @@ public class Bloque extends Rectangle{
 		
 		
 		
-		
+		//si disparando es true enemigoDisparado tendra que perder vida
+		// cada torre tiene su daño
 		
 			if(disparando) {
 				if(contadorBucle >= tiempoPerdida) {
@@ -134,7 +138,7 @@ public class Bloque extends Rectangle{
 		Screen.monedas += Value.dineroEnemigo[enemyID];
 	}
 	
-	public void fight(Graphics g) {
+	public void fight(Graphics g) { // si queremos ver el rango de las torres (solo para torre1)
 		if (Screen.rango) {
 			if (aireID == Value.AIRE_TORRE_1) {
 				g.drawRect(rangoTorre.x, rangoTorre.y, rangoTorre.width, rangoTorre.height);
@@ -143,7 +147,7 @@ public class Bloque extends Rectangle{
 			if(disparando) {
 				g.setColor(new Color(255,255,0));
 				Graphics2D g2 = (Graphics2D) g;
-                g2.setStroke(new BasicStroke(5));
+                g2.setStroke(new BasicStroke(5)); //grosor de la linea
 				g.drawLine(x + (width/2), y + (height/2), Screen.enemigos[enemigoDisparado].x + (Screen.enemigos[enemigoDisparado].width/2),Screen.enemigos[enemigoDisparado].y + (Screen.enemigos[enemigoDisparado].height/2) );
 			}
 	}

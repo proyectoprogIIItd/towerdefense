@@ -27,6 +27,7 @@ public class Enemigo extends Rectangle {
 
 	}
 
+	//metodo para que aparezcan enemigos que se llama en screen
 	public void apareceEnemigo(int enemigoID) {
 
 		for (int y = 0; y < Screen.room.bloque.length; y++) {
@@ -47,7 +48,7 @@ public class Enemigo extends Rectangle {
 		direccion = derecha;
 		caminoEnemigo = 0;
 	}
-
+	// borra enemigo y aqui sumamos a dinero lo que nos da ese enemigo en especial
 	public void deleteEnemy() {
 		inGame = false;
 		direccion = derecha;
@@ -67,6 +68,9 @@ public class Enemigo extends Rectangle {
 
 	public int contadorAndar = 0, frecuenciaAndar = 10;
 
+	
+	
+	//metodo que mueve a los enemigos
 	public void physic() {
 		if (contadorAndar >= frecuenciaAndar) {
 			if (direccion == derecha) {

@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Save {
 	
 	public void loadSave(File loadPath){
+		
+		//pasamos la informacion del fichero al array de 2 dimensiones
 		try {
 			Scanner loadScanner = new Scanner (loadPath);
 			

@@ -17,8 +17,8 @@ public class Tienda {
 	public static int esteID = -1;
 	public static int realID =-1;
 	
-	public static int[] botonID = {Value.AIRE_TORRE_1,Value.AIRE_TORRE_2,Value.AIRE_TORRE_3,Value.AIRE_PAPELERA};
-	public static int[] precioBoton = {20,40,30,0,0,0,0,0};
+	public static int[] botonID = {Value.AIRE_TORRE_1,Value.AIRE_TORRE_2,Value.AIRE_TORRE_3,Value.AIRE_PAPELERA}; //lo que tendra la botonera
+	public static int[] precioBoton = {20,40,30,0,0,0,0,0};//los precios de las torres
 	
 	
 	public Rectangle[] boton = new Rectangle[tiendaWidth];
@@ -54,9 +54,12 @@ public class Tienda {
 					for(int y=0; y < Screen.room.bloque.length; y ++) {
 						for(int x = 0; x < Screen.room.bloque[0].length; x++) {
 							if(Screen.room.bloque[y][x].contains(Screen.raton)) {
-								if(Screen.room.bloque[y][x].tierraID != Value.SUELO_CARRETERA && Screen.room.bloque[y][x].aireID == Value.AIRE_AIRE && Screen.room.bloque[y][x].tierraID != Value.SUELO_END && Screen.room.bloque[y][x].tierraID != Value.SUELO_START) {
+								if(Screen.room.bloque[y][x].tierraID != Value.SUELO_CARRETERA 
+										&& Screen.room.bloque[y][x].aireID == Value.AIRE_AIRE
+										&& Screen.room.bloque[y][x].tierraID != Value.SUELO_END 
+										&& Screen.room.bloque[y][x].tierraID != Value.SUELO_START) {
 									Screen.room.bloque[y][x].aireID = esteID;
-									Screen.monedas -= precioBoton[realID];
+									Screen.monedas -= precioBoton[realID]; //descontamos a monedas el precio del boton
 								}
 							}
 						}
@@ -69,14 +72,14 @@ public class Tienda {
 		for(int i = 0; i<boton.length; i++){
 			boton [i]= new Rectangle((Screen.myWidth/2)-((tiendaWidth* (tamanyoBoton+espacioCelda))/2)+ ((tamanyoBoton + espacioCelda)*i),(Screen.room.bloque[Screen.room.mundoHeight-1][0].y)+Screen.room.tamanyoBloque + espacioExtra,tamanyoBoton, tamanyoBoton);
 		}
-		
+		//rectangulos para despues meter las imagenes
 		rectanguloVida = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y,tamanyoIcono, tamanyoIcono );
 		rectanguloMonedas = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y + boton[0].height-tamanyoIcono,tamanyoIcono, tamanyoIcono );
 		rectanguloMuertes = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y,tamanyoIcono2, tamanyoIcono2 );
 		//dibujado teniendo como referencia el buttonHealth
 	}
 	
-	public void draw (Graphics g){
+	public void draw (Graphics g){ //metodo llamado en screen para dibujar la tiendas
 		
 		for (int i = 0; i < boton.length; i++) {
 			if(boton[i].contains(Screen.raton)){

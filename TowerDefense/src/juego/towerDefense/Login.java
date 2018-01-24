@@ -40,7 +40,7 @@ public class Login extends JFrame {
 	public static Connection con;
 	public static Statement s;
 	public static Login frame;
-	Properties properties = new Properties();
+	Properties properties = new Properties(); //Declaramos properties
 
 	
 	/**
@@ -78,7 +78,7 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		
+		//PROPIEDADES
 		try {
 			properties.load(new FileInputStream("Propiedades"));
 		} catch (FileNotFoundException e3) {
@@ -124,21 +124,26 @@ public class Login extends JFrame {
 		passwordField.setBounds(256, 118, 130, 26);
 		panel_2.add(passwordField);
 		
+		
+		//Carga de datos desde properties (anterior usuario y contrasenya)
+		
+		
 		textField.setText(properties.getProperty("Nombre de usuario"));
 		passwordField.setText(properties.getProperty("Password"));
 		
+		
+		//boton login: 
+		//si nos devuelve algo el select es que esta registrado y le dejamos pasar a la siguiente ventana
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				usuarios = BD.usuarioSelect(s, "Nick = '" + textField.getText() + "' " + "AND " + "Password = '" + passwordField.getText() + "'");
 				if (!usuarios.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Has iniciado sesion correctamente");
-					
-					//VentanaVisualizacion.main(null);
-					//Login.this.setVisible(false);
 					MenuInicio.main(null);
 					frame.dispose();
 					
+					//Cuando cerramos el frame guardamos en properties el usuario y su contrasenya 
 					properties.put("Nombre de usuario", textField.getText());
 					properties.put("Password", passwordField.getText());
 					try {
@@ -149,7 +154,7 @@ public class Login extends JFrame {
 					
 					
 					
-					
+					//si no devuelve nada el select es que ha puesto mal algo
 				} else if (usuarios.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nombre y/o contrasenya incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
 				}
@@ -160,11 +165,14 @@ public class Login extends JFrame {
 		btnLogin.setBounds(74, 168, 117, 29);
 		panel_2.add(btnLogin);
 		
+		
+		
 		JButton btnRegistro = new JButton("Registro");
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				usuarios = BD.usuarioSelect(s, "Nick = '"+textField.getText()+"'");
-				
+				// en caso de no poner nada(string vacio) o de null y comprobamos si nos devuelve
+				//vacio es que no estaba registrado y podemos hacer insert
 				if(textField.getText().equals("")){
 					JOptionPane.showMessageDialog(null, "Introduce un usuario", "Error", JOptionPane.ERROR_MESSAGE);
 				}else if(passwordField.getText().equals("")){

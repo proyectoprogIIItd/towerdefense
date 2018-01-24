@@ -33,11 +33,8 @@ public class Frame extends JFrame{
 		setLayout(new GridLayout(1, 1, 0, 0));
 		Screen screen = new Screen(this);
 		add(screen);
-//		screen.setMinimumSize(new Dimension(300 , 200));
-//		screen.setMaximumSize(new Dimension(300,200));
-//		screen.setPreferredSize(new Dimension(300 , 200));
 		setVisible(true);
-//		pack();
+
 		
 	}
 	
