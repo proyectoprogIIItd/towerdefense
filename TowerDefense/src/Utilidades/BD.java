@@ -326,6 +326,34 @@ public class BD {
 			return null;
 		}
 	}
+	
+	public static ArrayList<String> mapaSelect( Statement st, String codigoSelect ) {
+		String sentSQL = "";
+		ArrayList<String> ret = new ArrayList<>();
+		try {
+			sentSQL = "select * from mapas";
+			if (codigoSelect!=null && !codigoSelect.equals(""))
+				sentSQL = sentSQL + " where nombreMapa = '" + codigoSelect +"'";
+			// System.out.println( sentSQL );  // Para ver lo que se hace en consola
+			ResultSet rs = st.executeQuery( sentSQL );
+			while (rs.next()) {
+				ret.add( rs.getString("mapa") );
+			}
+			rs.close();
+			log( Level.INFO, "BD\t" + sentSQL, null );
+			return ret;
+		} catch (IllegalArgumentException e) {  // Error en tipo usuario (enumerado)
+			log( Level.SEVERE, "Error en BD en tipo de usuario\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			log( Level.SEVERE, "Error en BD\t" + sentSQL, e );
+			lastError = e;
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	/** Modifica un usuario en la tabla abierta de BD, usando la sentencia UPDATE de SQL
 	 * @param st	Sentencia ya abierta de Base de Datos (con la estructura de tabla correspondiente al usuario)

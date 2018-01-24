@@ -29,6 +29,7 @@ public class MenuSeleccionMapa extends JFrame {
 	ArrayList<String> mapas;
 	public static MenuSeleccionMapa frame;
 	public static String mapaSelec;
+	public static String estructuraMapa;
 	
 	/**
 	 * Launch the application.
@@ -78,6 +79,9 @@ public class MenuSeleccionMapa extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//aqui va el codigo de crear mapa
 				mapaSelec = listaMapas.getSelectedValue();
+				ArrayList<String> mapaArray = new ArrayList<String>();
+				mapaArray = BD.mapaSelect(Login.s, mapaSelec);
+				estructuraMapa = mapaArray.get(0);
 				if(listaMapas.getSelectedValuesList().size() == 1) {
 				String mapa = (String) listaMapas.getSelectedValue();
 				frame.dispose();
