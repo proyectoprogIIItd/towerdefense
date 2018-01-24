@@ -193,7 +193,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j<15; j++) {
-							mapaEntero = mapaEntero + (arrayMapa[i][j]+" ");
+							mapaEntero = mapaEntero + (arrayMapa[i][j]+";");
 						}
 					}
 					String nombreMapa;
@@ -206,14 +206,13 @@ public class Creador {
 						cogido = BD.mapaNombreSelect(Login.s, nombreMapa);
 						if(cogido.isEmpty()) {
 							BD.mapasInsert(Login.s, Login.textField.getText(), mapaEntero, nombreMapa);
-							BD.puntuacionInsert(Login.s, nombreMapa, "", 0);
+							BD.puntuacionInsert(Login.s, nombreMapa, "GhostBusters", 999);
 							f.dispose();
 							MenuJugarCrearMapa.main(null);
 						}else {
 						JOptionPane.showMessageDialog(null, "Nombre de mapa ya existente");	
 						}
 					}
-
 				}
 			});
 

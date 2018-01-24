@@ -62,7 +62,7 @@ public class MenuSeleccionMapa extends JFrame {
 			listaM[i] = mapas.get(i);
 		}
 		listaMapas = new JList<String>(listaM);
-		listaMapas.setVisibleRowCount(4);  // defines cu�ntos nombre quieres que aparezcan a la vez
+		listaMapas.setVisibleRowCount(4);  // defines cuántos nombre quieres que aparezcan a la vez
 		JScrollPane scroll = new JScrollPane(listaMapas);  //creamos el scroll, pasamos el componente que queremos que tenga scroll
 		panelLista = new JPanel();
 		panelLista.add(scroll);
@@ -85,7 +85,7 @@ public class MenuSeleccionMapa extends JFrame {
 				}else if(listaMapas.getSelectedValuesList().size() == 0) {
 				JOptionPane.showMessageDialog(null, "Escoge un mapa.");
 				}else if(listaMapas.getSelectedValuesList().size() >= 2) {
-				JOptionPane.showMessageDialog(null, "Escoge un �nico mapa.");
+				JOptionPane.showMessageDialog(null, "Escoge un único mapa.");
 				}
 			}
 		});

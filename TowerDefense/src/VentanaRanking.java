@@ -49,21 +49,21 @@ public class VentanaRanking extends JFrame {
 		ArrayList<Puntuacion> ret = new ArrayList<Puntuacion>();
 		int tamanyo = p.size();
 		for (int i = 0; i < tamanyo; i++) {
-			Puntuacion menor = new Puntuacion();
-		    menor =	p.get(0);
+			Puntuacion mayor = new Puntuacion();
+		    mayor =	p.get(0);
 		    for(int j = 0; j < p.size(); j++) {
-		    	if(menor.getPuntuacion() > p.get(j).getPuntuacion()) {
-		    		menor = p.get(j);
-		    	}else if(menor.getPuntuacion() == p.get(j).getPuntuacion()) {
-		    		char a = menor.getUsuario_nick().charAt(0);
+		    	if(mayor.getPuntuacion() < p.get(j).getPuntuacion()) {
+		    		mayor = p.get(j);
+		    	}else if(mayor.getPuntuacion() == p.get(j).getPuntuacion()) {
+		    		char a = mayor.getUsuario_nick().charAt(0);
 		    		char b = p.get(j).getUsuario_nick().charAt(0);		    		
-		    		if(b < a) {
-		    			menor = p.get(j);
+		    		if(b > a) {
+		    			mayor = p.get(j);
 		    		}
 		    	}
 		    }
-		    ret.add(menor);
-		    p.remove(menor);
+		    ret.add(mayor);
+		    p.remove(mayor);
 		}
 		
 		
@@ -93,7 +93,7 @@ public class VentanaRanking extends JFrame {
 		ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
 		puntuaciones2 = BD.puntuacionSelect(Login.s, MenuSeleccionMapa.mapaSelec);
 		if (puntuaciones2.isEmpty()) {
-			puntuaciones2.add(new Puntuacion("",0));
+			puntuaciones2.add(new Puntuacion("Nadie",0));
 		}
 		puntuaciones = reordenar(puntuaciones2);
 		String[] listaM = new String[puntuaciones.size()];
@@ -104,7 +104,7 @@ public class VentanaRanking extends JFrame {
 			listaM[i] = "Usuario: "+p.getUsuario_nick()+" Puntos: "+p.getPuntuacion();
 		}
 		ranking = new JList<String>(listaM);
-		ranking.setVisibleRowCount(5);  // defines cu�ntos nombre quieres que aparezcan a la vez
+		ranking.setVisibleRowCount(5);  // defines cuántos nombre quieres que aparezcan a la vez
 		JScrollPane scroll = new JScrollPane(ranking);  //creamos el scroll, pasamos el componente que queremos que tenga scroll
 		JPanel panelRanking = new JPanel();
 		panelRanking.add(scroll);
