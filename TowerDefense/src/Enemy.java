@@ -27,7 +27,7 @@ public class Enemy extends Rectangle{
 	public void SpawnEnemy(int enemyID){
 
 		for(int  y = 0; y <Screen.room.block.length; y++){
-			if(Screen.room.block[y][0].groundID == Value.GROUND_ROAD || Screen.room.block[y][0].groundID == Value.GROUND_START){
+			if(Screen.room.block[y][0].tierraID == Value.GROUND_ROAD || Screen.room.block[y][0].tierraID == Value.GROUND_START){
 				setBounds(Screen.room.block[y][0].x, Screen.room.block[y][0].y, enemySize, enemySize);
 				xC = 0;
 				yC = y;
@@ -46,7 +46,7 @@ public class Enemy extends Rectangle{
 		inGame = false;
 		direction = right;
 		enemyWalk = 0;
-		Block.getMoney(Screen.enemies[Block.shotEnemyDinero].enemyID);
+		Bloque.getMoney(Screen.enemies[Bloque.enemigoDisparadoDinero].enemyID);
 		Screen.enemyKilled += 1;
 		
 	}
@@ -85,33 +85,33 @@ public class Enemy extends Rectangle{
 				}
 				if(!hasUpward){
 				try{
-				if(Screen.room.block[yC+1][xC].groundID == Value.GROUND_ROAD || Screen.room.block[yC+1][xC].groundID == Value.GROUND_END){
+				if(Screen.room.block[yC+1][xC].tierraID == Value.GROUND_ROAD || Screen.room.block[yC+1][xC].tierraID == Value.GROUND_END){
 					direction = downward;
 				}
 				}catch(Exception e){}
 				}
 				if(!hasDownward){
 				try{
-					if(Screen.room.block[yC-1][xC].groundID == Value.GROUND_ROAD|| Screen.room.block[yC-1][xC].groundID == Value.GROUND_END){
+					if(Screen.room.block[yC-1][xC].tierraID == Value.GROUND_ROAD|| Screen.room.block[yC-1][xC].tierraID == Value.GROUND_END){
 						direction = upward;
 					}
 					}catch(Exception e){}
 				}
 				if(!hasLeft){
 				try{
-					if(Screen.room.block[yC][xC+1].groundID == Value.GROUND_ROAD|| Screen.room.block[yC][xC+1].groundID == Value.GROUND_END){
+					if(Screen.room.block[yC][xC+1].tierraID == Value.GROUND_ROAD|| Screen.room.block[yC][xC+1].tierraID == Value.GROUND_END){
 						direction = right;
 					}
 					}catch(Exception e){}
 				}
 				if(!hasRight){
 					try{
-						if(Screen.room.block[yC][xC-1].groundID == Value.GROUND_ROAD|| Screen.room.block[yC][xC-1].groundID == Value.GROUND_END){
+						if(Screen.room.block[yC][xC-1].tierraID == Value.GROUND_ROAD|| Screen.room.block[yC][xC-1].tierraID == Value.GROUND_END){
 							direction = left;
 						}
 						}catch(Exception e){}
 				}
-				if(Screen.room.block[yC][xC].groundID == Value.GROUND_END) {
+				if(Screen.room.block[yC][xC].tierraID == Value.GROUND_END) {
 					deleteEnemyFueraMapa();
 					looseHealth();
 				}

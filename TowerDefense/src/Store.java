@@ -53,8 +53,8 @@ public class Store {
 					for(int y=0; y < Screen.room.block.length; y ++) {
 						for(int x = 0; x < Screen.room.block[0].length; x++) {
 							if(Screen.room.block[y][x].contains(Screen.mse)) {
-								if(Screen.room.block[y][x].groundID != Value.GROUND_ROAD && Screen.room.block[y][x].airID == Value.AIR_AIR && Screen.room.block[y][x].groundID != Value.GROUND_END && Screen.room.block[y][x].groundID != Value.GROUND_START) {
-									Screen.room.block[y][x].airID = heldID;
+								if(Screen.room.block[y][x].tierraID != Value.GROUND_ROAD && Screen.room.block[y][x].aireID == Value.AIR_AIR && Screen.room.block[y][x].tierraID != Value.GROUND_END && Screen.room.block[y][x].tierraID != Value.GROUND_START) {
+									Screen.room.block[y][x].aireID = heldID;
 									Screen.money -= buttonPrice[realID];
 								}
 							}
