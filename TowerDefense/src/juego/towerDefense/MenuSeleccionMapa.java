@@ -132,7 +132,7 @@ public class MenuSeleccionMapa extends JFrame {
 				}else if(listaMapas.getSelectedValuesList().size() == 0) {
 				JOptionPane.showMessageDialog(null, "Escoge un mapa.");
 				}else if(listaMapas.getSelectedValuesList().size() >= 2) {
-				JOptionPane.showMessageDialog(null, "Escoge un único mapa.");
+				JOptionPane.showMessageDialog(null, "Escoge un unico mapa.");
 				}
 			}
 		});
