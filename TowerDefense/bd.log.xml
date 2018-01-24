@@ -78,3 +78,217 @@
   <thread>14</thread>
   <message>BD	select * from mapas where nombreMapa = 'mapa1'</message>
 </record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T16:42:14</date>
+  <millis>1516808534229</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T16:42:15</date>
+  <millis>1516808535425</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T16:42:44</date>
+  <millis>1516808564511</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapaprueba'</message>
+</record>
+<record>
+  <date>2018-01-24T16:42:53</date>
+  <millis>1516808573470</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T16:42:58</date>
+  <millis>1516808578178</millis>
+  <sequence>4</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapaprueba'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T16:44:22</date>
+  <millis>1516808662706</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T16:44:23</date>
+  <millis>1516808663588</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T16:44:54</date>
+  <millis>1516808694195</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapamapa'</message>
+</record>
+<record>
+  <date>2018-01-24T16:44:55</date>
+  <millis>1516808695733</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T16:44:58</date>
+  <millis>1516808698198</millis>
+  <sequence>4</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapamapa'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T16:47:18</date>
+  <millis>1516808838948</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T16:47:20</date>
+  <millis>1516808840071</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T16:47:26</date>
+  <millis>1516808846196</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T16:47:30</date>
+  <millis>1516808850568</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapaprueba'</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-01-24T16:51:41</date>
+  <millis>1516809101164</millis>
+  <sequence>0</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>Conectada base de datos Login</message>
+</record>
+<record>
+  <date>2018-01-24T16:51:42</date>
+  <millis>1516809102036</millis>
+  <sequence>1</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from usuario where Nick = '1' AND Password = '1'</message>
+</record>
+<record>
+  <date>2018-01-24T16:51:46</date>
+  <millis>1516809106015</millis>
+  <sequence>2</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas</message>
+</record>
+<record>
+  <date>2018-01-24T16:51:48</date>
+  <millis>1516809108282</millis>
+  <sequence>3</sequence>
+  <logger>Utilidades.BD</logger>
+  <level>INFO</level>
+  <class>Utilidades.BD</class>
+  <method>log</method>
+  <thread>11</thread>
+  <message>BD	select * from mapas where nombreMapa = 'mapamapa'</message>
+</record>
+</log>

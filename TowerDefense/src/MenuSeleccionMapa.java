@@ -2,6 +2,9 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +85,44 @@ public class MenuSeleccionMapa extends JFrame {
 				ArrayList<String> mapaArray = new ArrayList<String>();
 				mapaArray = BD.mapaSelect(Login.s, mapaSelec);
 				estructuraMapa = mapaArray.get(0);
+				System.out.println(estructuraMapa);
+				
+				File archivo = new File("save"+File.separator+"mission1.file");
+		        FileWriter fw;
+		        try {
+				fw = new FileWriter(archivo);// podemos añadir true para que no sobreescriba
+				String linea ="";
+				String aire ="-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
+						"-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1\r\n" + 
+						"";
+				int indice = 0;
+				for(int j=0; j<8;j++) {
+					
+					for(int i = 0; i<30 ; i++) {
+					linea = linea+estructuraMapa.charAt(indice);
+					indice +=1;
+				}
+					
+				linea = linea +"\n";
+				}
+				linea = linea+"\n"+aire;
+				
+				fw.write(linea);
+				
+		        fw.flush();
+		        fw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				
+				
 				if(listaMapas.getSelectedValuesList().size() == 1) {
 				String mapa = (String) listaMapas.getSelectedValue();
 				frame.dispose();
