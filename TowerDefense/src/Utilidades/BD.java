@@ -65,13 +65,15 @@ public class BD {
 					+ ", password string, nombre string" + ")");
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			try {
-				statement.executeUpdate("create table puntuaciones " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, puntuacion integer, nombreMapa string REFERENCES mapas(nombreMapa) ON DELETE CASCADE)"); // (1) Solo para foreign keys
+				statement.executeUpdate("create table mapas " +
+						"(nombreMapa string PRIMARY KEY"
+						+", usuario_nick string, mapa string"+")"); 
 					
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			try {
-				statement.executeUpdate("create table mapas " +
-					"(usuario_nick string REFERENCES usuario(nick) ON DELETE CASCADE, mapa string, nombreMapa string PRIMARY KEY)"); 
+				statement.executeUpdate("create table puntuaciones " +
+						"(usuario_nick string, puntuacion integer, nombreMapa string REFERENCES mapas(nombreMapa) ON DELETE CASCADE, FOREIGN KEY(usuario_nick) REFERENCES usuario(nick)"+")"); // (1) Solo para foreign keys
+				
 					// (1) Solo para foreign keys
 					
 			} catch (SQLException e) {} //

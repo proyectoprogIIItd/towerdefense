@@ -6,17 +6,17 @@ public class Room {
 	public int worldHeight =8;
 	public int blockSize = 64;
 	
-	public Block[] [] block;
+	public Bloque[] [] block;
 	
 	public Room(){
 		define();
 	}
 	
 	public void define(){
-		block = new Block[worldHeight][worldWidth];
+		block = new Bloque[worldHeight][worldWidth];
 		for(int y = 0; y<block.length; y++){
 			for(int x = 0; x<block[0].length;x++){
-				block[y][x] = new Block(x * blockSize, y * blockSize, blockSize, blockSize,Value.GROUND_GRASS,Value.AIR_AIR);
+				block[y][x] = new Bloque(x * blockSize, y * blockSize, blockSize, blockSize,Value.GROUND_GRASS,Value.AIR_AIR);
 			}
 		}
 	}

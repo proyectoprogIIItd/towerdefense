@@ -193,7 +193,7 @@ public class Creador {
 				public void actionPerformed(ActionEvent arg0) {
 					for (int i = 0; i < 8; i++) {
 						for (int j = 0; j<15; j++) {
-							mapaEntero = mapaEntero + (arrayMapa[i][j]+";");
+							mapaEntero = mapaEntero + (arrayMapa[i][j]+" ");
 						}
 					}
 					String nombreMapa;
