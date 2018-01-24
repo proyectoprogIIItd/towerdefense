@@ -58,7 +58,7 @@ public class VentanaRanking extends JFrame {
 		    	}else if(mayor.getPuntuacion() == p.get(j).getPuntuacion()) {
 		    		char a = mayor.getUsuario_nick().charAt(0);
 		    		char b = p.get(j).getUsuario_nick().charAt(0);		    		
-		    		if(b > a) {
+		    		if(b < a) {
 		    			mayor = p.get(j);
 		    		}
 		    	}
