@@ -20,25 +20,25 @@ import Utilidades.Puntuacion;
 public class Screen extends JPanel implements Runnable{
 	
 	public Thread thread = new Thread(this);
-	public static Image[] ground = new Image[100];
-	public static Image[] air = new Image[100];
+	public static Image[] tierra = new Image[100];
+	public static Image[] aire = new Image[100];
 	public static Image[] res = new Image[100];
-	public static Image[] enemy = new Image[100];
+	public static Image[] enemigo = new Image[100];
 	
 	
 	public static int myWidth = (int) Frame.size.getWidth();
 	public static int myHeight = (int) Frame.size.getHeight();
 	
-	public static int money = 100;
-	public static int health = 10;
-	public static int enemyKilled =0;
+	public static int monedas = 100;
+	public static int vida = 10;
+	public static int enemigosAsesinados =0;
 	
 	public static boolean isFirst = true;
-	public static boolean isDead = false;
+	public static boolean muerto = false;
 	
-	public static boolean isDebug = false;
+	public static boolean rango = false;
 	
-	public static Point mse = new Point(0,0);
+	public static Point raton = new Point(0,0);
 	
 	public static Room room;
 	public static Save save;
@@ -46,7 +46,7 @@ public class Screen extends JPanel implements Runnable{
 	
 	
 	
-	public static Enemy[] enemies = new Enemy[100];
+	public static Enemigo[] enemigos = new Enemigo[100];
 	
 	
 	public Screen(Frame frame){
@@ -68,28 +68,28 @@ public class Screen extends JPanel implements Runnable{
 		
 		
 		
-		for (int i =0; i<ground.length; i++){
-			ground[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
-			ground[i] = createImage(new FilteredImageSource(ground[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
+		for (int i =0; i<tierra.length; i++){
+			tierra[i] = new ImageIcon("resources"+File.separator+"ground.png").getImage();
+			tierra[i] = createImage(new FilteredImageSource(tierra[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
 		}
-		for (int i =0; i<air.length; i++){
-			air[i] = new ImageIcon("resources"+File.separator+"air.png").getImage();
-			air[i] = createImage(new FilteredImageSource(air[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
+		for (int i =0; i<aire.length; i++){
+			aire[i] = new ImageIcon("resources"+File.separator+"air.png").getImage();
+			aire[i] = createImage(new FilteredImageSource(aire[i].getSource(), new CropImageFilter(0, 32*i, 32, 32)));
 		}
 		res[0] = new ImageIcon("resources"+File.separator+"cell.png").getImage();
 		res[1] = new ImageIcon("resources"+File.separator+"heart.png").getImage();
 		res[2] = new ImageIcon("resources"+File.separator+"coin.png").getImage();
 		res[3] = new ImageIcon("resources"+File.separator+"killedEnemy.png").getImage();
 		
-		enemy[0] = new ImageIcon("resources"+File.separator+"pink_ghost.gif").getImage();
-		enemy[1] = new ImageIcon("resources"+File.separator+"blue_ghost.gif").getImage();
-		enemy[2] = new ImageIcon("resources"+File.separator+"red_ghost.gif").getImage();
-		enemy[3] = new ImageIcon("resources"+File.separator+"green_ghost.gif").getImage();
+		enemigo[0] = new ImageIcon("resources"+File.separator+"pink_ghost.gif").getImage();
+		enemigo[1] = new ImageIcon("resources"+File.separator+"blue_ghost.gif").getImage();
+		enemigo[2] = new ImageIcon("resources"+File.separator+"red_ghost.gif").getImage();
+		enemigo[3] = new ImageIcon("resources"+File.separator+"green_ghost.gif").getImage();
 		
 		save.loadSave(new File("save"+File.separator+"mission1.file"));
 		
-		for(int i = 0; i< enemies.length; i++){
-			enemies[i] = new Enemy();
+		for(int i = 0; i< enemigos.length; i++){
+			enemigos[i] = new Enemigo();
 			//enemies[i].SpawnEnemy(0);
 		}
 	}
@@ -107,31 +107,31 @@ public class Screen extends JPanel implements Runnable{
 		g.setColor(new Color(0,0,0));
 //		g.drawLine(room.block[0][0].x-1, 0, room.block[0][0].x-1, room.block[room.worldHeight-1][0].y + room.blockSize); // linea de la izquierda
 //		g.drawLine(room.block[0][room.worldWidth-1].x + room.blockSize, 0, room.block[0][room.worldWidth-1].x + room.blockSize, room.block[room.worldHeight-1][0].y + room.blockSize); // linea de la derecha
-		g.drawLine(room.block[0][0].x, room.block[room.worldHeight-1][0].y + room.blockSize, room.block[0][room.worldWidth-1].x+room.blockSize, room.block[room.worldHeight-1][0].y + room.blockSize);// linea entre juego y eleccion de torres
+		g.drawLine(room.bloque[0][0].x, room.bloque[room.mundoHeight-1][0].y + room.tamanyoBloque, room.bloque[0][room.mundoWidth-1].x+room.tamanyoBloque, room.bloque[room.mundoHeight-1][0].y + room.tamanyoBloque);// linea entre juego y eleccion de torres
 		
 		room.draw(g); // dibujando room
 		
-		for(int i = 0; i< enemies.length; i++){
-			if(enemies[i].inGame){
-				enemies[i].draw(g);
+		for(int i = 0; i< enemigos.length; i++){
+			if(enemigos[i].inGame){
+				enemigos[i].draw(g);
 			}
 		}
 		store.draw(g); // dibujando la tienda
 		
-		if(health < 1) {
+		if(vida < 1) {
 			thread.interrupt();
 			ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
 			puntuaciones2 = BD.puntuacionUsuarioSelect(Login.s, Login.textField.getText(),MenuSeleccionMapa.mapaSelec);
 			
 			if (puntuaciones2.isEmpty()) {
-			BD.puntuacionInsert(Login.s, MenuSeleccionMapa.mapaSelec, Login.textField.getText(), enemyKilled);
+			BD.puntuacionInsert(Login.s, MenuSeleccionMapa.mapaSelec, Login.textField.getText(), enemigosAsesinados);
 			}else {
 			Puntuacion p = puntuaciones2.get(0);
-			if (enemyKilled > p.getPuntuacion()) {
-				BD.puntuacionUpdate(Login.s, Login.textField.getText(), enemyKilled, MenuSeleccionMapa.mapaSelec);
+			if (enemigosAsesinados > p.getPuntuacion()) {
+				BD.puntuacionUpdate(Login.s, Login.textField.getText(), enemigosAsesinados, MenuSeleccionMapa.mapaSelec);
 			}
 			}
-			health = 10;
+			vida = 10;
 			Frame.frame.removeAll();
 			Frame.frame.dispose();
 			VentanaRanking.main(null);
@@ -144,30 +144,30 @@ public class Screen extends JPanel implements Runnable{
 		return aleatorio;
 	}
 	
-	public int spawnTime = 1500;
-	public int spawnFrame = 0;
+	public int tiempoSpawn = 1500;
+	public int contadorSpawn = 0;
 	
 	public void enemySpawner(){
 		
-		if(spawnFrame >= spawnTime){
-			for(int i = 0; i <enemies.length;i++){
-				if(!enemies[i].inGame){
+		if(contadorSpawn >= tiempoSpawn){
+			for(int i = 0; i <enemigos.length;i++){
+				if(!enemigos[i].inGame){
 					if(aleatorio() <= 50) {
-						enemies[i].SpawnEnemy(3);
+						enemigos[i].apareceEnemigo(3);
 					}else if(aleatorio() <= 80) {
-						enemies[i].SpawnEnemy(1);
+						enemigos[i].apareceEnemigo(1);
 					}else if(aleatorio() <= 95) {
-						enemies[i].SpawnEnemy(2);
+						enemigos[i].apareceEnemigo(2);
 					}else if(aleatorio() <=100) {
-						enemies[i].SpawnEnemy(0);
+						enemigos[i].apareceEnemigo(0);
 					}
 				
 					break;
 				}
 			}
-			spawnFrame = 0;
+			contadorSpawn = 0;
 		}else{
-			spawnFrame += 1;
+			contadorSpawn += 1;
 		}
 		
 	}
@@ -175,13 +175,13 @@ public class Screen extends JPanel implements Runnable{
 	
 	public void run(){
 		while(true){
-			if(!isFirst && health >0){
-				room.physic();
+			if(!isFirst && vida >0){
+				room.fisica();
 				enemySpawner();
-				for(int i = 0; i<enemies.length; i++){
-					if(enemies[i].inGame){
+				for(int i = 0; i<enemigos.length; i++){
+					if(enemigos[i].inGame){
 						
-						enemies[i].physic();
+						enemigos[i].physic();
 						
 					}
 				}

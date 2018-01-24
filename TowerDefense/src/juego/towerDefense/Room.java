@@ -3,42 +3,42 @@ import java.awt.Graphics;
 
 public class Room {
 	
-	public int worldWidth = 15;
-	public int worldHeight =8;
-	public int blockSize = 64;
+	public int mundoWidth = 15;
+	public int mundoHeight =8;
+	public int tamanyoBloque = 64;
 	
-	public Bloque[] [] block;
+	public Bloque[][] bloque;
 	
 	public Room(){
 		define();
 	}
 	
 	public void define(){
-		block = new Bloque[worldHeight][worldWidth];
-		for(int y = 0; y<block.length; y++){
-			for(int x = 0; x<block[0].length;x++){
-				block[y][x] = new Bloque(x * blockSize, y * blockSize, blockSize, blockSize,Value.GROUND_GRASS,Value.AIR_AIR);
+		bloque = new Bloque[mundoHeight][mundoWidth];
+		for(int y = 0; y<bloque.length; y++){
+			for(int x = 0; x<bloque[0].length;x++){
+				bloque[y][x] = new Bloque(x * tamanyoBloque, y * tamanyoBloque, tamanyoBloque, tamanyoBloque,Value.SUELO_HIERBA,Value.AIRE_AIRE);
 			}
 		}
 	}
 	
-	public void physic(){
-		for (int y = 0; y < block.length; y++) {
-			for(int x = 0; x<block[0].length; x++) {
-				block[y][x].physic();
+	public void fisica(){
+		for (int y = 0; y < bloque.length; y++) {
+			for(int x = 0; x<bloque[0].length; x++) {
+				bloque[y][x].physic();
 			}
 		}
 	}
 	public void draw (Graphics g){
-		for(int y = 0; y<block.length; y++){
-			for(int x = 0; x<block[0].length;x++){
-				block[y][x].draw(g);
+		for(int y = 0; y<bloque.length; y++){
+			for(int x = 0; x<bloque[0].length;x++){
+				bloque[y][x].draw(g);
 			}
 		}	//se usan dos for para que se renderice por separado el rectangulo si no se veria solo parte del rectangulo
 		
-		for(int y = 0 ; y<block.length; y++) {
-			for(int x = 0; x<block[0].length; x++) {
-				block[y][x].fight(g);
+		for(int y = 0 ; y<bloque.length; y++) {
+			for(int x = 0; x<bloque[0].length; x++) {
+				bloque[y][x].fight(g);
 			}
 		}
 	}

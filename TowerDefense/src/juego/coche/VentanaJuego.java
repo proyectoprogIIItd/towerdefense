@@ -181,7 +181,7 @@ public class VentanaJuego extends JFrame {
 		          this.sigo = false;
 		          VentanaJuego.this.lMensaje.setText("GAME OVER: Has sacado " +  VentanaJuego.this.miMundo.getPuntos() + " monedas.");
 		          monedas = VentanaJuego.this.miMundo.getPuntos();
-		          Screen.money = monedas;
+		          Screen.monedas = monedas;
 		          monedas = 0;
 		          if (miHilo!=null) miHilo.acaba();
 		          VentanaJuego.this.miMundo.quitaEstrellasYCoche();

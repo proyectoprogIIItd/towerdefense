@@ -5,14 +5,14 @@ import java.awt.GridLayout;
 import javax.swing.*;
 
 public class Frame extends JFrame{
-	public static String title = "Tower Defense";
+	public static String titulo = "Tower Defense";
 	public static Dimension size = new Dimension (960, 640);
 	public static Frame frame;
 	
 	
 	
 	public Frame(){
-		setTitle(title);
+		setTitle(titulo);
 		setSize(size);
 		setResizable(false);
 		setLocationRelativeTo(null);

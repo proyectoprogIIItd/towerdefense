@@ -6,25 +6,25 @@ import java.awt.Rectangle;
 
 public class Store {
 	
-	public static int shopWidth = 4; //tienda con los botones
-	public static int buttonSize = 64; //objetos a comprar en la tienda
-	public static int cellSpace = 8; // espacio entre boton
-	public static int awayFromGame = 10; // espacio fuera de la pantalla de juego
-	public static int iconSize = 30; //tamaño corazon y moneda
-	public static int iconSize2 = 45;
-	public static int iconSpace = 3;
+	public static int tiendaWidth = 4; //tienda con los botones
+	public static int tamanyoBoton = 64; //objetos a comprar en la tienda
+	public static int espacioCelda = 8; // espacio entre boton
+	public static int espacioExtra = 10; // espacio fuera de la pantalla de juego
+	public static int tamanyoIcono = 30; //tamaño corazon y moneda
+	public static int tamanyoIcono2 = 45;
+	public static int espacioIcono = 3;
 	public static int itemIn = 6; //tamaño del borde
-	public static int heldID = -1;
+	public static int esteID = -1;
 	public static int realID =-1;
 	
-	public static int[] buttonID = {Value.AIR_TOWER_1,Value.AIR_TOWER_2,Value.AIR_TOWER_3,Value.AIR_TRASHCAN};
-	public static int[] buttonPrice = {20,40,30,0,0,0,0,0};
+	public static int[] botonID = {Value.AIRE_TORRE_1,Value.AIRE_TORRE_2,Value.AIRE_TORRE_3,Value.AIRE_PAPELERA};
+	public static int[] precioBoton = {20,40,30,0,0,0,0,0};
 	
 	
-	public Rectangle[] button = new Rectangle[shopWidth];
-	public Rectangle buttonHealth;
-	public Rectangle buttonCoins;
-	public Rectangle buttonKills;
+	public Rectangle[] boton = new Rectangle[tiendaWidth];
+	public Rectangle rectanguloVida;
+	public Rectangle rectanguloMonedas;
+	public Rectangle rectanguloMuertes;
 	
 	public boolean tieneObjeto = false;
 	
@@ -34,14 +34,14 @@ public class Store {
 	
 	public void click(int mouseButton) {
 		if(mouseButton == 1) { // 1 para botón izquierdo del ratón
-			for(int i = 0; i<button.length;i++) {
-				if(button[i].contains(Screen.mse)) {
-					if(buttonID[i] != Value.AIR_AIR) {
-					if(buttonID[i] == Value.AIR_TRASHCAN) {//Borra objeto
+			for(int i = 0; i<boton.length;i++) {
+				if(boton[i].contains(Screen.raton)) {
+					if(botonID[i] != Value.AIRE_AIRE) {
+					if(botonID[i] == Value.AIRE_PAPELERA) {//Borra objeto
 						tieneObjeto = false;
 					}else {
 						
-					heldID = buttonID[i];
+					esteID = botonID[i];
 					realID = i;
 					tieneObjeto = true;
 					}
@@ -50,13 +50,13 @@ public class Store {
 			}
 			// permite poner las torres (no se puede en camino, inicio y final)
 			if(tieneObjeto) {
-				if(Screen.money >= buttonPrice[realID]) {
-					for(int y=0; y < Screen.room.block.length; y ++) {
-						for(int x = 0; x < Screen.room.block[0].length; x++) {
-							if(Screen.room.block[y][x].contains(Screen.mse)) {
-								if(Screen.room.block[y][x].tierraID != Value.GROUND_ROAD && Screen.room.block[y][x].aireID == Value.AIR_AIR && Screen.room.block[y][x].tierraID != Value.GROUND_END && Screen.room.block[y][x].tierraID != Value.GROUND_START) {
-									Screen.room.block[y][x].aireID = heldID;
-									Screen.money -= buttonPrice[realID];
+				if(Screen.monedas >= precioBoton[realID]) {
+					for(int y=0; y < Screen.room.bloque.length; y ++) {
+						for(int x = 0; x < Screen.room.bloque[0].length; x++) {
+							if(Screen.room.bloque[y][x].contains(Screen.raton)) {
+								if(Screen.room.bloque[y][x].tierraID != Value.SUELO_CARRETERA && Screen.room.bloque[y][x].aireID == Value.AIRE_AIRE && Screen.room.bloque[y][x].tierraID != Value.SUELO_END && Screen.room.bloque[y][x].tierraID != Value.SUELO_START) {
+									Screen.room.bloque[y][x].aireID = esteID;
+									Screen.monedas -= precioBoton[realID];
 								}
 							}
 						}
@@ -66,43 +66,43 @@ public class Store {
 		}
 	}
 	public void define(){
-		for(int i = 0; i<button.length; i++){
-			button [i]= new Rectangle((Screen.myWidth/2)-((shopWidth* (buttonSize+cellSpace))/2)+ ((buttonSize + cellSpace)*i),(Screen.room.block[Screen.room.worldHeight-1][0].y)+Screen.room.blockSize + awayFromGame,buttonSize, buttonSize);
+		for(int i = 0; i<boton.length; i++){
+			boton [i]= new Rectangle((Screen.myWidth/2)-((tiendaWidth* (tamanyoBoton+espacioCelda))/2)+ ((tamanyoBoton + espacioCelda)*i),(Screen.room.bloque[Screen.room.mundoHeight-1][0].y)+Screen.room.tamanyoBloque + espacioExtra,tamanyoBoton, tamanyoBoton);
 		}
 		
-		buttonHealth = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize, iconSize );
-		buttonCoins = new Rectangle(Screen.room.block[0][0].x-1, button[0].y + button[0].height-iconSize,iconSize, iconSize );
-		buttonKills = new Rectangle(Screen.room.block[0][0].x-1, button[0].y,iconSize2, iconSize2 );
+		rectanguloVida = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y,tamanyoIcono, tamanyoIcono );
+		rectanguloMonedas = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y + boton[0].height-tamanyoIcono,tamanyoIcono, tamanyoIcono );
+		rectanguloMuertes = new Rectangle(Screen.room.bloque[0][0].x-1, boton[0].y,tamanyoIcono2, tamanyoIcono2 );
 		//dibujado teniendo como referencia el buttonHealth
 	}
 	
 	public void draw (Graphics g){
 		
-		for (int i = 0; i < button.length; i++) {
-			if(button[i].contains(Screen.mse)){
+		for (int i = 0; i < boton.length; i++) {
+			if(boton[i].contains(Screen.raton)){
 				g.setColor(new Color(255,255,255,100));
-				g.fillRect(button[i].x,button[i].y, button[i].width, button[i].height);
+				g.fillRect(boton[i].x,boton[i].y, boton[i].width, boton[i].height);
 			}
-			g.drawImage(Screen.res[0],button[i].x, button[i].y, button[i].width, button[i].height, null);
-			if(buttonID[i] != Value.AIR_AIR) g.drawImage(Screen.air[buttonID[i]], button[i].x + itemIn, button[i].y + itemIn, button[i].width -(itemIn*2), button[i].height - (itemIn*2), null);
-			if(buttonPrice[i]>0) {
+			g.drawImage(Screen.res[0],boton[i].x, boton[i].y, boton[i].width, boton[i].height, null);
+			if(botonID[i] != Value.AIRE_AIRE) g.drawImage(Screen.aire[botonID[i]], boton[i].x + itemIn, boton[i].y + itemIn, boton[i].width -(itemIn*2), boton[i].height - (itemIn*2), null);
+			if(precioBoton[i]>0) {
 				g.setColor(new Color(255,255,255));
 				g.setFont(new Font("Courier New", Font.BOLD, 20));
-				g.drawString(buttonPrice[i] + "" , button[i].x + itemIn, button[i].y + itemIn+10); //+10 para corregir posicionamiento del coste del objeto
+				g.drawString(precioBoton[i] + "" , boton[i].x + itemIn, boton[i].y + itemIn+10); //+10 para corregir posicionamiento del coste del objeto
 			}
 		}
-		g.drawImage(Screen.res[1],buttonHealth.x + 40, buttonHealth.y, buttonHealth.width, buttonHealth.height, null);//+40 para centrarlo
-		g.drawImage(Screen.res[2], buttonCoins.x + 40, buttonCoins.y, buttonCoins.width, buttonCoins.height, null); //+40 para centrarlo
-		g.drawImage(Screen.res[3], buttonKills.x + 750, buttonKills.y, buttonKills.width, buttonKills.height, null); //+40 para centrarlo
+		g.drawImage(Screen.res[1],rectanguloVida.x + 40, rectanguloVida.y, rectanguloVida.width, rectanguloVida.height, null);//+40 para centrarlo
+		g.drawImage(Screen.res[2], rectanguloMonedas.x + 40, rectanguloMonedas.y, rectanguloMonedas.width, rectanguloMonedas.height, null); //+40 para centrarlo
+		g.drawImage(Screen.res[3], rectanguloMuertes.x + 750, rectanguloMuertes.y, rectanguloMuertes.width, rectanguloMuertes.height, null); //+40 para centrarlo
 
 		g.setFont(new Font("Courier New", Font.BOLD, 20));
 		g.setColor(new Color(255, 255, 255));
-		g.drawString("" +Screen.health, buttonHealth.x + 50+ buttonHealth.width + iconSpace,buttonHealth.y+20);
-		g.drawString("" +Screen.money, buttonCoins.x + 50+ buttonCoins.width + iconSpace,buttonCoins.y+20);
-		g.drawString("" +Screen.enemyKilled, buttonKills.x + 765+ buttonKills.width + iconSpace,buttonKills.y+30);
+		g.drawString("" +Screen.vida, rectanguloVida.x + 50+ rectanguloVida.width + espacioIcono,rectanguloVida.y+20);
+		g.drawString("" +Screen.monedas, rectanguloMonedas.x + 50+ rectanguloMonedas.width + espacioIcono,rectanguloMonedas.y+20);
+		g.drawString("" +Screen.enemigosAsesinados, rectanguloMuertes.x + 765+ rectanguloMuertes.width + espacioIcono,rectanguloMuertes.y+30);
 		
 		if(tieneObjeto) {
-			g.drawImage(Screen.air[heldID], Screen.mse.x - ((button[0].width-(itemIn*2))/2)+ itemIn, Screen.mse.y  - ((button[0].width-(itemIn*2))/2)+itemIn, button[0].width -(itemIn*2), button[0].height - (itemIn*2), null);
+			g.drawImage(Screen.aire[esteID], Screen.raton.x - ((boton[0].width-(itemIn*2))/2)+ itemIn, Screen.raton.y  - ((boton[0].width-(itemIn*2))/2)+itemIn, boton[0].width -(itemIn*2), boton[0].height - (itemIn*2), null);
 		}
 	}
 }
