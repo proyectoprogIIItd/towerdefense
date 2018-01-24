@@ -101,7 +101,7 @@ public class VentanaRanking extends JFrame {
 			listaM[i] = "Usuario: "+p.getUsuario_nick()+" Puntos: "+p.getPuntuacion();
 		}
 		ranking = new JList<String>(listaM);
-		ranking.setVisibleRowCount(5);  // defines cuántos nombre quieres que aparezcan a la vez
+		ranking.setVisibleRowCount(5);  // defines cuï¿½ntos nombre quieres que aparezcan a la vez
 		JScrollPane scroll = new JScrollPane(ranking);  //creamos el scroll, pasamos el componente que queremos que tenga scroll
 		JPanel panelRanking = new JPanel();
 		panelRanking.add(scroll);
