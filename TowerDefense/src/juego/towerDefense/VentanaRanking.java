@@ -44,7 +44,7 @@ public class VentanaRanking extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	
+	//este metodo es la sustitucion de un treeSet: reordena el array que le pasas por parametros y te lo mete en uno nuevo
 	public ArrayList<Puntuacion> reordenar(ArrayList<Puntuacion> p) {
 		
 		ArrayList<Puntuacion> ret = new ArrayList<Puntuacion>();
@@ -89,7 +89,7 @@ public class VentanaRanking extends JFrame {
 		
 		JButton btnMenu = new JButton("Menu");
 		botonera.add(btnMenu);
-		
+		//aqui rellenas la Jlist cargando las puntuaciones de ese mapa desde la BD y reordenandolas con el metodo
 		ArrayList<Puntuacion> puntuaciones = new ArrayList<Puntuacion>();
 		ArrayList<Puntuacion> puntuaciones2 = new ArrayList<Puntuacion>();
 		puntuaciones2 = BD.puntuacionSelect(Login.s, MenuSeleccionMapa.mapaSelec);

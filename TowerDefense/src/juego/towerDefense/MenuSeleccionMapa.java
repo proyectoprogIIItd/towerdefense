@@ -63,13 +63,14 @@ public class MenuSeleccionMapa extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setTitle("MAPAS CREADOS");
 		setContentPane(contentPane);
+		//aqui rellenas la Jlist con los mapas creados por la comunidad
 		mapas = BD.mapaNombreSelect(Login.s, null);
 		String[] listaM = new String[mapas.size()];
 		for(int i = 0; i < mapas.size();i++) {
 			listaM[i] = mapas.get(i);
 		}
 		listaMapas = new JList<String>(listaM);
-		listaMapas.setVisibleRowCount(4);  // defines cuántos nombre quieres que aparezcan a la vez
+		listaMapas.setVisibleRowCount(4);  // defines cuantos nombre quieres que aparezcan a la vez
 		JScrollPane scroll = new JScrollPane(listaMapas);  //creamos el scroll, pasamos el componente que queremos que tenga scroll
 		panelLista = new JPanel();
 		panelLista.add(scroll);
@@ -83,16 +84,16 @@ public class MenuSeleccionMapa extends JFrame {
 		
 		Jugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//aqui va el codigo de crear mapa
+				//aqui se guarda el mapa seleccionado y su estructura
 				mapaSelec = listaMapas.getSelectedValue();
 				ArrayList<String> mapaArray = new ArrayList<String>();
 				mapaArray = BD.mapaSelect(Login.s, mapaSelec);
 				estructuraMapa = mapaArray.get(0);
-				
+				//aqui se pasa la estructura a un fichero legible por nuestro codigo
 				File archivo = new File("save"+File.separator+"mission1.file");
 		        FileWriter fw;
 		        try {
-				fw = new FileWriter(archivo);// podemos añadir true para que no sobreescriba
+				fw = new FileWriter(archivo);// podemos anyadir true para que no sobreescriba
 				String linea ="";
 				String aire ="-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1	-1\r\n" + 
 						"-1 	-1 	-1 	-1 	-1 	-1 	-1 	-1	-1 	-1 	-1 	-1	-1	-1	-1\r\n" + 
@@ -124,7 +125,7 @@ public class MenuSeleccionMapa extends JFrame {
 					e.printStackTrace();
 				} 
 				
-				
+				//aqui por ultimo hace la comprobacion de que hayas escogido un mapa y solo uno
 				if(listaMapas.getSelectedValuesList().size() == 1) {
 				String mapa = (String) listaMapas.getSelectedValue();
 				frame.dispose();

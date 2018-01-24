@@ -45,6 +45,7 @@ public class Creador {
 	     * @wbp.parser.entryPoint
 	     */
 	    public final void initializeGui() {
+	    	//primero se inicializa el array que se utilizara para guardar la estructura del mapa
 	    	for (int i = 0; i < 8; i++) {
 				for (int j = 0; j<15; j++) {
 					arrayMapa[i][j] = 0;
@@ -82,13 +83,13 @@ public class Creador {
 	        chessBoard.setBorder(new LineBorder(Color.BLACK));
 	        gui.add(chessBoard);
 
-	        // esto deberia ser un hilo aparte y simplemente hacer una llamada (dibujar el mapa)
+	        //rellena las casillas con botones
 	        Insets buttonMargin = new Insets(0,0,0,0);
 	        for (int ii = 0; ii < chessBoardSquares.length; ii++) {
 	            for (int jj = 0; jj < chessBoardSquares[ii].length; jj++) {
 	                JButton b = new JButton();
 	                b.setMargin(buttonMargin);
-	                // hay que cambiar el icono transparente para que redibuje por la casilla 
+	                //dibuja el mapa inicial
 	                ImageIcon icon = new ImageIcon(
 	                        new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB));
 	                b.setIcon(icon);            
@@ -96,6 +97,7 @@ public class Creador {
 	                b.setIcon(verde);
 	                int bx = ii;
 	                int by = jj;
+	                //como cada casilla es un boton aqui se ejecuta todas las comprobaciones para darle un valor en la casilla y su redibujado
 	    			b.addActionListener(new ActionListener() {
 	    				public void actionPerformed(ActionEvent arg0) {
 	    					x = bx;
@@ -189,7 +191,7 @@ public class Creador {
 
 				}
 			});
-	        //Los Syso meterlos como Insert con la clase BD
+	        //aqui se hacen las comprobaciones y se guarda en la BD
 			Guardar.addActionListener(new ActionListener() {
 				String mapaEntero = "";
 				public void actionPerformed(ActionEvent arg0) {

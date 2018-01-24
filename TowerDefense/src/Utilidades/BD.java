@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.*; 
 import java.util.logging.*;
 
-//Documentaciï¿½n particular de foreign keys en sqlite en
+//Documentacion particular de foreign keys en sqlite en
 //https://www.sqlite.org/foreignkeys.html
-//Si se quiere hacer sin foreign keys, quitar las lï¿½neas marcadas con (1) y sustituirlas por las (2) en BD.java
+//Si se quiere hacer sin foreign keys, quitar las lineas marcadas con (1) y sustituirlas por las (2) en BD.java
 
 /** Clase de gestiï¿½n de base de datos del sistema de usuarios - partidas
  * @author andoni.eguiluz @ ingenieria.deusto.es
@@ -206,6 +206,7 @@ public class BD {
 	 * @param codigoSelect	Sentencia correcta de WHERE (sin incluirlo) para filtrar la bï¿½squeda (vacï¿½a si no se usa)
 	 * @return	lista de usuarios cargados desde la base de datos, null si hay cualquier error
 	 */
+	//devuelve array de usuarios
 	public static ArrayList<Usuario> usuarioSelect( Statement st, String codigoSelect ) {
 		String sentSQL = "";
 		ArrayList<Usuario> ret = new ArrayList<>();
@@ -237,6 +238,7 @@ public class BD {
 			return null;
 		}
 	}
+	//devuelve todas las puntuaciones de un mapa
 	public static ArrayList<Puntuacion> puntuacionSelect( Statement st, String codigoSelect ) {
 		String sentSQL = "";
 		ArrayList<Puntuacion> ret = new ArrayList<>();
@@ -268,6 +270,7 @@ public class BD {
 			return null;
 		}
 	}
+	//devuelve la puntuacion mas alta establecida por un usuario en un mapa
 	public static ArrayList<Puntuacion> puntuacionUsuarioSelect( Statement st, String codigoSelect, String codigoSelect2 ) {
 		String sentSQL = "";
 		ArrayList<Puntuacion> ret = new ArrayList<>();
@@ -299,6 +302,7 @@ public class BD {
 			return null;
 		}
 	}
+	//metodo que se usa para comprobar si existe un mapa con x nombre en la BD
 	public static ArrayList<String> mapaNombreSelect( Statement st, String codigoSelect ) {
 		String sentSQL = "";
 		ArrayList<String> ret = new ArrayList<>();
@@ -326,7 +330,7 @@ public class BD {
 			return null;
 		}
 	}
-	
+	//devuelve la estructura de un mapa
 	public static ArrayList<String> mapaSelect( Statement st, String codigoSelect ) {
 		String sentSQL = "";
 		ArrayList<String> ret = new ArrayList<>();
@@ -383,7 +387,7 @@ public class BD {
 		}
 		
 	}
-	
+	//actualiza la puntuacion de un usuario en un mapa
 	public static boolean puntuacionUpdate( Statement st, String nick, int puntuacion, String nombreMapa ) {
 		String sentSQL = "";
 		try {
@@ -432,7 +436,7 @@ public class BD {
 	
 	
 	/////////////////////////////////////////////////////////////////////
-	//                      Mï¿½todos privados                           //
+	//                      Metodos privados                           //
 	/////////////////////////////////////////////////////////////////////
 
 	// Devuelve el string "securizado" para volcarlo en SQL
